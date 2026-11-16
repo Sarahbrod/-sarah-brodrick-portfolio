@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <filter id="b" filterUnits="userSpaceOnUse" x="-100" y="-100" width="600" height="720"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="b2" filterUnits="userSpaceOnUse" x="-100" y="-100" width="600" height="720"><feGaussianBlur stdDeviation="16"/></filter>
+    <radialGradient id="plate" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.7" stop-color="#F4EFEA"/><stop offset="1" stop-color="#D9CFC6"/></radialGradient>
+    <radialGradient id="wine" cx="40%" cy="40%" r="60%"><stop offset="0" stop-color="#9C2440"/><stop offset="1" stop-color="#4A0C1E"/></radialGradient>
+  </defs>
+  <rect width="400" height="520" fill="#E7DCD2"/>
+  <g filter="url(#b2)" opacity="0.6"><rect x="-20" y="230" width="440" height="20" fill="#CBB9AA"/><rect x="-20" y="470" width="440" height="16" fill="#CBB9AA"/></g>
+  <g filter="url(#b)">
+    <ellipse cx="128" cy="150" rx="92" ry="90" fill="#B9A595" opacity="0.6" transform="translate(10 14)"/>
+    <circle cx="128" cy="150" r="90" fill="url(#plate)"/>
+    <circle cx="128" cy="150" r="56" fill="#EFE8E1"/>
+    <circle cx="118" cy="140" r="28" fill="#D98C5F" opacity="0.85"/>
+    <circle cx="146" cy="162" r="20" fill="#8FA36A" opacity="0.8"/>
+    <rect x="236" y="70" width="10" height="170" rx="5" fill="#B9B2AA"/>
+    <rect x="256" y="70" width="10" height="170" rx="5" fill="#B9B2AA"/>
+    <circle cx="318" cy="96" r="44" fill="url(#wine)" opacity="0.92"/>
+    <circle cx="318" cy="96" r="50" fill="none" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="5"/>
+    <ellipse cx="292" cy="372" rx="96" ry="94" fill="#B9A595" opacity="0.6" transform="translate(10 14)"/>
+    <circle cx="292" cy="372" r="94" fill="url(#plate)"/>
+    <circle cx="292" cy="372" r="58" fill="#EFE8E1"/>
+    <circle cx="276" cy="360" r="30" fill="#C9603C" opacity="0.8"/>
+    <circle cx="74" cy="392" r="40" fill="#F6F1EC" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="5"/>
+    <circle cx="74" cy="392" r="30" fill="#E4C88A" opacity="0.7"/>
+  </g>
+</svg>
