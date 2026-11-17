@@ -427,6 +427,24 @@ main .shot img { border-radius: 12px !important; corner-shape: round !important;
 
 /* Less space between the back link and the top card */
 body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
+
+/* 16px between the back link and what follows */
+body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
+
+/* Each section opens with one clear sentence; small captions under images are gone */
+.sec-lead { margin: 0 0 14px; font-size: clamp(22px, 2vw, 30px); font-weight: 500; line-height: 1.2; letter-spacing: -0.015em; color: var(--text); text-wrap: balance; }
+.sec-sub { margin: 28px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.row > .body.body--lead { margin-bottom: 4px; }
+.wrp__lab { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
+
+/* Section titles: sentence case, full-strength text, larger */
+.label, .label--intro { font-size: clamp(18px, 1.4vw, 22px); font-weight: 600; letter-spacing: -0.01em; text-transform: none; color: var(--text); }
+.sec-sub { font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--text); }
+
+/* Breathing room under the top bar, with the cover sized so the title still shows above the fold */
+body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
+@media (min-width: 761px) { .hero__panel { max-height: max(400px, calc(100svh - 295px)) !important; } }
+@media (max-width: 760px) { body:has(.crumb) > header.nav { padding-bottom: 28px !important; } }
 </style>
 </head>
 <body class="project">
@@ -450,19 +468,23 @@ body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
     </section>
 
 
-    <section class="row grid" data-reveal aria-labelledby="impact"><h2 class="label mask" id="impact"><span>Impact</span></h2><div class="stats"><div class="stat"><p class="stat__num"><span data-count="14">0</span>%</p><p class="stat__label">improvement in retention</p></div></div></section>
-    
-    
-    <section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>Solution</span></h2><div class="body fade"><p>Insights are generated automatically in the same workspace as the query, so there is no context switching. Customers can drop a summary straight into their reports.</p></div>
-    <figure class="figure fade" style="--d:.15"><div class="qi-screens"><img src="assets/img/qi-home.jpg" alt="Sidebar home: a New query insights banner and a prompt to create a query" loading="lazy" decoding="async"><img src="assets/img/qi-selected.jpg" alt="Query insights: choose a prompt, such as the top 3 campaigns by cost per click in the last 7 days, then Generate insights" loading="lazy" decoding="async"><img src="assets/img/qi-templates.jpg" alt="Suggested queries for Facebook and Instagram to start from" loading="lazy" decoding="async"></div><figcaption>In the sidebar: discover the feature, pick and tailor a prompt, or start from a suggested query.</figcaption></figure>
-    <figure class="figure fade" style="--d:.15"><div class="shot"><img src="assets/img/qi-results.jpg" alt="Query insights result in Google Sheets: a written summary of the top campaigns above a results table" loading="lazy" decoding="async"></div><figcaption>The result: a plain-language summary and a table, generated next to the data and ready to copy into a report.</figcaption></figure></section><section class="row grid" data-reveal aria-labelledby="s1"><h2 class="label mask" id="s1"><span>The challenge</span></h2><div class="body fade"><p>People without analysts needed a faster way to turn raw query results into insight they could act on and share.</p></div>
+    <section class="row grid" data-reveal aria-labelledby="impact"><h2 class="label mask" id="impact"><span>Impact</span></h2><div class="body body--lead fade"><h3 class="sec-lead">AI insights lifted retention by 14%.</h3></div><div class="stats"><div class="stat"><p class="stat__num"><span data-count="14">0</span>%</p><p class="stat__label">improvement in retention</p></div></div></section>
+    <section class="row grid" data-reveal aria-labelledby="s1"><h2 class="label mask" id="s1"><span>The problem</span></h2><div class="body fade"><h3 class="sec-lead">Teams without analysts could not turn raw data into answers fast enough.</h3><p>People without analysts needed a faster way to turn raw query results into insight they could act on and share.</p></div>
     <figure class="figure fade" style="--d:.15"><div class="personas personas--one">
       <div class="persona persona--a"><div class="persona__top"><span class="persona__avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="persona__id"><span class="persona__role">Primary persona</span><p class="persona__name">Marketer without an analyst</p></span></div><p class="persona__need">Has the data but not the time or analyst to make sense of it.</p><div class="persona__group"><span class="persona__k">Goals</span><ul class="persona__chips"><li>Turn query results into insight</li><li>Share findings in their reports</li><li>Stay in the tool they already use</li></ul></div><div class="persona__group"><span class="persona__k">Frustrations</span><ul class="persona__chips persona__chips--pain"><li>Making sense of raw data alone</li><li>Switching tools to analyse it</li></ul></div></div>
-    </div><figcaption>The person query insights was built for.</figcaption></figure>
-    <figure class="figure fade" style="--d:.15"><div class="shot"><img src="assets/img/qi-sheets.jpg" alt="Raw campaign data in Google Sheets with the Supermetrics sidebar open, offering new query insights" loading="lazy" decoding="async"></div><figcaption>Before: customers without analysts were left to make sense of raw data.</figcaption></figure></section>
-    <section class="row grid" data-reveal aria-labelledby="s3"><h2 class="label mask" id="s3"><span>Outcome</span></h2><div class="body fade"><ul class="list"><li>Better retention, up 14%</li><li>Higher user satisfaction</li><li>Quicker time to value</li></ul></div>
-    <figure class="figure fade" style="--d:.15"><div class="qi-screens qi-screens--2"><img src="assets/img/qi-builder.jpg" alt="Query builder with the new Data visuals option: insert data as a table or chart" loading="lazy" decoding="async"><img src="assets/img/qi-errors.jpg" alt="Edge states: the monthly AI insights limit reached, and insights temporarily unavailable" loading="lazy" decoding="async"></div><figcaption>Designed for the edges too: data visuals in the query builder, usage limits and an unavailable state.</figcaption></figure></section>
-    <section class="row grid" data-reveal aria-labelledby="s4"><h2 class="label mask" id="s4"><span>Reflections</span></h2><div class="body fade"><p>Putting insights where people already work mattered more than the model itself: a summary only helps if it lands next to the data and travels into the report.</p><ul class="list"><li>Designing the edge states early, such as usage limits and an unavailable state, kept trust when the AI could not answer</li><li>Prompt templates lowered the barrier for people who did not know what to ask</li><li>Next, I would measure how often summaries are copied into reports, to see which prompts earn their place</li></ul></div></section>
+    </div></figure>
+    <figure class="figure fade" style="--d:.15"><div class="shot"><img src="assets/img/qi-sheets.jpg" alt="Raw campaign data in Google Sheets with the Supermetrics sidebar open, offering new query insights" loading="lazy" decoding="async"></div></figure></section>
+    <section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>The solution</span></h2><div class="body fade"><h3 class="sec-lead">Insights appear right where the data already is.</h3><p>Insights are generated automatically in the same workspace as the query, so there is no context switching. Customers can drop a summary straight into their reports.</p></div>
+    <figure class="figure fade" style="--d:.15"><div class="qi-screens"><img src="assets/img/qi-home.jpg" alt="Sidebar home: a New query insights banner and a prompt to create a query" loading="lazy" decoding="async"><img src="assets/img/qi-selected.jpg" alt="Query insights: choose a prompt, such as the top 3 campaigns by cost per click in the last 7 days, then Generate insights" loading="lazy" decoding="async"><img src="assets/img/qi-templates.jpg" alt="Suggested queries for Facebook and Instagram to start from" loading="lazy" decoding="async"></div></figure>
+    <figure class="figure fade" style="--d:.15"><div class="shot"><img src="assets/img/qi-results.jpg" alt="Query insights result in Google Sheets: a written summary of the top campaigns above a results table" loading="lazy" decoding="async"></div></figure></section>
+    <section class="row grid" data-reveal aria-labelledby="s3"><h2 class="label mask" id="s3"><span>Outcome</span></h2><div class="body fade"><h3 class="sec-lead">Customers stayed longer and got value sooner.</h3><ul class="list"><li>Better retention, up 14%</li><li>Higher user satisfaction</li><li>Quicker time to value</li></ul></div>
+    <figure class="figure fade" style="--d:.15"><div class="qi-screens qi-screens--2"><img src="assets/img/qi-builder.jpg" alt="Query builder with the new Data visuals option: insert data as a table or chart" loading="lazy" decoding="async"><img src="assets/img/qi-errors.jpg" alt="Edge states: the monthly AI insights limit reached, and insights temporarily unavailable" loading="lazy" decoding="async"></div></figure></section>
+    <section class="row grid" data-reveal aria-labelledby="s4"><h2 class="label mask" id="s4"><span>Reflections</span></h2><div class="body fade"><h3 class="sec-lead">Where the insight lands matters more than the model.</h3><p>Putting insights where people already work mattered more than the model itself: a summary only helps if it lands next to the data and travels into the report.</p><ul class="list"><li>Designing the edge states early, such as usage limits and an unavailable state, kept trust when the AI could not answer</li><li>Prompt templates lowered the barrier for people who did not know what to ask</li><li>Next, I would measure how often summaries are copied into reports, to see which prompts earn their place</li></ul></div></section>
+    
+    
+    
+    
+    
     
 
     <a class="next" href="go1.html" data-transition>
