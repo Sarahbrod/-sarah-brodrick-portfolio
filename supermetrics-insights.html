@@ -445,6 +445,26 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
 body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
 @media (min-width: 761px) { .hero__panel { max-height: max(400px, calc(100svh - 295px)) !important; } }
 @media (max-width: 760px) { body:has(.crumb) > header.nav { padding-bottom: 28px !important; } }
+
+/* More air inside sections: between headline, text, signposts and visuals */
+.row { row-gap: 24px !important; }
+.row > .figure { margin-top: 48px !important; }
+.row > .figure + .figure { margin-top: 48px !important; }
+.row > .body:has(> .sec-sub) { margin-top: 56px; }
+.sec-sub { margin-top: 0 !important; }
+.row > .body:has(> .sec-sub) + .figure { margin-top: 0 !important; }
+.row > .body p + p, .row > .body p + ul, .row > .body ul + p { margin-top: 1.1em; }
+.row > .body .sec-lead + p, .row > .body .sec-lead + ul { margin-top: 18px; }
+@media (max-width: 760px) {
+  .row { row-gap: 16px !important; }
+  .row > .figure, .row > .figure + .figure { margin-top: 32px !important; }
+  .row > .body:has(> .sec-sub) { margin-top: 40px; }
+}
+
+/* Tighter spacing between main sections */
+.row { padding-top: 8px !important; padding-bottom: 52px !important; }
+.row::before { margin-bottom: 20px !important; }
+@media (max-width: 760px) { .row { padding-top: 4px !important; padding-bottom: 28px !important; } .row::before { margin-bottom: 16px !important; } }
 </style>
 </head>
 <body class="project">
