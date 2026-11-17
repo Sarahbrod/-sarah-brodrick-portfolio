@@ -719,6 +719,9 @@ main figure img:not(.no-round), .hero img { border-radius: 22px; }
 /* One clean corner per card: the frame clips, images inside it stay square */
 .shot img, .shot video, .jvid img, .flowvid img, .dk img, .qi-screens img, .promo img, .wfilm img { border-radius: 0 !important; corner-shape: round !important; }
 .shot, .jvid, .flowvid, .ph, .promo, .qi-screens, .wfilm { box-shadow: none !important; outline: 1px solid rgba(15, 17, 20, 0.07); outline-offset: -1px; }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
 </style>
 </head>
 <body>

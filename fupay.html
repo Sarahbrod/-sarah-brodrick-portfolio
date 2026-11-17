@@ -416,6 +416,9 @@ main figure img:not(.no-round), .hero img { border-radius: 22px; }
 
 /* Cover phones centred in the panel, with even space all round */
 .hero__panel--photo img { position: absolute !important; left: 50% !important; top: 50% !important; width: auto !important; height: 86% !important; max-width: 90% !important; max-height: 86% !important; margin: 0 !important; translate: -50% -50%; z-index: 1; }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
 </style>
 </head>
 <body class="project">

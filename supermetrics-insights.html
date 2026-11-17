@@ -424,6 +424,9 @@ main .shot { padding: clamp(16px, 3.6vw, 44px) !important; background: #E6EEF9 !
 main .shot img { border-radius: 12px !important; corner-shape: round !important; box-shadow: 0 0 0 1px rgba(15, 30, 60, 0.08), 0 24px 44px -26px rgba(15, 30, 60, 0.4) !important; }
 .qi-screens { background: #E6EEF9 !important; outline: none !important; }
 .qi-screens img { border-radius: 10px !important; corner-shape: round !important; box-shadow: 0 0 0 1px rgba(15, 30, 60, 0.08), 0 18px 34px -22px rgba(15, 30, 60, 0.4) !important; }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
 </style>
 </head>
 <body class="project">

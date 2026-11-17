@@ -694,6 +694,12 @@ main figure img:not(.no-round), .hero img { border-radius: 22px; }
 @media (max-width: 760px) { .sp-stage { font-size: clamp(8px, 2.5vw, 11px) !important; } }
 .sp-ov { display: flex !important; flex-direction: column; }
 .sp-ov > small { margin-top: -0.35em; }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
+
+/* Menu bar mark: a crisp round dot, not a soft oval */
+.dk__apple, .sv-apple { width: 10px !important; height: 10px !important; border-radius: 50% !important; flex: none; }
 </style>
 </head>
 <body class="project">

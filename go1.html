@@ -795,6 +795,29 @@ main figure img:not(.no-round), .hero img { border-radius: 22px; }
 .intro__split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
 .intro__context { justify-self: end; max-width: 34em; width: 100%; }
 @media (max-width: 760px) { .intro__split { grid-template-columns: minmax(0, 1fr) !important; } .intro__context { justify-self: start; } }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
+
+/* Menu bar mark: a crisp round dot, not a soft oval */
+.dk__apple, .sv-apple { width: 10px !important; height: 10px !important; border-radius: 50% !important; flex: none; }
+
+/* Fullstory session image: no stroke */
+.figure--fs .shot, .figure--fs .shot img { outline: none !important; box-shadow: none !important; }
+/* Persona cards a size down */
+.personas { max-width: 880px; }
+.persona { padding: var(--s-2) var(--s-2) var(--s-3) !important; gap: 12px !important; }
+.persona__avatar { width: 42px !important; height: 42px !important; }
+.persona__avatar svg { width: 20px !important; height: 20px !important; }
+.persona__name { font-size: clamp(19px, 1.6vw, 24px) !important; }
+.persona__need { font-size: 15px; }
+.persona__chips li { font-size: 13px !important; padding: 4px 10px 4px 9px !important; }
+.persona__quote { font-size: 15px !important; }
+/* Images a touch smaller, centred in the column */
+main > section > .figure:not(.figure--journey) > .shot, main > section > .figure > .figure__grid, main > section > .figure > .dk, main > section > .figure > .flowvid, main > section > .figure > .laptop-shot { max-width: 920px; margin-left: auto; margin-right: auto; }
+main > section > .figure > .dk { max-width: 840px; }
+main > section > .figure > figcaption { max-width: 920px; margin-left: auto; margin-right: auto; }
+.personas { margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body class="project">

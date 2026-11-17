@@ -672,6 +672,9 @@ main figure img:not(.no-round), .hero img { border-radius: 22px; }
   .hb__strip { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 64px; height: auto; }
   .hb__strip--mood { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 48px; }
 }
+
+/* Less space between the back link and the top card */
+body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap">
 </head>
