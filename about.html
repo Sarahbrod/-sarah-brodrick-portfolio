@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#F2F2F0">
 <meta name="color-scheme" content="light">
 <title>About — Sarah Brodrick</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
   <meta name="description" content="Sarah Brodrick is a London based Product Designer creating thoughtful digital experiences.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -725,6 +725,11 @@ body:has(.crumb) > header.nav { padding-bottom: var(--s-3) !important; }
 
 /* 16px between the back link and what follows */
 body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
+
+/* Hero image: the frame takes the same rounded corners as the photo, so no dark corners show */
+.row--hero > .frame { border-radius: 36px !important; overflow: hidden !important; background: transparent !important; }
+@supports (corner-shape: squircle) { .row--hero > .frame { corner-shape: superellipse(2); } }
+.row--hero > .frame img { border-radius: inherit !important; }
 </style>
 </head>
 <body>

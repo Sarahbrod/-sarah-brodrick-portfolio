@@ -308,9 +308,9 @@
 @media (prefers-reduced-motion: reduce) { .edge > i { animation: none; } }
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
   <meta name="description" content="Sarah Brodrick, Senior Product Designer helping SaaS teams grow through research-led, outcome-driven design.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2133,6 +2133,22 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 .ld3__count { position: absolute; left: 50%; bottom: var(--s-6); transform: translateX(-50%); margin: 0; padding: 4px 12px; border-radius: 99px; background: var(--bg); font-size: 13px; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; color: var(--muted); transition: opacity 0.4s ease; }
 .loader.is-leaving .ld3__count { opacity: 0; }
 @media (max-width: 760px) { .ld3__count { bottom: var(--s-4); } }
+
+/* Project card titles and meta read as near-black (Sunday's dark card keeps light text) */
+.track .card[data-href] .card__head .card__title { color: #16171A !important; }
+.track .card[data-href] .card__head .card__year, .track .card[data-href] .card__head .card__ship { color: rgba(22, 23, 26, 0.72) !important; }
+.track .card[data-href] .card__head .card__sep { color: rgba(22, 23, 26, 0.3) !important; }
+.track .card[data-href="sunday.html"] .card__head .card__title { color: #F7F7F5 !important; }
+.track .card[data-href="sunday.html"] .card__head .card__year, .track .card[data-href="sunday.html"] .card__head .card__ship { color: rgba(247, 247, 245, 0.78) !important; }
+.track .card[data-href="sunday.html"] .card__head .card__sep { color: rgba(247, 247, 245, 0.4) !important; }
+.brand { color: #16171A; }
+.track .card.card--mood[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__title { color: #16171A !important; }
+.track .card.card--mood[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__year { color: rgba(22, 23, 26, 0.72) !important; }
+
+/* Insights card: the chat sits centred with even margins, well inside the card */
+.card[data-href="supermetrics-insights.html"] .si2 { width: 76% !important; margin-left: auto !important; margin-right: auto !important; justify-self: center !important; }
+.card[data-href="supermetrics-insights.html"] .si2__a { width: 100% !important; box-sizing: border-box; }
+.card[data-href="supermetrics-insights.html"] .si2__q { max-width: 100% !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2176,6 +2192,12 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2024</span></div>
         <p class="card__desc">Self-serve purchase flow, 22% ARR growth</p>
       </article>
+      <article class="card card--mood" data-href="fupay.html" style="--m1: #141A1C; --m2: #3E5A5B; --m3: #9DB4A8">
+        <div class="card__tex tex--grey" aria-hidden="true"></div>
+        <div class="card__art" aria-hidden="true"><img class="card__tile" src="assets/img/fupay-tile.png" alt="" draggable="false"></div>
+        <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2021</span></div>
+        <p class="card__desc">A simpler sign-up for buy now, pay later</p>
+      </article>
       <article class="card card--mood" data-href="foba.html" data-soon="Contract" style="--m1: #F6ECE6; --m2: #F3D6D3; --m3: #FFFFFF">
         <div class="card__tex tex--blue" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><img class="foba-logo" src="assets/img/foba-logo-sharp.png" alt="" draggable="false" decoding="async"></div>
@@ -2188,23 +2210,17 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2026</span></div>
         <p class="card__desc">Reporting and analytics for restaurants</p>
       </article>
-      <article class="card card--mood" data-href="supermetrics-insights.html" style="--m1: #0E1A33; --m2: #2F5BC4; --m3: #9DB8F2">
-        <div class="card__tex tex--grey" aria-hidden="true"></div>
-        <div class="card__art" aria-hidden="true"><div class="ui ui--bare si2"><div class="si2__q">How’s ad spend this week?</div><div class="si2__a"><span class="si2__who"><i></i>Insights</span><span class="si2__body"><span class="si2__dots"><i></i><i></i><i></i></span><span class="si2__text"><span>Spend on Meta rose 18%,</span><span>and cost per lead fell to €4.20.</span></span></span><span class="si2__bars"><i style="--h:0.38"></i><i style="--h:0.5"></i><i style="--h:0.44"></i><i style="--h:0.62"></i><i style="--h:0.56"></i><i style="--h:0.8"></i><i style="--h:1"></i></span></div><div class="si2__comp"><span class="si2__field"><span class="si2__ph">Ask about your data</span><span class="si2__typed">How’s ad spend this week?</span></span><span class="si2__send"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 12.5V3.5M4.2 7.2L8 3.5l3.8 3.7" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></div>
-        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
-        <p class="card__desc">AI summaries of your marketing data</p>
-      </article>
-      <article class="card card--mood" data-href="fupay.html" style="--m1: #141A1C; --m2: #3E5A5B; --m3: #9DB4A8">
-        <div class="card__tex tex--grey" aria-hidden="true"></div>
-        <div class="card__art" aria-hidden="true"><img class="card__tile" src="assets/img/fupay-tile.png" alt="" draggable="false"></div>
-        <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2021</span></div>
-        <p class="card__desc">A simpler sign-up for buy now, pay later</p>
-      </article>
       <article class="card card--photo" data-href="wrylo.html" style="--grad: #FFFFFF">
         <div class="card__tex tex--blue" aria-hidden="true"></div>
         <img class="card__photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2025</span></div>
         <p class="card__desc">A calmer way to track your reading</p>
+      </article>
+      <article class="card card--mood" data-href="supermetrics-insights.html" style="--m1: #0E1A33; --m2: #2F5BC4; --m3: #9DB8F2">
+        <div class="card__tex tex--grey" aria-hidden="true"></div>
+        <div class="card__art" aria-hidden="true"><div class="ui ui--bare si2"><div class="si2__q">How’s ad spend this week?</div><div class="si2__a"><span class="si2__who"><i></i>Insights</span><span class="si2__body"><span class="si2__dots"><i></i><i></i><i></i></span><span class="si2__text"><span>Spend on Meta rose 18%,</span><span>and cost per lead fell to €4.20.</span></span></span><span class="si2__bars"><i style="--h:0.38"></i><i style="--h:0.5"></i><i style="--h:0.44"></i><i style="--h:0.62"></i><i style="--h:0.56"></i><i style="--h:0.8"></i><i style="--h:1"></i></span></div><div class="si2__comp"><span class="si2__field"><span class="si2__ph">Ask about your data</span><span class="si2__typed">How’s ad spend this week?</span></span><span class="si2__send"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 12.5V3.5M4.2 7.2L8 3.5l3.8 3.7" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></div>
+        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
+        <p class="card__desc">AI summaries of your marketing data</p>
       </article>
     </div>
     <div class="modes fade" style="--d:.7" role="group" aria-label="Carousel shape">
@@ -2316,7 +2332,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     requestAnimationFrame(() => requestAnimationFrame(openPage));
   } else {
     // A field of dots that beats like a heart: each beat ripples out from the centre.
-    // The pointer parts the dots as it moves. At 100% one last beat swells out and the
+    // Moving the pointer sends ripples through the dots. At 100% one last beat swells out and the
     // field dissolves into the homepage, which rises in underneath.
     const cv = document.getElementById('ld3');
     const g = cv.getContext('2d');
@@ -2336,9 +2352,17 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     };
     size();
     window.addEventListener('resize', size);
-    let mx = -9999, my = -9999;
-    loader.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; });
-    loader.addEventListener('pointerleave', () => { mx = my = -9999; });
+    // the pointer drops ripples as it moves: rings that spread out through the dots and fade
+    const ripples = [];
+    let lastRx = -9999, lastRy = -9999, lastRt = 0;
+    loader.addEventListener('pointermove', (e) => {
+      const now = performance.now();
+      if (Math.hypot(e.clientX - lastRx, e.clientY - lastRy) > 36 || now - lastRt > 160) {
+        ripples.push({ x: e.clientX, y: e.clientY, t0: now });
+        if (ripples.length > 18) ripples.shift();
+        lastRx = e.clientX; lastRy = e.clientY; lastRt = now;
+      }
+    });
     // lub-dub: two soft pulses in each 1.15s beat
     const PERIOD = 1.15, SPEED = 520;
     const pulse = (x, w) => Math.exp(-(x * x) / (2 * w * w));
@@ -2350,6 +2374,8 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       const t = (now - tStart) / 1000;
       g.clearRect(0, 0, W, H);
       const lt = leaving ? (now - leaveT0) / 1000 : 0;
+      while (ripples.length && now - ripples[0].t0 > 1700) ripples.shift();
+      const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 340, k: Math.exp(-a * 2.1) }; });
       for (const p of dots) {
         let v = beat(t - p.d / SPEED);
         // the farewell: one big wave that runs out to the edges, then the dots fade
@@ -2359,15 +2385,20 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
           v += 1.6 * pulse((p.d - front) / 120, 1);
           fade = Math.max(0, 1 - Math.max(0, front - p.d) / 260);
         }
-        // the pointer pushes nearby dots aside and lifts them
-        const dx = p.x - mx, dy = p.y - my, dist = Math.hypot(dx, dy);
-        let tx = 0, ty = 0, near = 0;
-        if (dist < 120) { near = 1 - dist / 120; const f = near * near * 10; tx = (dx / (dist || 1)) * f; ty = (dy / (dist || 1)) * f; }
-        p.px += (tx - p.px) * 0.18; p.py += (ty - p.py) * 0.18;
-        const r = 0.55 + 0.9 * v + 0.9 * near;
-        g.globalAlpha = Math.min(1, p.w * (0.22 + 0.6 * v + 0.45 * near)) * fade;
+        // ripples from the pointer: each ring lifts the dots it passes and nudges them outwards
+        let near = 0, tx = 0, ty = 0;
+        for (const q of live) {
+          const dx = p.x - q.x, dy = p.y - q.y, dist = Math.hypot(dx, dy);
+          const off = dist - q.R;
+          if (off > 60 || off < -60) continue;
+          const h = pulse(off / 20, 1) * q.k;
+          near += h; tx += (dx / (dist || 1)) * h * 5; ty += (dy / (dist || 1)) * h * 5;
+        }
+        near = Math.min(1.4, near);
+        const r = 0.7 + 0.9 * v + 1.1 * near;
+        g.globalAlpha = Math.min(1, p.w * (0.22 + 0.6 * v + 0.55 * near)) * fade;
         g.fillStyle = p.c;
-        g.fillRect(p.x + p.px - r, p.y + p.py - r, r * 2, r * 2);
+        g.beginPath(); g.arc(p.x + tx, p.y + ty, r, 0, 6.2832); g.fill();
       }
       g.globalAlpha = 1;
       requestAnimationFrame(draw);
