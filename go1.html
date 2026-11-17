@@ -862,6 +862,10 @@ main > section > .figure > .dk, main > section > .figure > .laptop-shot { margin
 .row { padding-top: 8px !important; padding-bottom: 52px !important; }
 .row::before { margin-bottom: 20px !important; }
 @media (max-width: 760px) { .row { padding-top: 4px !important; padding-bottom: 28px !important; } .row::before { margin-bottom: 16px !important; } }
+
+/* Personas sit on the text's left edge; the closing laptop shot uses the full column */
+.personas { margin-left: 0 !important; margin-right: auto !important; }
+main > section > .figure > .laptop-shot { max-width: none !important; width: 100% !important; }
 </style>
 </head>
 <body class="project">
