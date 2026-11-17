@@ -2149,6 +2149,9 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 .card[data-href="supermetrics-insights.html"] .si2 { width: 76% !important; margin-left: auto !important; margin-right: auto !important; justify-self: center !important; }
 .card[data-href="supermetrics-insights.html"] .si2__a { width: 100% !important; box-sizing: border-box; }
 .card[data-href="supermetrics-insights.html"] .si2__q { max-width: 100% !important; }
+
+/* Loader: dots only, no percentage */
+.ld3__count { display: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2210,17 +2213,17 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2026</span></div>
         <p class="card__desc">Reporting and analytics for restaurants</p>
       </article>
-      <article class="card card--photo" data-href="wrylo.html" style="--grad: #FFFFFF">
-        <div class="card__tex tex--blue" aria-hidden="true"></div>
-        <img class="card__photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
-        <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2025</span></div>
-        <p class="card__desc">A calmer way to track your reading</p>
-      </article>
       <article class="card card--mood" data-href="supermetrics-insights.html" style="--m1: #0E1A33; --m2: #2F5BC4; --m3: #9DB8F2">
         <div class="card__tex tex--grey" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><div class="ui ui--bare si2"><div class="si2__q">How’s ad spend this week?</div><div class="si2__a"><span class="si2__who"><i></i>Insights</span><span class="si2__body"><span class="si2__dots"><i></i><i></i><i></i></span><span class="si2__text"><span>Spend on Meta rose 18%,</span><span>and cost per lead fell to €4.20.</span></span></span><span class="si2__bars"><i style="--h:0.38"></i><i style="--h:0.5"></i><i style="--h:0.44"></i><i style="--h:0.62"></i><i style="--h:0.56"></i><i style="--h:0.8"></i><i style="--h:1"></i></span></div><div class="si2__comp"><span class="si2__field"><span class="si2__ph">Ask about your data</span><span class="si2__typed">How’s ad spend this week?</span></span><span class="si2__send"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 12.5V3.5M4.2 7.2L8 3.5l3.8 3.7" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
         <p class="card__desc">AI summaries of your marketing data</p>
+      </article>
+      <article class="card card--photo" data-href="wrylo.html" style="--grad: #FFFFFF">
+        <div class="card__tex tex--blue" aria-hidden="true"></div>
+        <img class="card__photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
+        <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Personal app </span>2025</span></div>
+        <p class="card__desc">A calmer way to track your reading</p>
       </article>
     </div>
     <div class="modes fade" style="--d:.7" role="group" aria-label="Carousel shape">
@@ -2338,8 +2341,8 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     const g = cv.getContext('2d');
     const countEl = document.getElementById('ld3Count');
     const GAP = innerWidth > 760 ? 13 : 11;
-    const SHADES = ['#2E3034', '#4A4D52', '#6B6E73', '#8E9196', '#B3B5B8', '#D97757', '#E3A27F', '#C4C0B8'];
-    const pickShade = () => { const r = Math.random(); return r < 0.07 ? SHADES[5 + Math.floor(Math.random() * 2)] : SHADES[Math.floor(Math.random() * 5)]; };
+    const SHADES = ['#3A3C40', '#55585C', '#73767A', '#93959A', '#B5B7BA', '#CFD0D2'];
+    const pickShade = () => SHADES[Math.floor(Math.random() * SHADES.length)];
     let W = 0, H = 0, dots = [];
     const size = () => {
       const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -2363,10 +2366,10 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         lastRx = e.clientX; lastRy = e.clientY; lastRt = now;
       }
     });
-    // lub-dub: two soft pulses in each 1.15s beat
-    const PERIOD = 1.15, SPEED = 520;
+    // one slow, soft breath every 2.8s, drifting gently outwards
+    const PERIOD = 2.8, SPEED = 300;
     const pulse = (x, w) => Math.exp(-(x * x) / (2 * w * w));
-    const beat = (t) => { const k = ((t % PERIOD) + PERIOD) % PERIOD; return pulse(k - 0.12, 0.05) + 0.65 * pulse(k - 0.34, 0.05); };
+    const beat = (t) => { const k = ((t % PERIOD) + PERIOD) % PERIOD; return pulse(k - 0.6, 0.38); };
     let leaving = 0, leaveT0 = 0;
     const tStart = performance.now();
     const draw = (now) => {
@@ -2375,7 +2378,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       g.clearRect(0, 0, W, H);
       const lt = leaving ? (now - leaveT0) / 1000 : 0;
       while (ripples.length && now - ripples[0].t0 > 1700) ripples.shift();
-      const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 340, k: Math.exp(-a * 2.1) }; });
+      const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 240, k: Math.exp(-a * 1.8) }; });
       for (const p of dots) {
         let v = beat(t - p.d / SPEED);
         // the farewell: one big wave that runs out to the edges, then the dots fade
@@ -2391,12 +2394,12 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
           const dx = p.x - q.x, dy = p.y - q.y, dist = Math.hypot(dx, dy);
           const off = dist - q.R;
           if (off > 60 || off < -60) continue;
-          const h = pulse(off / 20, 1) * q.k;
+          const h = 0.7 * pulse(off / 24, 1) * q.k;
           near += h; tx += (dx / (dist || 1)) * h * 5; ty += (dy / (dist || 1)) * h * 5;
         }
         near = Math.min(1.4, near);
-        const r = 0.7 + 0.9 * v + 1.1 * near;
-        g.globalAlpha = Math.min(1, p.w * (0.22 + 0.6 * v + 0.55 * near)) * fade;
+        const r = 0.5 + 0.3 * v + 0.45 * near;
+        g.globalAlpha = Math.min(1, p.w * (0.26 + 0.28 * v + 0.4 * near)) * fade;
         g.fillStyle = p.c;
         g.beginPath(); g.arc(p.x + tx, p.y + ty, r, 0, 6.2832); g.fill();
       }
