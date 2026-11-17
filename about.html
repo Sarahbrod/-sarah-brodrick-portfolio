@@ -730,6 +730,9 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
 .row--hero > .frame { border-radius: 36px !important; overflow: hidden !important; background: transparent !important; }
 @supports (corner-shape: squircle) { .row--hero > .frame { corner-shape: superellipse(2); } }
 .row--hero > .frame img { border-radius: inherit !important; }
+
+/* Smaller hero image on larger screens, starting on the text column's left edge */
+@media (min-width: 761px) { .row--hero > .frame { width: 100%; max-width: 540px; justify-self: start; } }
 </style>
 </head>
 <body>
