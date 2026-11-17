@@ -303,7 +303,7 @@
 .edge__b2 { backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); --solid: 55%; width: 82%; animation-duration: 11s !important; animation-direction: reverse !important; }
 .edge__b3 { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); --solid: 45%; width: 62%; animation-duration: 13s !important; }
 .edge__b4 { backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); --solid: 40%; width: 44%; animation-duration: 8s !important; animation-direction: reverse !important; }
-.edge__fade { background: linear-gradient(to right, var(--bg) 0%, rgba(244, 244, 240, 0.85) 30%, rgba(244, 244, 240, 0) 100%); width: 36%; --solid: 30%; }
+.edge__fade { background: linear-gradient(to right, var(--bg) 0%, rgba(247, 247, 246, 0.85) 30%, rgba(247, 247, 246, 0) 100%); width: 36%; --solid: 30%; }
 @keyframes edge-flow { to { transform: translateY(25%); } }
 @media (prefers-reduced-motion: reduce) { .edge > i { animation: none; } }
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
@@ -1053,7 +1053,7 @@ html { background: var(--bg); color-scheme: light; overscroll-behavior-y: none; 
    Coral is for action and emphasis only (CTAs, active states, eyebrows); baby blue for labels, tags and
    highlights; near-black doubles as the CTA background with white text. Pills are 100px, cards 20px. */
 :root {
-  --bg: #F4F4F0;          /* page canvas */
+  --bg: #F7F7F6;          /* page canvas */
   --surface: #FFFFFF;     /* cards and panels */
   --border: #DDE2E8;      /* dividers and card edges */
   --text: #2E3034;        /* headings and body copy */
@@ -2097,7 +2097,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 /* Phones: the layout icons sit on their own bar, so cards pass beneath them rather than over them */
 @media (max-width: 760px) {
   .modes { z-index: 4000; }
-  .modes::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: -14px; bottom: calc(-1 * var(--s-6) - 4px); background: linear-gradient(to bottom, rgba(244, 244, 240, 0) 0, var(--bg) 14px); pointer-events: none; }
+  .modes::before { content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--margin)); right: calc(-1 * var(--margin)); top: -14px; bottom: calc(-1 * var(--s-6) - 4px); background: linear-gradient(to bottom, rgba(247, 247, 246, 0) 0, var(--bg) 14px); pointer-events: none; }
 }
 </style>
 <script>document.body.classList.add("home")</script>
@@ -2656,12 +2656,14 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         const top0 = bandTopY + 24;
         const sy = (stageH / 2 - cardH * 0.1 - top0) / (cardH / 2 + R * (1 - Math.cos(n3)));
         s = Math.min(1, sx, sy);
-        off = top0 + cardH * s / 2;
+        // Sit the centre card low, just above the icons, and never above the band's top
+        s = Math.min(s, (bandBotY - bandTopY - 56) / cardH);
+        off = bandBotY - 60 - cardH * s / 2;
       } else {
         // Phones: the centre card sits wholly between the header and the icons
         if (bandTopY === null) measureBand();
-        s = Math.min(1, (bandBotY - bandTopY - 28) / cardH);
-        off = bandTopY + 12 + cardH * s / 2;
+        s = Math.min(1, (bandBotY - bandTopY - 40) / cardH);
+        off = bandBotY - 16 - cardH * s / 2;
       }
       const op = stageW > 760 ? clamp((3.1 - Math.abs(k)) / 0.5, 0, 1) : 1;
       // Cards share a 3D space, so depth (not z-index) decides overlap: nudge each one back a
