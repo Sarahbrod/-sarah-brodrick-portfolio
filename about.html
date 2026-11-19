@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#F2F2F0">
 <meta name="color-scheme" content="light">
 <title>About — Sarah Brodrick</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=2">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
+  <link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=3">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
   <meta name="description" content="Sarah Brodrick is a London based Product Designer creating thoughtful digital experiences.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -732,7 +733,7 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
 .row--hero > .frame img { border-radius: inherit !important; }
 
 /* Smaller hero image on larger screens, starting on the text column's left edge */
-@media (min-width: 761px) { .row--hero > .frame { width: 100%; max-width: 540px; justify-self: start; } }
+@media (min-width: 761px) { .row--hero > .frame { grid-column: 1 / -1 !important; grid-row: 2; width: 100%; max-width: none; justify-self: stretch; aspect-ratio: 3 / 1 !important; height: auto !important; margin-top: 8px !important; } }
 </style>
 </head>
 <body>

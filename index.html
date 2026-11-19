@@ -308,9 +308,10 @@
 @media (prefers-reduced-motion: reduce) { .edge > i { animation: none; } }
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=2">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
+  <link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=3">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
   <meta name="description" content="Sarah Brodrick, Senior Product Designer helping SaaS teams grow through research-led, outcome-driven design.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2086,7 +2087,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 .card.card--mood[data-href="supermetrics-purchase.html"][data-href][data-href][data-href][data-href] .tiers::before { background: radial-gradient(28% 30% at 22% 54%, #8FB0C2 0%, transparent 70%), radial-gradient(28% 30% at 80% 56%, #F2603F 0%, transparent 70%) !important; opacity: 0.6 !important; filter: blur(18px) !important; inset: 6% -2% 0 !important; }
 
 /* Patterns behind the Supermetrics pricing and Sunday grounds */
-.card.card--mood[data-href="supermetrics-purchase.html"][data-href][data-href][data-href] { background: radial-gradient(circle, rgba(40, 60, 90, 0.07) 1px, transparent 1.4px) 0 0 / 16px 16px, radial-gradient(120% 75% at 18% 0%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 60%), #C8D1DB !important; }
+.card.card--mood[data-href="supermetrics-purchase.html"][data-href][data-href][data-href] { background: radial-gradient(120% 75% at 18% 0%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 60%), #C8D1DB !important; }
 .card.card--mood[data-href="sunday.html"][data-href][data-href][data-href] .card__tex { display: block !important; position: absolute; inset: 0; z-index: 0; pointer-events: none; animation: none !important; transform: none !important; opacity: 1 !important; filter: none !important; background: linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 22px 22px, linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 22px 22px !important; -webkit-mask-image: radial-gradient(85% 70% at 50% 45%, #000 35%, transparent 100%); mask-image: radial-gradient(85% 70% at 50% 45%, #000 35%, transparent 100%); }
 
 /* Taps land on the cards, never on the track behind them (3D depth could put the track in front) */
@@ -2156,6 +2157,9 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 /* Header message: heavier, and its first line lines up with the top of the name */
 .nav__tag-1 { font-weight: 400 !important; -webkit-text-stroke: 0.35px currentColor; letter-spacing: -0.01em; color: #16171A; }
 @media (min-width: 761px) { .nav__tag-1, .nav__tag-1.fade, .nav__tag-1.fade.is-in { position: relative; top: 4px; } }
+
+/* Insights card: the orchid fills the card, with only a light wash at the very top and bottom */
+.card.card--mood[data-href="supermetrics-insights.html"][data-href][data-href][data-href][data-href] { background: linear-gradient(180deg, rgba(217, 230, 242, 0.32) 0%, rgba(217, 230, 242, 0) 18%, rgba(217, 230, 242, 0) 82%, rgba(217, 230, 242, 0.32) 100%), url("assets/img/si-orchid-blur.jpg") 52% 46% / 175% auto no-repeat, #2C4F80 !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2971,7 +2975,8 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   window.addEventListener('resize', () => { measure(); measureBand(); sizeCursor(); });
 
   /* Frame loop */
-  const MODE_MS = reduceMotion ? 0 : 750;
+  const MODE_MS = reduceMotion ? 0 : 980;
+  const MODE_STAGGER = 34; // ms per slot from the centre, so the change flows outwards
   let mixT0 = 0;
   let press = 0;
 
@@ -2996,10 +3001,13 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     velocity += ((pos - prev) - velocity) * 0.15;
     press += ((dragging ? 1 : 0) - press) * (reduceMotion ? 1 : 0.2);
 
-    mix = MODE_MS ? Math.min(1, (performance.now() - mixT0) / MODE_MS) : 1;
+    mix = MODE_MS ? Math.min(1, (performance.now() - mixT0) / (MODE_MS + MODE_STAGGER * 5)) : 1;
     if (mix >= 1) { mix = 1; fromPoses = null; }
-    // Ease in and out between modes (cubic), on a fixed clock so every screen moves at the same pace
-    const w = mix < 0.5 ? 4 * mix * mix * mix : 1 - Math.pow(-2 * mix + 2, 3) / 2;
+    // Mode change: each card leaves at once and settles slowly (a soft quintic ease-out),
+    // centre card first, with a faint dip in scale mid-flight so the move reads as one breath
+    const easeMode = (t) => { t = clamp(t, 0, 1); return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2; };
+    const easeSoft = (t) => { t = clamp(t, 0, 1); return 1 - Math.pow(1 - t, 3.2) * (1 - 0.0 * t); };
+    const angleTo = (a, b) => { let d = ((b - a) % 360 + 540) % 360 - 180; return d; };
 
     const v = clamp(velocity, -60, 60);
     stretchX = 1;
@@ -3028,7 +3036,18 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       const p = cur[i];
       if (fromPoses) {
         const f = fromPoses[i];
-        for (let j = 0; j < 8; j++) p[j] = f[j] + (goal[j] - f[j]) * w;
+        const lt = MODE_MS ? (performance.now() - mixT0 - Math.min(Math.abs(slot[i]), 5) * MODE_STAGGER) / MODE_MS : 1;
+        const w = 0.5 * easeMode(lt) + 0.5 * easeSoft(lt);
+        for (let j = 0; j < 8; j++) {
+          // rotations take the short way round, so nothing spins further than it needs to
+          const dlt = (j >= 3 && j <= 5) ? angleTo(f[j], goal[j]) : goal[j] - f[j];
+          p[j] = f[j] + dlt * w;
+        }
+        const tt = clamp(lt, 0, 1);
+        p[6] *= 1 - 0.028 * Math.sin(Math.PI * tt);
+        // cards that must cross a long way soften as they travel, so long sweeps stay quiet
+        const far = clamp((Math.hypot(goal[0] - f[0], goal[1] - f[1]) - 320) / 640, 0, 1);
+        p[7] *= 1 - 0.55 * far * Math.sin(Math.PI * tt);
         p[8] = w > 0.5 ? goal[8] : f[8];
       } else {
         for (let j = 0; j < 9; j++) p[j] = goal[j];
