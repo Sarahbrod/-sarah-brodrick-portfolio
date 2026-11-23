@@ -2419,7 +2419,9 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         const r = 0.5 + 0.3 * v + 0.45 * near;
         g.globalAlpha = Math.min(1, p.w * (0.26 + 0.28 * v + 0.4 * near)) * fade;
         g.fillStyle = p.c;
-        g.beginPath(); g.arc(p.x + tx, p.y + ty, r, 0, 6.2832); g.fill();
+        // small crisp squares, snapped to the pixel grid
+        const q = Math.round((1.1 + r * 1.8) * 2) / 2;
+        g.fillRect(Math.round(p.x + tx - q / 2), Math.round(p.y + ty - q / 2), q, q);
       }
       g.globalAlpha = 1;
       requestAnimationFrame(draw);
