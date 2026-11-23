@@ -3527,8 +3527,10 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
   const measureBand = () => {
     const st = stageEl.getBoundingClientRect();
     const hdr = document.querySelector('header.nav');
-    const hb = hdr ? Math.max(...[...hdr.children].map((e) => e.getBoundingClientRect().bottom), hdr.getBoundingClientRect().top) : st.top; // visible rows only, not the links' hidden roll copies
-    const mt = modesEl ? modesEl.getBoundingClientRect().top : st.bottom - 120;
+    // resting positions from layout (offsets ignore the entrance transforms), so nothing jumps once they settle
+    const restTop = (el) => { let y = 0, e = el; while (e) { y += e.offsetTop; e = e.offsetParent; } return y - (getComputedStyle(el).position === 'fixed' || el.closest('[style*="fixed"]') ? 0 : window.scrollY); };
+    const hb = hdr ? Math.max(...[...hdr.children].map((e) => restTop(e) + e.offsetHeight), restTop(hdr)) : st.top; // visible rows only, not the links' hidden roll copies
+    const mt = modesEl ? restTop(modesEl) : st.bottom - 120;
     const c = st.top + st.height / 2;
     bandTopY = hb - c; bandBotY = mt - c;
   };
