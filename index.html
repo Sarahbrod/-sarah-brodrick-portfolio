@@ -2591,6 +2591,23 @@ body .track .card.sxc[data-href="go1.html"] { background: #141311 !important; }
 body .track .card.sxc[data-href="go1.html"] .card__head .card__title { color: rgba(242, 241, 236, 0.92) !important; }
 body .track .card.sxc[data-href="go1.html"] .card__head .card__year { color: rgba(242, 241, 236, 0.5) !important; }
 body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba(242, 241, 236, 0.25) !important; }
+
+/* Supermetrics pricing, simplified: one light package card on the soft photo, a Paid chip on its corner */
+.sx--sp4 { justify-content: center; padding: 0; }
+.sp4-card { position: relative; width: 62%; display: grid; gap: 0.7em; padding: 1.2em 1.1em 1.1em; border-radius: 1.3em; background: rgba(255, 255, 255, 0.62); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 1.6em 2.8em -1.6em rgba(40, 42, 38, 0.45); color: #1E1F1D; margin-top: 6%; }
+.sp4-k { margin: 0; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(30, 31, 29, 0.55); }
+.sp4-price { display: flex; align-items: flex-start; margin: 0; font-size: 3em; line-height: 0.9; letter-spacing: -0.045em; }
+.sp4-price span { font-size: 0.4em; margin: 0.12em 0.06em 0 0; opacity: 0.6; }
+.sp4-price small { align-self: flex-end; margin: 0 0 0.12em 0.2em; font-size: 0.26em; letter-spacing: 0; color: rgba(30, 31, 29, 0.5); }
+.sp4-src { display: flex; align-items: center; gap: 0.6em; }
+.sp4-stack { display: flex; }
+.sp4-stack i { display: grid; place-items: center; width: 1.5em; height: 1.5em; margin-right: -0.32em; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 0.14em rgba(255, 255, 255, 0.9), 0 0.2em 0.4em rgba(0, 0, 0, 0.08); }
+.sp4-stack i img { width: 60%; height: 60%; object-fit: contain; }
+.sp4-src small { margin-left: 0.3em; font-size: 0.56em; color: rgba(30, 31, 29, 0.6); }
+.sp4-btn { margin-top: 0.2em; padding: 0.7em 0; border-radius: 99px; background: #1E1F1D; color: #F6F5F1; text-align: center; font-size: 0.62em; }
+.sp4-paid { position: absolute; right: -1em; top: -0.9em; display: inline-flex; align-items: center; gap: 0.35em; padding: 0.4em 0.85em 0.4em 0.4em; border-radius: 99px; background: var(--y); color: #1B1A12; font-size: 0.6em; box-shadow: 0 0.8em 1.4em -0.7em rgba(40, 38, 20, 0.6); }
+.sp4-paid em { display: grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: #1B1A12; color: var(--y); }
+.sp4-paid svg { width: 0.85em; height: 0.85em; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2623,20 +2640,13 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
     <div class="edge edge--l" aria-hidden="true"><i class="edge__b1"></i><i class="edge__b2"></i><i class="edge__b3"></i><i class="edge__b4"></i><i class="edge__fade"></i></div><div class="edge edge--r" aria-hidden="true"><i class="edge__b1"></i><i class="edge__b2"></i><i class="edge__b3"></i><i class="edge__b4"></i><i class="edge__fade"></i></div>
     <div class="track" id="track">
       <article class="card sxc" data-href="supermetrics-purchase.html">
-        <div class="sx sx--sp2" aria-hidden="true">
-  <div class="sp2-half sp2-half--a">
-    <div class="sp3-pkg">
-      <div class="sp3-seg"><span>Starter</span><span class="is-on">Growth</span><span>Pro</span></div>
-      <div class="sp3-price"><b><span>€</span>159</b><small>per month<br>billed annually</small><em>−20%</em></div>
-      <div class="sp3-src"><span class="sp3-stack"><i><img src="assets/img/smi-fb.png" alt="" draggable="false"></i><i><img src="assets/img/smi-ga.png" alt="" draggable="false"></i><i><img src="assets/img/smi-gads.png" alt="" draggable="false"></i><i><img src="assets/img/smi-li.png" alt="" draggable="false"></i><i class="is-new"><img src="assets/img/smi-tt.png" alt="" draggable="false"></i></span><small>6 of 8 sources</small></div>
-    </div>
-  </div>
-  <div class="sp2-half sp2-half--b">
-    <div class="sp2-orbit"><i class="sp2-orbit__ring"></i>
-      <i class="sp3-cf" style="--x:-4.6em;--y:-3.2em;--c:#E9DC7A;--r:20deg"></i><i class="sp3-cf" style="--x:4.9em;--y:-2.4em;--c:#FFFFFF;--r:-30deg"></i><i class="sp3-cf" style="--x:-5.4em;--y:1.6em;--c:#FFFFFF;--r:60deg"></i><i class="sp3-cf" style="--x:5.3em;--y:2.8em;--c:#E9DC7A;--r:-10deg"></i><i class="sp3-cf sp3-cf--dot" style="--x:3.2em;--y:-4.6em;--c:#E9DC7A"></i><i class="sp3-cf sp3-cf--dot" style="--x:-2.6em;--y:4.5em;--c:#FFFFFF"></i>
-      <div class="sp2-disc"><span class="sp3-paid"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Paid</span><b class="sp3-total">€1,908</b><small>Growth · annual</small></div>
-    </div>
-    <span class="sp3-stat"><b>+22%</b> ARR</span>
+        <div class="sx sx--sp4" aria-hidden="true">
+  <div class="sp4-card">
+    <p class="sp4-k">Growth plan</p>
+    <p class="sp4-price"><span>€</span>159<small>/mo</small></p>
+    <div class="sp4-src"><span class="sp4-stack"><i><img src="assets/img/smi-fb.png" alt="" draggable="false"></i><i><img src="assets/img/smi-ga.png" alt="" draggable="false"></i><i><img src="assets/img/smi-gads.png" alt="" draggable="false"></i><i><img src="assets/img/smi-tt.png" alt="" draggable="false"></i></span><small>6 data sources</small></div>
+    <span class="sp4-btn">Package active</span>
+    <span class="sp4-paid"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Paid</span>
   </div>
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
