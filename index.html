@@ -2608,6 +2608,23 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
 .sp4-paid { position: absolute; right: -1em; top: -0.9em; display: inline-flex; align-items: center; gap: 0.35em; padding: 0.4em 0.85em 0.4em 0.4em; border-radius: 99px; background: var(--y); color: #1B1A12; font-size: 0.6em; box-shadow: 0 0.8em 1.4em -0.7em rgba(40, 38, 20, 0.6); }
 .sp4-paid em { display: grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: #1B1A12; color: var(--y); }
 .sp4-paid svg { width: 0.85em; height: 0.85em; }
+
+/* Go1, split: one element on each photo */
+body .track .card.sxc[data-href="go1.html"] .sx--g1 { position: absolute; inset: 0; z-index: 2; display: block; padding: 0; }
+.g2-a, .g2-b { position: absolute; color: #1E1F1D; background: rgba(255, 255, 255, 0.74); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 1.4em 2.6em -1.4em rgba(10, 10, 8, 0.6); }
+.g2-a { left: 9%; top: 27%; width: 64%; display: flex; align-items: center; gap: 0.7em; padding: 0.7em 0.8em 0.7em 0.7em; border-radius: 1em; }
+.g2-thumb { flex: none; width: 2.4em; height: 2.4em; border-radius: 0.6em; background: linear-gradient(150deg, #F4F2DC, #C9D84A); }
+.g2-txt { display: grid; gap: 0.2em; min-width: 0; }
+.g2-txt b { font-size: 0.74em; font-weight: 500; white-space: nowrap; }
+.g2-txt small { font-size: 0.56em; color: rgba(30, 31, 29, 0.55); }
+.g2-ok { flex: none; margin-left: auto; display: grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--y); color: #1B1A12; }
+.g2-ok svg { width: 0.9em; height: 0.9em; }
+.g2-b { right: 9%; top: 66%; width: 52%; display: grid; gap: 0.6em; padding: 0.95em 1em 1em; border-radius: 1em; }
+.g2-k { margin: 0; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.48em; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(30, 31, 29, 0.55); }
+.g2-bar { height: 0.32em; border-radius: 99px; background: rgba(30, 31, 29, 0.12); overflow: hidden; }
+.g2-bar i { display: block; width: 100%; height: 100%; border-radius: inherit; background: #1E1F1D; }
+.g2-n { margin: 0; font-size: 0.62em; color: rgba(30, 31, 29, 0.6); }
+.g2-n b { font-size: 1.9em; font-weight: 500; letter-spacing: -0.03em; color: #1E1F1D; margin-right: 0.15em; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2654,13 +2671,15 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
       <article class="card sxc" data-href="go1.html">
         <div class="g1-bg" aria-hidden="true"><i></i><i></i></div>
         <div class="sx sx--g1" aria-hidden="true">
-  <div class="g1-win">
-    <div class="g1-head"><b>Upload content</b><span class="g1-pill"><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>24 published</span></div>
-    <div class="g1-bar"><i></i></div>
-    <div class="g1-row g1-row--focus"><i class="g1-thumb g1-thumb--img"></i><span class="g1-txt"><b>Leadership essentials</b><small>12 lessons · Published</small></span><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
-    <div class="g1-row"><i class="g1-thumb"></i><span class="g1-lines"><i style="width:62%"></i><i style="width:38%"></i></span><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
-    <div class="g1-row"><i class="g1-thumb"></i><span class="g1-lines"><i style="width:70%"></i><i style="width:30%"></i></span><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
-    <div class="g1-row"><i class="g1-thumb"></i><span class="g1-lines"><i style="width:54%"></i><i style="width:42%"></i></span><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+  <div class="g2-a">
+    <i class="g2-thumb"></i>
+    <span class="g2-txt"><b>Leadership essentials</b><small>12 lessons</small></span>
+    <em class="g2-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>
+  </div>
+  <div class="g2-b">
+    <p class="g2-k">Upload content</p>
+    <div class="g2-bar"><i></i></div>
+    <p class="g2-n"><b>24</b> courses published</p>
   </div>
 </div>
         <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
