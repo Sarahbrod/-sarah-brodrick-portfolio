@@ -2429,6 +2429,26 @@ body .track .card.sxc[data-href="sunday.html"] .card__head .card__sep { color: r
 .su3-orb--qr span { display: grid; grid-template-columns: repeat(5, 0.34em); gap: 0.1em; }
 .su3-orb--qr i { width: 0.34em; height: 0.34em; border-radius: 0.06em; background: rgba(255, 255, 255, 0.12); }
 .su3-orb--qr i.on { background: #F1F1EC; }
+
+/* Sunday, stageshow pass: one lead insight, a quieter second, the third fading off the foot */
+.sx--su3 { justify-content: flex-start !important; padding: 27% 7% 0 !important; gap: 0.5em !important;
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 99%); mask-image: linear-gradient(180deg, #000 70%, transparent 99%); }
+.su3-card { background: rgba(112, 116, 112, 0.5); }
+.su3-card:first-child { padding: 1.1em 0.8em 1.05em 1.1em; background: rgba(96, 102, 96, 0.78); box-shadow: 0 1.2em 2.2em -1.4em rgba(40, 48, 38, 0.55); }
+.su3-card:first-child .su3-txt p { font-size: 0.86em; }
+.su3-card:first-child .su3-orb { width: 4.4em; height: 4.4em; }
+.su3-card:nth-child(2) { width: 94%; opacity: 0.9; }
+.su3-card:nth-child(3) { width: 88%; opacity: 0.75; }
+.su3-soon { position: absolute; z-index: 4; left: 50%; top: 13%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 0.45em; padding: 0.38em 0.8em 0.38em 0.6em; border-radius: 99px;
+  background: rgba(255, 255, 255, 0.6); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: rgba(30, 31, 30, 0.7); font-family: "Space Mono", ui-monospace, monospace; font-size: 0.42em; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.su3-soon i { width: 0.55em; height: 0.55em; border-radius: 50%; background: #5E6E58; }
+
+.su3-card--fill { width: 82% !important; opacity: 0.55; }
+.su3-bar { display: block; height: 0.42em; margin: 0 0 0.45em; border-radius: 99px; background: rgba(255, 255, 255, 0.35); }
+.su3-card--fill .su3-foot { margin-top: 0.7em; }
+.su3-ghost { width: 3.2em; height: 1.15em; border-radius: 0.35em; background: rgba(255, 255, 255, 0.3); }
+.su3-orb--blank { background: rgba(255, 255, 255, 0.28); }
+@media (min-width: 761px) { .sx--su3 { gap: 0.6em !important; padding-top: 30% !important; } }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2512,11 +2532,13 @@ body .track .card.sxc[data-href="sunday.html"] .card__head .card__sep { color: r
 </div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
-      <article class="card sxc" data-href="sunday.html" data-soon="Coming soon">
-        <div class="sx sx--su3" aria-hidden="true">
+      <article class="card sxc" data-href="sunday.html">
+        <span class="su3-soon" aria-hidden="true"><i></i>Case study coming soon</span>
+  <div class="sx sx--su3" aria-hidden="true">
   <div class="su3-card"><div class="su3-txt"><p>Guests up 18% this week. Friday dinner was your busiest…</p><div class="su3-foot"><span class="sx-tag">Guests</span><span class="sx-tag">Revenue</span><small>This week</small></div></div><span class="su3-orb su3-orb--bars"><i style="--h:0.42"></i><i style="--h:0.55"></i><i style="--h:0.48"></i><i style="--h:0.7"></i><i style="--h:0.62"></i><i style="--h:1"></i><i style="--h:0.78"></i></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Tips reached €2,140, shared across 14 staff.</p><div class="su3-foot"><span class="sx-tag">Staff</span><span class="sx-tag">Tips</span><small>Today</small></div></div><span class="su3-orb su3-orb--ring"><b>€2.1k</b></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Pay at the table saved 38 hours of service…</p><div class="su3-foot"><span class="sx-tag">Insights</span><small>May</small></div></div><span class="su3-orb su3-orb--qr"><span><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i></span></span></div>
+  <div class="su3-card su3-card--fill"><div class="su3-txt"><i class="su3-bar" style="width:78%"></i><i class="su3-bar" style="width:52%"></i><div class="su3-foot"><span class="su3-ghost"></span><span class="su3-ghost"></span></div></div><span class="su3-orb su3-orb--blank"></span></div>
 </div>
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2026</span></div>
       </article>
