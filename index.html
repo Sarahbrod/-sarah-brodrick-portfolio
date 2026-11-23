@@ -3109,7 +3109,7 @@ body .track .card.sxc .card__head .card__title { color: var(--ink) !important; }
 body .track .card.sxc .card__head .card__year { color: rgba(246, 245, 241, 0.62) !important; }
 body .track .card.sxc .card__head .card__sep { color: rgba(246, 245, 241, 0.35) !important; }
 /* Photo grade: pull every ground into the same warm mid-dark range */
-body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: linear-gradient(180deg, rgba(58, 50, 43, 0.12), rgba(46, 38, 32, 0.28)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #3A322B !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: linear-gradient(180deg, rgba(40, 34, 28, 0.34), rgba(58, 50, 43, 0.06) 24%, rgba(46, 38, 32, 0.28)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #3A322B !important; }
 body .track .card.sxc[data-href="sunday.html"] { background: linear-gradient(180deg, rgba(52, 42, 34, 0.5), rgba(40, 32, 26, 0.62)), url("assets/img/sunday-card-bg.jpg") 50% 30% / cover no-repeat, #3A322B !important; }
 body .track .card.sxc[data-href="fupay.html"] { background: linear-gradient(180deg, rgba(62, 50, 40, 0.45), rgba(44, 36, 30, 0.7)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #3A322B !important; filter: none; }
 body .track .card.sxc[data-href="supermetrics-insights.html"] { background: linear-gradient(180deg, rgba(40, 32, 26, 0.45), rgba(40, 32, 26, 0.3) 40%, rgba(40, 32, 26, 0.5)), url("assets/img/sm-insights-bg3-blur.jpg") 50% 50% / cover no-repeat, #3A322B !important; }
@@ -3182,6 +3182,19 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list__t, body 
 .fy-pay.is-paid, .fy-pay.is-paid span, .fy-pay.is-paid b, .sp4-btn, .sp4-rec { text-shadow: none !important; }
 .sp4-stack i, .sp4-src img { text-shadow: none; }
 
+
+/* Crisp UI: no text shadows, no hairline rims, no leftover transforms once a card has arrived */
+.sp4-card, .su4-card, .g3-up, .g3-course, .fy-pay, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass, .sp4-card *, .su4-card *, .g3-up *, .g3-course *, .fy-pay *, body .track .card.sxc .sb-list *, body .track .card.sxc .sb-glass * { text-shadow: none !important; }
+.sp4-card, .su4-card, .g3-up, .g3-course, .fy-pay:not(.is-paid), body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.5) !important; }
+.sp4-k, .sp4-price small, .sp4-src small, .g3-txt small, .fy-pay span, .fy-pay b, .fy-k { color: rgba(255, 255, 255, 0.92) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-k, body .track .card.sxc[data-href="sunday.html"] .su4-axis, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend small { color: rgba(255, 255, 255, 0.9) !important; }
+body .track .card.sxc.is-settled > .sx, body .track .card.sxc.is-settled > .wr2-top { transform: none !important; }
+.sp4-card { -webkit-backdrop-filter: blur(24px) saturate(140%) brightness(0.82) !important; backdrop-filter: blur(24px) saturate(140%) brightness(0.82) !important; }
+
+/* Flat glass: an even fill with no bright corner or edge line */
+.sp4-card, .su4-card, .g3-up, .g3-course, .fy-pay:not(.is-paid), body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; }
+
+body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; text-shadow: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -4110,7 +4123,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list__t, body 
         const q = clamp((now - start - delay) / 950, 0, 1);
         const qi = clamp((now - start - delay - 60) / 800, 0, 1);
         const ei = 1 - Math.pow(1 - qi, 4);
-        cards[i].style.setProperty('--in', ei.toFixed(3));
+        cards[i].style.setProperty('--in', ei.toFixed(3)); cards[i].classList.toggle('is-settled', ei >= 1);
         // fade through a veil of the page colour, not card opacity or blur: those would switch off
         // the glass panels' backdrop blur mid-arrival and make them pop when it ends
         let veil = 0;
