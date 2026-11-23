@@ -720,7 +720,7 @@ a:hover .roll__ch > span, a:focus-visible .roll__ch > span { transform: translat
   align-items: baseline;
 }
 
-/* ---------- Cursor (a slim ink line, drawn by the page script) ---------- */
+/* ---------- Cursor (a dot field echo, drawn by the page script) ---------- */
 .cursor {
   position: fixed;
   inset: 0;
@@ -2899,23 +2899,25 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     return [kb * cardW * 1.15, -30, 0, 0, 0, kb * 8, 1, hide * clamp(1 + kb * 1.2, 0, 1), 520];
   };
 
-  /* Cursor: a slim editorial line. A fine ink stroke trails the pointer with a gentle lag,
-     tapering to a hairline and fading along its length; the pointer is a small open ring. */
-  const TRAIL = 34;       // points kept along the line
-  const TRAIL_SOON = 64;  // longer over "Coming soon" cards, so the label sits mid-line
-  let len = TRAIL;
+  /* Cursor: a dot field echo. The loader's grid of dots lights up softly around the pointer,
+     breathing gently, and every movement sends ripples out through the dots. */
+  const GAP = 13;               // same grid as the loading screen
+  const SPOT = 130;             // radius of the lit patch around the pointer
   let soonText = '';
   const tag = document.createElement('div');
   tag.className = 'cursor-tag';
   tag.setAttribute('aria-hidden', 'true');
   document.body.appendChild(tag);
   let tagX = -200, tagY = -200, tagS = 0.4, tagW = 0, tagH = 0;
-  let trail = [];
-  let food = null;          // the pointer
-  let head = null;          // the line's leading point, easing towards the pointer
+  let food = null;              // the pointer
+  let glow = null;              // the lit patch, easing after the pointer
   let showing = 0;
   let wantShow = 0;
-  let lastTime = performance.now();
+  const ripples = [];
+  let lastRx = -9999, lastRy = -9999, lastRt = 0;
+  const tStart = performance.now();
+  // a stable, slightly uneven shade and weight per grid point, like the loader's dots
+  const hash = (i, j) => { const h = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return h - Math.floor(h); };
 
   const sizeCursor = () => {
     const dpr = window.devicePixelRatio || 1;
@@ -2928,79 +2930,91 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   window.addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse') return;
     food = { x: e.clientX, y: e.clientY };
+    if (!glow) glow = { ...food };
     wantShow = e.target.closest && e.target.closest('#stage') && !e.target.closest('.modes') ? 1 : 0;
+    const now = performance.now();
+    if (wantShow && !reduceMotion && (Math.hypot(food.x - lastRx, food.y - lastRy) > 40 || now - lastRt > 180)) {
+      ripples.push({ x: food.x, y: food.y, t0: now });
+      if (ripples.length > 8) ripples.shift();
+      lastRx = food.x; lastRy = food.y; lastRt = now;
+    }
     const soonCard = wantShow && e.target.closest('.card[data-soon]');
     const text = soonCard ? soonCard.dataset.soon : '';
     if (text !== soonText) {
       soonText = text;
-      len = text ? TRAIL_SOON : TRAIL;
       if (text) {
         tag.textContent = text;
         tagW = tag.offsetWidth; tagH = tag.offsetHeight;
-        if (tagS < 0.5) { tagX = food.x; tagY = food.y; }
+        if (tagS < 0.5) { tagX = food.x; tagY = food.y + 34; }
       }
       tag.classList.toggle('is-on', !!text);
     }
-    // Start afresh at the pointer once the line has fully faded out
-    if (wantShow && showing < 0.02) { head = { ...food }; trail = [{ ...food }]; }
+    if (wantShow && showing < 0.02) glow = { ...food };
   });
-  document.addEventListener('pointerleave', () => { wantShow = 0; soonText = ''; len = TRAIL; tag.classList.remove('is-on'); });
+  document.addEventListener('pointerleave', () => { wantShow = 0; soonText = ''; tag.classList.remove('is-on'); });
 
+  const pulse = (x, w) => Math.exp(-(x * x) / (2 * w * w));
   const drawCursor = (now) => {
-    const dt = Math.min(48, now - lastTime) / 16.7;
-    lastTime = now;
-    if (food) {
-      if (!head) head = { ...food };
-      const k = reduceMotion ? 1 : 1 - Math.pow(1 - 0.32, dt);
-      head.x += (food.x - head.x) * k;
-      head.y += (food.y - head.y) * k;
-      const last = trail[0];
-      // add a point when the head has moved; let the tail catch up when it rests
-      if (!last || Math.hypot(head.x - last.x, head.y - last.y) > 1.2) trail.unshift({ x: head.x, y: head.y });
-      else if (trail.length > 1) trail.pop();
-      if (trail.length > len) trail.length = len;
-    }
-
-    showing += (wantShow - showing) * (reduceMotion ? 1 : 0.22);
+    showing += (wantShow - showing) * (reduceMotion ? 1 : 0.18);
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    // "Coming soon" follows the middle of the line; the line breaks around it
-    let gapL = 0, gapR = 0, gapT = 0, gapB = 0;
     const tagTarget = soonText ? 1 : 0.4;
     tagS += (tagTarget - tagS) * (reduceMotion ? 1 : 0.25);
-    if (trail.length) {
-      const mid = trail[Math.min(trail.length - 1, Math.floor(trail.length / 2))];
+    if (food) {
       const k = reduceMotion ? 1 : 0.3;
-      tagX += (mid.x - tagX) * k;
-      tagY += (mid.y - tagY) * k;
+      tagX += (food.x - tagX) * k;
+      tagY += (food.y + 34 - tagY) * k;
     }
     tag.style.transform = `translate3d(${tagX.toFixed(1)}px, ${tagY.toFixed(1)}px, 0) scale(${tagS.toFixed(3)})`;
-    if (soonText) {
-      gapL = tagX - tagW / 2 - 8; gapR = tagX + tagW / 2 + 8;
-      gapT = tagY - tagH / 2 - 8; gapB = tagY + tagH / 2 + 8;
-    }
     if (showing < 0.01 || !food) return;
-    ctx.strokeStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
-    ctx.fillStyle = '#FFFFFF';
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    // the line: tapering from 1.6px to a hairline, fading towards the tail
-    const n = trail.length;
-    for (let i = 0; i < n - 1; i++) {
-      const p0 = trail[i], p1 = trail[i + 1];
-      if (soonText) {
-        const mx = (p0.x + p1.x) / 2, my = (p0.y + p1.y) / 2;
-        if (mx > gapL && mx < gapR && my > gapT && my < gapB) continue;
+    glow.x += (food.x - glow.x) * (reduceMotion ? 1 : 0.22);
+    glow.y += (food.y - glow.y) * (reduceMotion ? 1 : 0.22);
+
+    while (ripples.length && now - ripples[0].t0 > 1150) ripples.shift();
+    const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 220, k: Math.exp(-a * 2.6) }; });
+    // area to draw: the lit patch, plus any ripple still spreading
+    let reach = SPOT + 20;
+    for (const q of live) reach = Math.max(reach, Math.hypot(q.x - glow.x, q.y - glow.y) + q.R + 30);
+    reach = Math.min(reach, 380);
+    const W = window.innerWidth, H = window.innerHeight;
+    const ox = (W % GAP) / 2 + GAP / 2, oy = (H % GAP) / 2 + GAP / 2;
+    const i0 = Math.max(0, Math.floor((glow.x - reach - ox) / GAP)), i1 = Math.ceil((glow.x + reach - ox) / GAP);
+    const j0 = Math.max(0, Math.floor((glow.y - reach - oy) / GAP)), j1 = Math.ceil((glow.y + reach - oy) / GAP);
+    const t = (now - tStart) / 1000;
+    const breath = 1 + 0.1 * Math.sin(t * 2.2);      // the patch breathes, slowly
+    const spot = SPOT * breath;
+    let gapL = 0, gapR = 0, gapT = 0, gapB = 0;
+    if (soonText) { gapL = tagX - tagW / 2 - 8; gapR = tagX + tagW / 2 + 8; gapT = tagY - tagH / 2 - 8; gapB = tagY + tagH / 2 + 8; }
+    ctx.fillStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
+    for (let j = j0; j <= j1; j++) {
+      const y = oy + j * GAP;
+      for (let i = i0; i <= i1; i++) {
+        const x = ox + i * GAP;
+        if (soonText && x > gapL && x < gapR && y > gapT && y < gapB) continue;
+        const d = Math.hypot(x - glow.x, y - glow.y);
+        const lit = d < spot ? Math.pow(1 - d / spot, 1.6) : 0;
+        let near = 0, tx = 0, ty = 0;
+        for (const q of live) {
+          const dx = x - q.x, dy = y - q.y, dist = Math.hypot(dx, dy);
+          const off = dist - q.R;
+          if (off > 30 || off < -30) continue;
+          const h = 0.8 * pulse(off / 12, 1) * q.k;
+          near += h; tx += (dx / (dist || 1)) * h * 4; ty += (dy / (dist || 1)) * h * 4;
+        }
+        near = Math.min(1.2, near);
+        const v = lit * 0.75 + near * 0.6;
+        if (v < 0.07) continue;
+        const w = 0.55 + 0.45 * hash(i, j);
+        // dots near the pointer lean gently away from it
+        const push = d < spot ? (1 - d / spot) * 3 : 0;
+        const px = x + tx + (d ? (x - glow.x) / d : 0) * push;
+        const py = y + ty + (d ? (y - glow.y) / d : 0) * push;
+        ctx.globalAlpha = Math.min(1, v * w) * showing;
+        ctx.beginPath(); ctx.arc(px, py, 0.6 + 0.9 * Math.min(1, v), 0, 6.2832); ctx.fill();
       }
-      const t = i / Math.max(1, len - 1);
-      ctx.globalAlpha = showing * (1 - t) * 0.95;
-      ctx.lineWidth = 1.6 - 1.25 * t;
-      ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
     }
-    // the pointer: a small open ring with a fine centre point
+    // a fine point marks the pointer
     ctx.globalAlpha = showing;
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.arc(food.x, food.y, 6, 0, Math.PI * 2); ctx.stroke();
-    ctx.beginPath(); ctx.arc(food.x, food.y, 1.3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(food.x, food.y, 2, 0, 6.2832); ctx.fill();
     ctx.globalAlpha = 1;
   };
 
