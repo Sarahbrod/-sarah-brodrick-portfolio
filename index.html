@@ -2179,6 +2179,112 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 
 /* Insights card: the orchid fills the card, with only a light wash at the very top and bottom */
 .card.card--mood[data-href="supermetrics-insights.html"][data-href][data-href][data-href][data-href] { background: linear-gradient(180deg, rgba(217, 230, 242, 0.32) 0%, rgba(217, 230, 242, 0) 18%, rgba(217, 230, 242, 0) 82%, rgba(217, 230, 242, 0.32) 100%), url("assets/img/si-orchid-blur.jpg") 52% 46% / 175% auto no-repeat, #2C4F80 !important; }
+
+/* ==========================================================================
+   Cards, style board edition: moody grounds, frosted glass widgets, mono labels
+   and one pale yellow accent. Built in ems off the card width so they scale.
+   ========================================================================== */
+body .track .card.sxc { --y: #E9DC7A; --glass: rgba(38, 38, 40, 0.42); --glass-l: rgba(255, 255, 255, 0.16); --hair: rgba(255, 255, 255, 0.14);
+  background: #111214 !important; color: #F2F1EC; font-size: calc(var(--card-w) * 0.036); overflow: hidden; isolation: isolate; }
+body .track .card.sxc .card__head { z-index: 4; font-family: "Space Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.7em; }
+body .track .card.sxc .card__head .card__title { font-size: 1em !important; font-weight: 400 !important; color: rgba(242, 241, 236, 0.92) !important; }
+body .track .card.sxc .card__head .card__year { color: rgba(242, 241, 236, 0.5) !important; }
+body .track .card.sxc .card__head .card__sep { color: rgba(242, 241, 236, 0.25) !important; }
+.sx { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1em; padding: 0 9%; box-sizing: border-box; }
+.sx-num { font-family: "Space Mono", ui-monospace, monospace; font-weight: 400; letter-spacing: -0.04em; line-height: 0.9; }
+.sx-chip { padding: 0.45em 1em; border-radius: 99px; background: var(--y); color: #1B1A12; font-size: 0.72em; letter-spacing: 0.01em; }
+.sx-tag { padding: 0.35em 0.6em; border-radius: 0.35em; background: rgba(255, 255, 255, 0.82); color: #26272A; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.56em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.sx-caption { margin: 0; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; letter-spacing: 0.12em; line-height: 1.5; text-transform: uppercase; text-align: center; color: rgba(242, 241, 236, 0.6); }
+
+/* Go1: a dark planner list over the walking blur, the live row with a slow ring */
+body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg, rgba(10, 10, 12, 0.15), rgba(10, 10, 12, 0.6)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #2A2B2E !important; }
+.sx-list { width: 76%; display: grid; gap: 0.5em; padding: 1em 0.8em 0.9em; border-radius: 1.3em; background: var(--glass); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 0 0 1px var(--hair); }
+.sx-list__t { margin: 0 0 0.2em 0.25em; font-size: 1.35em; letter-spacing: -0.02em; }
+.sx-list__t sup { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.4em; vertical-align: 1.1em; color: rgba(242, 241, 236, 0.6); }
+.sx-row { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; padding: 0.6em 0.7em; border-radius: 0.8em; background: rgba(255, 255, 255, 0.1); }
+.sx-row span { display: grid; gap: 0.15em; min-width: 0; }
+.sx-row b { font-weight: 400; font-size: 0.82em; }
+.sx-row i { font-style: normal; font-size: 0.64em; color: rgba(242, 241, 236, 0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-row.is-dim { opacity: 0.32; }
+.sx-tick { display: grid; place-items: center; width: 1.3em; height: 1.3em; flex: none; border-radius: 50%; background: var(--y); color: #1B1A12; }
+.sx-tick svg { width: 0.85em; height: 0.85em; }
+.sx-ring { width: 1.3em; height: 1.3em; flex: none; border-radius: 50%; box-shadow: inset 0 0 0 0.16em rgba(255, 255, 255, 0.3); }
+.sx-row.is-live .sx-ring { background: conic-gradient(var(--y) var(--p, 0turn), transparent 0); -webkit-mask: radial-gradient(circle, transparent 50%, #000 52%); mask: radial-gradient(circle, transparent 50%, #000 52%); animation: sx-fill 4s ease-in-out infinite; }
+@property --p { syntax: "<angle>"; inherits: false; initial-value: 0turn; }
+@keyframes sx-fill { 0% { --p: 0turn; } 80%, 100% { --p: 1turn; } }
+
+/* Supermetrics pricing: a warm stone tile with the price and a dot grid of chosen sources */
+body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: repeating-linear-gradient(90deg, transparent 0 calc(100% / 7 - 1px), rgba(255, 255, 255, 0.04) calc(100% / 7 - 1px) calc(100% / 7)), radial-gradient(90% 70% at 50% 40%, #232427, #0C0D0F 75%) !important; }
+.sx-tile { width: 70%; padding: 1.1em 1.1em 0.9em; border-radius: 1.4em; background: linear-gradient(160deg, #6E625A, #4F4640); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12); color: #F4EFE8; }
+.sx-tile__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.9em; }
+.sx-tile__top .sx-num { font-size: 2.6em; }
+.sx-tile__top span { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.6em; letter-spacing: 0.08em; text-align: right; line-height: 1.3; color: rgba(244, 239, 232, 0.75); }
+.sx-dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5em; padding: 0 0.15em; }
+.sx-dots i { aspect-ratio: 1; border-radius: 50%; background: #17161A; }
+.sx-dots i.on { background: var(--y); animation: sx-blink 3.2s ease-in-out infinite; }
+.sx-dots i.on:nth-of-type(3n) { animation-delay: -1.1s; } .sx-dots i.on:nth-of-type(4n) { animation-delay: -2s; }
+.sx-dots i.f { background: rgba(23, 22, 26, 0.35); }
+@keyframes sx-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+.sx-tile__foot { display: flex; justify-content: space-between; gap: 1em; white-space: nowrap; margin: 0.85em 0 0; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.52em; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244, 239, 232, 0.7); }
+
+/* Sunday: the same tile as a calendar of busy service days */
+body .track .card.sxc[data-href="sunday.html"] { background: radial-gradient(80% 60% at 50% 35%, #2A2622, #0E0D0C 78%) !important; }
+.sx-tile--warm { background: linear-gradient(160deg, #7A6A5E, #574A41); }
+.sx-dots--cal { grid-template-columns: repeat(7, 1fr); }
+
+/* Fupay: identity check on a warm, low-lit ground */
+body .track .card.sxc[data-href="fupay.html"] { background: linear-gradient(115deg, transparent 38%, rgba(232, 214, 186, 0.16) 39%, rgba(232, 214, 186, 0.05) 58%, transparent 59%), radial-gradient(80% 70% at 60% 40%, #3A322B, #14110F 80%) !important; }
+.sx-idrow { display: flex; align-items: center; gap: 0.6em; }
+.sx-idsq { position: relative; display: grid; place-items: center; width: 3.2em; height: 3.2em; border-radius: 0.8em; background: rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); font-family: "Space Mono", ui-monospace, monospace; font-size: 0.85em; color: rgba(255, 255, 255, 0.85); }
+.sx-idsq i { position: absolute; width: 0.55em; height: 0.55em; border: 1.5px solid rgba(255, 255, 255, 0.6); }
+.sx-idsq i:nth-child(1) { left: 0.5em; top: 0.5em; border-right: 0; border-bottom: 0; } .sx-idsq i:nth-child(2) { right: 0.5em; top: 0.5em; border-left: 0; border-bottom: 0; }
+.sx-idsq i:nth-child(3) { left: 0.5em; bottom: 0.5em; border-right: 0; border-top: 0; } .sx-idsq i:nth-child(4) { right: 0.5em; bottom: 0.5em; border-left: 0; border-top: 0; }
+.sx-idpill { display: flex; align-items: center; gap: 0.4em; width: 9.5em; height: 3.2em; padding: 0.3em; border-radius: 99px; background: linear-gradient(180deg, #F4F2EE, #D9D6D0); box-shadow: inset 0 1px 0 #FFF, 0 0.8em 1.6em -0.8em rgba(0, 0, 0, 0.6); }
+.sx-idpct { display: grid; place-items: center; width: 2.6em; height: 2.6em; flex: none; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.15); }
+.sx-count { font-family: "Space Mono", ui-monospace, monospace; font-weight: 400; font-size: 0.62em; color: #2A2A2C; counter-reset: pct var(--pct); animation: sx-pct 5s ease-in-out infinite; }
+.sx-count::after { content: counter(pct) "%"; }
+@property --pct { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@keyframes sx-pct { 0% { --pct: 0; } 70%, 100% { --pct: 100; } }
+.sx-idbar { position: relative; flex: 1; height: 100%; margin-right: 0.2em; overflow: hidden; border-radius: 99px; background: linear-gradient(90deg, #2C2621, #6B5B4E); }
+.sx-idbar i { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, rgba(233, 220, 122, 0.9), rgba(233, 220, 122, 0.55)); transform-origin: left; animation: sx-bar 5s ease-in-out infinite; }
+@keyframes sx-bar { 0% { transform: scaleX(0); } 70%, 100% { transform: scaleX(1); } }
+
+/* Insights: frosted reading cards on the orchid blur */
+body .track .card.sxc[data-href="supermetrics-insights.html"] { background: radial-gradient(70% 55% at 75% 35%, rgba(120, 140, 120, 0.55), transparent 70%), url("assets/img/si-orchid-blur.jpg") 52% 46% / 175% auto no-repeat, #6E747C !important; filter: saturate(0.55); }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .card__head .card__title { color: rgba(250, 250, 248, 0.95) !important; }
+.sx--read { gap: 0.7em; padding: 0 8%; }
+.sx-note { position: relative; width: 100%; box-sizing: border-box; padding: 1em 4.6em 0.9em 1em; border-radius: 1.1em; background: rgba(110, 112, 114, 0.55); -webkit-backdrop-filter: blur(16px) saturate(120%); backdrop-filter: blur(16px) saturate(120%); color: #FFFFFF; }
+.sx-note p { margin: 0 0 0.9em; font-size: 0.85em; line-height: 1.3; }
+.sx-note__foot { display: flex; align-items: center; gap: 0.3em; }
+.sx-note__foot small { margin-left: auto; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
+.sx-orb { position: absolute; right: 0.7em; top: 50%; width: 3.3em; height: 3.3em; margin-top: -1.65em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF, #E9E9E6 40%, #B9BBB8 100%); box-shadow: inset 0 -0.3em 0.6em rgba(0, 0, 0, 0.12); }
+.sx-orb--2 { background: radial-gradient(circle at 35% 30%, #DDE6D8, #8EA088 55%, #4E5E4C 100%); }
+.sx-note--2 { opacity: 0.88; }
+
+/* Wrylo: the photo, with a frosted streak counter */
+body .track .card.sxc--photo { background: #9AA3A6 !important; }
+.sx-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; z-index: 1; }
+.sx--clock { justify-content: flex-end; padding-bottom: 9%; }
+.sx-clock { display: flex; align-items: center; gap: 0.8em; padding: 0.55em 1em 0.55em 0.6em; border-radius: 1.2em; background: rgba(40, 40, 42, 0.45); -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%); box-shadow: inset 0 0 0 1px var(--hair); }
+.sx-clock__dot { width: 1.6em; height: 1.6em; border-radius: 50%; background: radial-gradient(circle, var(--y) 42%, transparent 46%), rgba(255, 255, 255, 0.12); }
+.sx-clock .sx-num { font-size: 2.3em; color: rgba(255, 255, 255, 0.92); }
+.sx-clock__lab { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; letter-spacing: 0.1em; line-height: 1.4; color: rgba(255, 255, 255, 0.6); }
+
+@media (max-width: 760px) { body .track .card.sxc { font-size: calc(var(--card-w) * 0.042); } }
+@media (prefers-reduced-motion: reduce) { .sx *, .sx { animation: none !important; } .sx-count { --pct: 100; } .sx-idbar i { transform: none; } }
+
+/* Homepage cards stay still: hold each widget on a finished frame */
+body .track .card.sxc .sx-count, body .track .card.sxc .sx-idbar i { animation-delay: -4s !important; }
+body .track .card.sxc .sx-row.is-live .sx-ring { animation-delay: -1.9s !important; }
+
+/* Phones: more breathing room. The header sits further down with looser rows, and the
+   layout switcher sits lower, near the foot of the screen */
+@media (max-width: 760px) {
+  .nav { padding-top: calc(40px + env(safe-area-inset-top, 0px)) !important; row-gap: 10px !important; }
+  .nav .nav__tag-1 { margin-top: 2px; }
+  .nav > nav { margin-top: 8px; }
+  .modes { bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important; }
+}
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2210,38 +2316,60 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 
     <div class="edge edge--l" aria-hidden="true"><i class="edge__b1"></i><i class="edge__b2"></i><i class="edge__b3"></i><i class="edge__b4"></i><i class="edge__fade"></i></div><div class="edge edge--r" aria-hidden="true"><i class="edge__b1"></i><i class="edge__b2"></i><i class="edge__b3"></i><i class="edge__b4"></i><i class="edge__fade"></i></div>
     <div class="track" id="track">
-      <article class="card card--mood" data-href="go1.html" style="--m1: #D8D8D3; --m2: #E2E8A0; --m3: #F0F0EC">
-        <div class="card__tex tex--dark" aria-hidden="true"></div>
-        <div class="card__art up-stage" aria-hidden="true"><div class="up"><div class="up__head"><b>Upload content</b><span class="up__pill"><span class="up__prog"><span class="up__count"></span> of 24</span><span class="up__done"><i class="up__tick"></i>24 published</span></span></div><div class="up__slot"><div class="up__zone"><span class="up__zin"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 10.5V3M4.8 6.2L8 3l3.2 3.2M3 10.5v2h10v-2" stroke="currentColor" stroke-width="1.3"/></svg><span>Drop your catalogue</span></span></div><div class="up__list"><div class="up__row up__row--1"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div><div class="up__row up__row--2"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div><div class="up__row up__row--3"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div></div><div class="up__file"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 1.5h5l3 3v10H4z" fill="#FFFFFF" stroke="currentColor" stroke-width="1.1"/><path d="M9 1.5v3h3" stroke="currentColor" stroke-width="1.1"/></svg>catalogue.csv<svg class="up__cursor" viewBox="0 0 12 16" aria-hidden="true"><path d="M1 1l9.5 9.2H6.2L3.8 14.6 1 1z" fill="#111111" stroke="#FFFFFF" stroke-width="1"/></svg></div></div><div class="up__bar"><i></i></div></div></div>
-        <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
+      <article class="card sxc" data-href="go1.html">
+        <div class="sx sx--go1" aria-hidden="true">
+  <div class="sx-list">
+    <p class="sx-list__t">Upload <sup>24</sup></p>
+    <div class="sx-row is-done"><span><b>Leadership</b><i>Course · 12 lessons</i></span><em class="sx-tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+    <div class="sx-row is-live"><span><b>Compliance</b><i>Course · 8 lessons</i></span><em class="sx-ring"></em></div>
+    <div class="sx-row is-dim"><span><b>Onboarding</b><i>Course · 5 lessons</i></span><em class="sx-ring"></em></div>
+  </div>
+  <span class="sx-chip">Bulk upload</span>
+</div>
+        <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
-      <article class="card card--mood" data-href="supermetrics-purchase.html" style="--m1: #26282B; --m2: #5E6267; --m3: #B4B8BC">
-        <div class="card__tex tex--dark" aria-hidden="true"></div>
-        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2024</span></div>
+      <article class="card sxc" data-href="supermetrics-purchase.html">
+        <div class="sx sx--pkg" aria-hidden="true">
+  <div class="sx-tile">
+    <div class="sx-tile__top"><b class="sx-num">159</b><span>EUR<br>/ MO</span></div>
+    <div class="sx-dots"><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div>
+    <p class="sx-tile__foot"><span>Growth</span><span>6 / 8 sources</span></p>
+  </div>
+  <span class="sx-chip">Self-serve pricing</span>
+</div>
+        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
       </article>
-      <article class="card card--mood" data-href="fupay.html" style="--m1: #141A1C; --m2: #3E5A5B; --m3: #9DB4A8">
-        <div class="card__tex tex--grey" aria-hidden="true"></div>
-        <div class="card__art" aria-hidden="true"><img class="card__tile" src="assets/img/fupay-tile.png" alt="" draggable="false"></div>
-        <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2021</span></div>
+      <article class="card sxc" data-href="fupay.html">
+        <div class="sx sx--id" aria-hidden="true">
+  <div class="sx-idrow">
+    <span class="sx-idsq"><i></i><i></i><i></i><i></i>ID</span>
+    <span class="sx-idpill"><span class="sx-idpct"><b class="sx-count"></b></span><span class="sx-idbar"><i></i></span></span>
+  </div>
+  <p class="sx-caption">Verifying identity<br>No forms to fill</p>
+</div>
+        <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
-      <article class="card card--mood" data-href="foba.html" data-soon="Contract" style="--m1: #F6ECE6; --m2: #F3D6D3; --m3: #FFFFFF">
-        <div class="card__tex tex--blue" aria-hidden="true"></div>
-        <div class="card__art" aria-hidden="true"><img class="foba-logo" src="assets/img/foba-logo-sharp.png" alt="" draggable="false" decoding="async"></div>
-        <div class="card__head"><h2 class="card__title">FoBA Media</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year card__swap"><span class="swap__a">Contract 2025</span><span class="swap__b" aria-hidden="true">Coming soon</span></span></div>
+      <article class="card sxc" data-href="sunday.html" data-soon="Coming soon">
+        <div class="sx sx--cal" aria-hidden="true">
+  <div class="sx-tile sx-tile--warm">
+    <div class="sx-tile__top"><b class="sx-num">23</b><span>MAY</span></div>
+    <div class="sx-dots sx-dots--cal"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="on"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div>
+  </div>
+  <span class="sx-chip">Restaurant reporting</span>
+</div>
+        <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2026</span></div>
       </article>
-      <article class="card card--mood" data-href="sunday.html" data-soon="Coming soon" style="--m1: #E9D3DC; --m2: #F2A9C6; --m3: #F7E6EE">
-        <div class="card__tex tex--grey" aria-hidden="true"></div>
-        <div class="card__art" aria-hidden="true"><div class="ui su2"><div class="ui__head"><b>Guests served</b><span class="ui__pill">This week</span></div><div class="su2__chart"><div class="su2__plot"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M7.14,65.00 L21.43,60.00 L35.71,62.50 L50.00,46.67 L64.29,24.17 L78.57,10.83 L92.86,33.33 L92.86,100 L7.14,100 Z" fill="#E8F5FF"/><path d="M7.14,65.00 L21.43,60.00 L35.71,62.50 L50.00,46.67 L64.29,24.17 L78.57,10.83 L92.86,33.33" fill="none" stroke="#0F1114" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg><div class="su2__scrub"><i class="su2__line"></i><span class="su2__tip"><span class="su2__strip"><span><b>Mon</b> 84</span><span><b>Tue</b> 96</span><span><b>Wed</b> 90</span><span><b>Thu</b> 128</span><span><b>Fri</b> 182</span><span><b>Sat</b> 214</span><span><b>Sun</b> 160</span></span></span><i class="su2__dot"><svg class="ui__cur" viewBox="0 0 12 16" aria-hidden="true"><path d="M1 1l9.5 9.2H6.2L3.8 14.6 1 1z" fill="#0F1114" stroke="#FFFFFF" stroke-width="1"/></svg></i></div></div></div><div class="su2__days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div></div>
-        <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2026</span></div>
+      <article class="card sxc" data-href="supermetrics-insights.html">
+        <div class="sx sx--read" aria-hidden="true">
+  <div class="sx-note"><p>Spend on Meta rose 18% and cost per lead fell to €4.20.</p><div class="sx-note__foot"><span class="sx-tag">Insights</span><span class="sx-tag">AI</span><small>2 min read</small></div><span class="sx-orb"></span></div>
+  <div class="sx-note sx-note--2"><p>Google Ads is your best channel this week.</p><div class="sx-note__foot"><span class="sx-tag">Summary</span><small>1 min read</small></div><span class="sx-orb sx-orb--2"></span></div>
+</div>
+        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
-      <article class="card card--mood" data-href="supermetrics-insights.html" style="--m1: #0E1A33; --m2: #2F5BC4; --m3: #9DB8F2">
-        <div class="card__tex tex--grey" aria-hidden="true"></div>
-        <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
-      </article>
-      <article class="card card--photo" data-href="wrylo.html" style="--grad: #FFFFFF">
-        <div class="card__tex tex--blue" aria-hidden="true"></div>
-        <img class="card__photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
-        <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Personal app </span>2025</span></div>
+      <article class="card sxc sxc--photo" data-href="wrylo.html">
+        <img class="sx-photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
+        <div class="sx sx--clock" aria-hidden="true"><div class="sx-clock"><span class="sx-clock__dot"></span><b class="sx-num">12</b><span class="sx-clock__lab">DAY<br>STREAK</span></div></div>
+        <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
       </article>
     </div>
     <div class="modes fade" style="--d:.7" role="group" aria-label="Carousel shape">
