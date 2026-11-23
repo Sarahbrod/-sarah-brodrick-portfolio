@@ -2923,6 +2923,25 @@ body .track .card.sxc[data-href="wrylo.html"] .wq-mood { box-shadow: inset 0 0 0
 .fz-ring span { display: grid; justify-items: center; gap: 0.2em; }
 .fz-ring b { font-weight: 500; font-size: 0.78em; letter-spacing: -0.02em; }
 .fz-ring small { font-size: 0.46em; color: rgba(255, 255, 255, 0.65); }
+
+/* Wrylo ground a touch lighter */
+body .track .card.sxc[data-href="wrylo.html"]::after { filter: blur(6px) saturate(0.95) brightness(0.7) !important; }
+/* Insights back on a dark ground */
+body .track .card.sxc[data-href="supermetrics-insights.html"] { --y: #8DB7FF; background: radial-gradient(55% 40% at 85% 20%, rgba(90, 120, 180, 0.28), transparent 70%), linear-gradient(180deg, #232529, #17181B) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .card__head .card__title { color: rgba(250, 250, 248, 0.95) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .card__head .card__year { color: rgba(250, 250, 248, 0.6) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .card__head .card__sep { color: rgba(250, 250, 248, 0.35) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: linear-gradient(150deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.1)) !important; -webkit-backdrop-filter: blur(22px) saturate(160%) brightness(0.92) !important; backdrop-filter: blur(22px) saturate(160%) brightness(0.92) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.16), inset 0 0 1.4em rgba(255, 255, 255, 0.05), 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.55) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list__t, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row b, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass p { color: #F1F0EB !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list__t sup, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend small { color: rgba(241, 240, 235, 0.6) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row { background: rgba(255, 255, 255, 0.07) !important; box-shadow: none; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row.is-on { background: rgba(255, 255, 255, 0.16) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-ring { border-color: transparent !important; box-shadow: inset 0 0 0 0.14em rgba(255, 255, 255, 0.28) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-tick, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { color: #0F1B33 !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:first-child { stroke: #8DB7FF; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:last-child { fill: rgba(141, 183, 255, 0.16); }
+/* Fupay: the project page cover colours */
+body .track .card.sxc[data-href="fupay.html"] { background: radial-gradient(45% 40% at 30% 30%, rgba(157, 180, 168, 0.75) 0%, transparent 70%), radial-gradient(55% 50% at 72% 68%, rgba(62, 90, 91, 0.9) 0%, transparent 72%), radial-gradient(70% 60% at 20% 90%, rgba(62, 90, 91, 0.85) 0%, transparent 70%), #141A1C !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
