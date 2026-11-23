@@ -2890,6 +2890,39 @@ body .track .card.sxc[data-href="wrylo.html"] .wq-pl { display: flex; justify-co
 body .track .card.sxc[data-href="wrylo.html"] .wq-pl small { font-size: 1em; }
 body .track .card.sxc[data-href="wrylo.html"] .wq-bar { height: 0.25em; border-radius: 99px; background: #E2E1DE; overflow: hidden; }
 body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { display: block; width: 45%; height: 100%; background: #1C1C1E; }
+
+/* Wrylo: dark phone, fewer pieces, deeper ground */
+body .track .card.sxc[data-href="wrylo.html"]::after { filter: blur(6px) saturate(0.95) brightness(0.55) !important; }
+body .track .card.sxc[data-href="wrylo.html"] { background: #2A1E1A !important; }
+body .track .card.sxc[data-href="wrylo.html"] .fp-screen.wq { background: #0F0E0D !important; color: #F3EFE8; gap: 0.7em; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-streak { background: rgba(224, 126, 71, 0.16); }
+body .track .card.sxc[data-href="wrylo.html"] .wq-flame { background: rgba(255, 255, 255, 0.08); }
+body .track .card.sxc[data-href="wrylo.html"] .wq-st small { color: #F09A62; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-cur { background: #1C1B1A; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-curh small { color: rgba(243, 239, 232, 0.55); }
+body .track .card.sxc[data-href="wrylo.html"] .wq-curh span { background: rgba(120, 150, 230, 0.2); color: #A9BFF2; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-book > span > small { color: rgba(243, 239, 232, 0.55); }
+body .track .card.sxc[data-href="wrylo.html"] .wq-bar { background: rgba(255, 255, 255, 0.12); }
+body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { background: #E07E47; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-mood { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); }
+/* Pricing: Recommended badge */
+.sp4-rec { position: absolute; right: -0.9em; top: -0.85em; padding: 0.45em 0.9em; border-radius: 99px; background: rgba(30, 31, 29, 0.86); color: #F6F5F1; font-size: 0.5em; letter-spacing: 0.02em; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0.8em 1.4em -0.7em rgba(30, 31, 29, 0.6); }
+/* Fupay: a pay-in-4 card and a glass instalment ring */
+.sx--fz { display: block; padding: 0; }
+.fz-card { position: absolute; left: 11%; top: 28%; width: 74%; aspect-ratio: 1.586; box-sizing: border-box; padding: 1em 1.1em; border-radius: 1.1em; color: #FFFFFF; transform: rotate(-7deg);
+  background: radial-gradient(70% 90% at 90% 0%, rgba(140, 180, 255, 0.7), transparent 60%), radial-gradient(80% 80% at 0% 100%, rgba(20, 30, 110, 0.8), transparent 70%), linear-gradient(135deg, #3E6FF5, #1F3FB6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 2em 3em -1.6em rgba(10, 20, 40, 0.7); overflow: hidden; }
+.fz-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.18) 42%, transparent 55%); }
+.fz-logo { position: absolute; left: 1.2em; top: 0.9em; font-size: 0.95em; font-weight: 600; letter-spacing: -0.02em; }
+.fz-nfc { position: absolute; right: 1em; top: 0.9em; width: 1.2em; height: 1.2em; opacity: 0.85; }
+.fz-chip { position: absolute; left: 1.2em; top: 42%; width: 1.9em; height: 1.4em; border-radius: 0.3em; background: linear-gradient(135deg, #F1E2B0, #C9AE6A); box-shadow: inset 0 0 0 1px rgba(120, 90, 30, 0.3); }
+.fz-num { position: absolute; left: 1.4em; bottom: 1.2em; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.6em; letter-spacing: 0.12em; opacity: 0.9; }
+.fz-tag { position: absolute; right: 4.6em; top: 1.9em; padding: 0.35em 0.7em; border-radius: 99px; background: rgba(255, 255, 255, 0.18); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35); font-size: 0.48em; }
+.fz-ring { position: absolute; right: 9%; top: 55%; width: 34%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.1)); -webkit-backdrop-filter: blur(22px) saturate(160%) brightness(0.92); backdrop-filter: blur(22px) saturate(160%) brightness(0.92); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.16), inset 0 0 1.4em rgba(255, 255, 255, 0.05), 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.55); color: #FFFFFF; }
+.fz-ring::before { content: ""; position: absolute; inset: 9%; border-radius: 50%; background: conic-gradient(#FFFFFF 0 24%, transparent 24% 26%, rgba(255, 255, 255, 0.18) 26% 49%, transparent 49% 51%, rgba(255, 255, 255, 0.18) 51% 74%, transparent 74% 76%, rgba(255, 255, 255, 0.18) 76% 99%, transparent 99%); -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%); mask: radial-gradient(circle, transparent 62%, #000 63%); }
+.fz-ring span { display: grid; justify-items: center; gap: 0.2em; }
+.fz-ring b { font-weight: 500; font-size: 0.78em; letter-spacing: -0.02em; }
+.fz-ring small { font-size: 0.46em; color: rgba(255, 255, 255, 0.65); }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2924,6 +2957,7 @@ body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { display: block; width:
       <article class="card sxc" data-href="supermetrics-purchase.html">
         <div class="sx sx--sp4" aria-hidden="true">
   <div class="sp4-card">
+    <span class="sp4-rec">Recommended</span>
     <p class="sp4-k">Growth plan</p>
     <p class="sp4-price"><span>€</span>159<small>/mo</small></p>
     <div class="sp4-src"><span class="sp4-stack"><i><img src="assets/img/smi-fb.png" alt="" draggable="false"></i><i><img src="assets/img/smi-ga.png" alt="" draggable="false"></i><i><img src="assets/img/smi-gads.png" alt="" draggable="false"></i><i><img src="assets/img/smi-tt.png" alt="" draggable="false"></i></span><small>6 data sources</small></div>
@@ -2947,14 +2981,15 @@ body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { display: block; width:
         <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
       <article class="card sxc" data-href="fupay.html">
-        <div class="sx sx--fq" aria-hidden="true">
-  <div class="fq-card">
-    <div class="fq-top"><img src="assets/img/fp-polo.jpg" alt="" draggable="false"><span><b>Polo Tshirt</b><small>G-Star RAW</small></span><em>$5 cashback</em></div>
-    <p class="fq-amt"><span>$</span>79<small>.60</small></p>
-    <p class="fq-note">Pay in 4 · 0% interest</p>
-    <div class="fq-split"><i class="on"><b>Today</b></i><i><b>May</b></i><i><b>Jun</b></i><i><b>Jul</b></i></div>
-    <span class="fq-btn">Pay $19.90 today</span>
+        <div class="sx sx--fz" aria-hidden="true">
+  <div class="fz-card">
+    <span class="fz-logo">fupay</span>
+    <svg class="fz-nfc" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7.5a6 6 0 0 1 0 9M11.5 5a9.5 9.5 0 0 1 0 14M15 2.8a12.5 12.5 0 0 1 0 18.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <i class="fz-chip"></i>
+    <span class="fz-num">•••• 4821</span>
+    <span class="fz-tag">Pay in 4</span>
   </div>
+  <div class="fz-ring"><span><b>$19.90</b><small>1 of 4</small></span></div>
 </div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
@@ -2993,8 +3028,6 @@ body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { display: block; width:
     <div class="wq-mood"><small>Mood curator</small><b>What are you in the mood to read?</b><span class="wq-cta">Find my next read →</span></div>
     <div class="wq-cur"><div class="wq-curh"><small>Currently reading</small><span>In Progress</span></div>
       <div class="wq-book"><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"><span><b>The Midnight Library</b><small>Matt Haig</small><span class="wq-pl"><small>Progress</small><small>45%</small></span><span class="wq-bar"><i></i></span></span></div></div>
-    <div class="wq-cur wq-fin"><div class="wq-curh"><small>Just finished</small></div>
-      <div class="wq-book"><img src="assets/img/wr-cover-evelyn.jpg" alt="" draggable="false"><span><b>Evelyn Hugo</b><small>Taylor Jenkins Reid</small></span></div></div>
   </div></div>
 </div>
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
