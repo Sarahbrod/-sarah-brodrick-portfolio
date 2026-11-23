@@ -863,6 +863,31 @@ main > section > .figure > .dk { margin-left: 0 !important; margin-right: auto !
 .hs-hint svg { width: 16px; height: 16px; animation: hs-nudge 1.6s ease-in-out infinite; }
 @keyframes hs-nudge { 0%, 100% { transform: none; } 50% { transform: translateX(4px); } }
 @media (prefers-reduced-motion: reduce) { .hs-hint svg { animation: none; } }
+
+/* Walkthrough: no menu bar, an even frame round the window */
+.dk__menubar { display: none !important; }
+.dk { padding-top: 40px !important; }
+@media (max-width: 760px) { .dk { padding-top: 16px !important; } }
+.dk__view { container-type: inline-size; }
+/* Data sources pop-up: one empty slot, then TikTok Ads is picked and fills it */
+.dsm { position: absolute; display: block; pointer-events: none; }
+.dsm-hl { left: 47.1%; top: 39.01%; width: 14.28%; height: 7.24%; border-radius: 0.5cqw; background: rgba(61, 107, 255, 0.07); box-shadow: inset 0 0 0 0.16cqw #3D6BFF; opacity: 0; transform: scale(0.97); transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.dsm-tick { left: 58.67%; top: 41.26%; width: 1.91%; height: 2.9%; background: #FCFBFC; transition: opacity 0.3s ease 0.12s; }
+.dsm-slot { left: 64.3%; top: 29.03%; width: 4.83%; height: 6.6%; background: #FFFFFF; transition: opacity 0.35s ease 0.2s; }
+.dsm-slot i { position: absolute; left: 8.5%; top: 14.5%; width: 64.6%; height: 74.4%; border-radius: 50%; border: 0.12cqw dashed #CFCFD2; box-sizing: border-box; background: #FCFCFC; }
+.dsm-ring { left: 64.71%; top: 29.99%; width: 3.12%; height: 4.91%; border-radius: 50%; box-shadow: 0 0 0 0.25cqw rgba(61, 107, 255, 0.85); opacity: 0; transform: scale(0.8); transition: opacity 0.3s ease 0.25s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.25s; }
+.dsm-count { left: 69.53%; top: 75.7%; width: 6.64%; height: 3.7%; background: #FFFFFF; transition: opacity 0.3s ease 0.2s; }
+.dsm-count::after { content: "4/5 selected"; position: absolute; right: 7%; top: 50%; transform: translateY(-50%); font: 400 1.08cqw/1 -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif; color: #3A3A3C; white-space: nowrap; }
+.dk__page.is-c1 .dsm-hl { opacity: 1; transform: none; }
+.dk__page.is-c1 .dsm-tick, .dk__page.is-c1 .dsm-slot, .dk__page.is-c1 .dsm-count { opacity: 0; }
+.dk__page.is-c1 .dsm-ring { opacity: 1; transform: none; animation: dsm-pulse 1.2s ease 0.6s both; }
+@keyframes dsm-pulse { 0% { opacity: 1; } 100% { opacity: 0; transform: scale(1.35); } }
+/* Purchase confirmed: confetti */
+.dk-cf { position: absolute; left: 50%; top: 44%; width: 0; height: 0; pointer-events: none; }
+.dk-cf > i { position: absolute; left: 0; top: 0; width: var(--w, 0.9cqw); height: var(--h, 0.5cqw); margin: -0.25cqw; border-radius: var(--rad, 1px); background: var(--c); opacity: 0; }
+.dk__page.is-burst .dk-cf > i { animation: dk-cf 1.6s cubic-bezier(0.15, 0.6, 0.3, 1) var(--d, 0ms) both; }
+@keyframes dk-cf { 0% { opacity: 1; transform: translate(0, 0) rotate(0) scale(0.6); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), calc(var(--dy) + 14cqw)) rotate(var(--r)) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .dk-cf { display: none; } }
 </style>
 </head>
 <body class="project">
@@ -887,7 +912,7 @@ main > section > .figure > .dk { margin-left: 0 !important; margin-right: auto !
 
 
     <section class="row grid" data-reveal aria-labelledby="impact"><h2 class="label mask" id="impact"><span>Impact</span></h2><div class="body body--lead fade"><h3 class="sec-lead">Self-serve buying grew ARR by 22%.</h3></div><div class="stats"><div class="stat"><p class="stat__num"><span data-count="22">0</span>%</p><p class="stat__label">increase in ARR</p></div><div class="stat"><p class="stat__num"><span data-count="70">0</span>%</p><p class="stat__label">uplift in new customers</p></div><div class="stat"><p class="stat__num"><span data-count="28">0</span>%</p><p class="stat__label">fewer support tickets</p></div></div>
-    <figure class="figure fade" style="--d:.15"><div class="dk" data-desk><div class="dk__menubar"><span class="dk__apple"></span><b>Chrome</b><span>File</span><span>Edit</span><span>View</span><span class="dk__clock">9:41</span></div><div class="dk__win"><div class="dk__chrome"><span class="dk__dots"><i></i><i></i><i></i></span><span class="dk__url">hub.supermetrics.com / purchase</span><button class="dk__play" type="button" aria-label="Pause walkthrough"><svg class="dk__i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg><svg class="dk__i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z"/></svg></button></div><div class="dk__view" role="img" aria-label="A customer buying Supermetrics in the hub: choosing the Growth package, picking data sources, adding a discount code and paying"><div class="dk__page" data-clicks="0.39,0.475"><img class="dk__img" src="assets/img/smv-packages.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.185,0.645"><img class="dk__img" src="assets/img/smv-customise.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.52,0.432;0.797,0.776"><img class="dk__img" src="assets/img/smv-datasources-modal.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.80,0.65"><img class="dk__img" src="assets/img/smv-addons.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.843,0.696"><img class="dk__img" src="assets/img/smv-discount.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.756,0.909"><img class="dk__img" src="assets/img/smv-payment.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks=""><img class="dk__img" src="assets/img/smv-thanks.webp" alt="" decoding="async"></div><span class="dk__cursor" aria-hidden="true"><svg viewBox="0 0 16 22"><path d="M1.5 1.5v16.2l4.3-4.1 2.9 6.6 2.6-1.1-2.9-6.5 6.1-.2z" fill="#111" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg><i class="dk__ripple"></i></span></div></div></div></figure></section>
+    <figure class="figure fade" style="--d:.15"><div class="dk" data-desk><div class="dk__menubar"><span class="dk__apple"></span><b>Chrome</b><span>File</span><span>Edit</span><span>View</span><span class="dk__clock">9:41</span></div><div class="dk__win"><div class="dk__chrome"><span class="dk__dots"><i></i><i></i><i></i></span><span class="dk__url">hub.supermetrics.com / purchase</span><button class="dk__play" type="button" aria-label="Pause walkthrough"><svg class="dk__i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg><svg class="dk__i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z"/></svg></button></div><div class="dk__view" role="img" aria-label="A customer buying Supermetrics in the hub: choosing the Growth package, picking data sources, adding a discount code and paying"><div class="dk__page" data-clicks="0.39,0.475"><img class="dk__img" src="assets/img/smv-packages.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.185,0.645"><img class="dk__img" src="assets/img/smv-customise.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.52,0.432;0.797,0.776"><img class="dk__img" src="assets/img/smv-datasources-modal.webp" alt="" decoding="async"><i class="dsm dsm-hl"></i><i class="dsm dsm-tick"></i><span class="dsm dsm-slot"><i></i></span><i class="dsm dsm-ring"></i><i class="dsm dsm-count"></i></div><div class="dk__page" data-clicks="0.80,0.65"><img class="dk__img" src="assets/img/smv-addons.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.843,0.696"><img class="dk__img" src="assets/img/smv-discount.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="0.756,0.909"><img class="dk__img" src="assets/img/smv-payment.webp" alt="" decoding="async"></div><div class="dk__page" data-clicks="" data-burst><img class="dk__img" src="assets/img/smv-thanks.webp" alt="" decoding="async"><i class="dk-cf"></i></div><span class="dk__cursor" aria-hidden="true"><svg viewBox="0 0 16 22"><path d="M1.5 1.5v16.2l4.3-4.1 2.9 6.6 2.6-1.1-2.9-6.5 6.1-.2z" fill="#111" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg><i class="dk__ripple"></i></span></div></div></div></figure></section>
     <section class="row grid" data-reveal aria-labelledby="s1"><h2 class="label mask" id="s1"><span>The problem</span></h2><div class="body fade"><h3 class="sec-lead">Buying Supermetrics was complex, rigid and sales-led.</h3><p>The existing flow held customers back in three ways.</p><ul class="list"><li>Choosing a product was complex, and customers were unsure which data sources they needed</li><li>It was inflexible, limited to a single destination with awkward upgrade paths</li><li>It leaned heavily on sales, keeping customers in a sales-led journey</li></ul></div>
     <figure class="figure fade" style="--d:.15"><div class="shot shot--video"><video class="oldvid" src="assets/img/sm-old-flow.mp4" poster="assets/img/sm-old-flow.webp" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the old destination purchase flow, from choosing a team through buying a single destination"></video></div></figure></section>
     <section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>Research</span></h2><div class="body fade"><h3 class="sec-lead">Customers wanted flexible packages and prices they could see.</h3><p>Mapping the current destination purchase flows showed the disjointed system could not support the new model. We expected customers to prefer packages for their flexibility, customisation and fairer pricing, but knew unclear pricing or hidden value could put new customers off.</p><p>I interviewed ten customers across segments and analysed the sessions with affinity mapping and Vertex AI.</p><ul class="list"><li>Customers liked being able to customise packages, and valued TikTok access in the first two tiers</li><li>Every customer was willing to buy at the prices shown. Two needed a business case to move up a tier, and agencies valued the middle tier&#x27;s higher limits</li><li>The data source picker caused confusion, from its category patterns to a search bar that was not always visible</li><li>Six of ten knew of useful features they could not reach in self-serve or trial</li></ul></div>
@@ -1172,16 +1197,22 @@ main > section > .figure > .dk { margin-left: 0 !important; margin-right: auto !
       requestAnimationFrame(tick); });
     const moveTo = (x, y, ms) => { const [x0, y0] = pos; return clock(ms, (k) => { pos = [x0 + (x - x0) * k, y0 + (y - y0) * k]; cur.style.transform = `translate(${pos[0]}px, ${pos[1]}px)`; }); };
     const click = async () => { cur.classList.remove('is-down'); void cur.offsetWidth; cur.classList.add('is-down'); await clock(260); cur.classList.remove('is-down'); };
-    const show = (i) => pages.forEach((pg, k) => pg.classList.toggle('is-on', k === i));
+    const show = (i) => pages.forEach((pg, k) => {
+      pg.classList.toggle('is-on', k === i);
+      if (k === i) { pg.classList.remove('is-c1', 'is-c2', 'is-burst'); if (pg.hasAttribute('data-burst')) clock(250).then(() => pg.classList.add('is-burst')); }
+    });
     const run = async () => {
       for (;;) {
         for (let i = 0; i < pages.length; i++) {
           show(i); await clock(i ? 700 : 900);
           const cl = pages[i].dataset.clicks;
           if (!cl) { await clock(2200); continue; }
-          for (const c of cl.split(';')) {
-            const [fx, fy] = c.split(',').map(Number);
-            await moveTo(fx * view.clientWidth, fy * view.clientHeight, 1000); await clock(220); await click(); await clock(300);
+          const steps = cl.split(';');
+          for (let ci = 0; ci < steps.length; ci++) {
+            const [fx, fy] = steps[ci].split(',').map(Number);
+            await moveTo(fx * view.clientWidth, fy * view.clientHeight, 1000); await clock(220); await click();
+            pages[i].classList.add('is-c' + (ci + 1));
+            await clock(ci === 0 && pages[i].querySelector('.dsm') ? 1100 : 300);
           }
         }
       }
@@ -1191,6 +1222,27 @@ main > section > .figure > .dk { margin-left: 0 !important; margin-right: auto !
     if (reduce) { dk.classList.add('is-paused'); show(0); cur.style.display = 'none'; return; }
     const imgs = [...dk.querySelectorAll('img')];
     Promise.all(imgs.map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; })))).then(run);
+  });
+})();
+</script>
+<script>
+/* Walkthrough: confetti for the purchase confirmation */
+(() => {
+  document.querySelectorAll('.dk-cf').forEach((box) => {
+    const cols = ['#4F6BFF', '#BDEDD3', '#FFB547', '#FF6B8B', '#1D2230', '#7FD1FF', '#C9B6FF'];
+    let seed = 11; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    for (let k = 0; k < 56; k++) {
+      const i = document.createElement('i');
+      const ang = -Math.PI / 2 + (rnd() - 0.5) * Math.PI * 1.4, dist = 8 + rnd() * 16;
+      i.style.setProperty('--dx', (Math.cos(ang) * dist * 1.3).toFixed(2) + 'cqw');
+      i.style.setProperty('--dy', (Math.sin(ang) * dist).toFixed(2) + 'cqw');
+      i.style.setProperty('--r', Math.round((rnd() - 0.5) * 900) + 'deg');
+      i.style.setProperty('--c', cols[k % cols.length]);
+      i.style.setProperty('--d', Math.round(rnd() * 160) + 'ms');
+      if (k % 3 === 0) { i.style.setProperty('--w', '0.7cqw'); i.style.setProperty('--h', '0.7cqw'); i.style.setProperty('--rad', '50%'); }
+      else if (k % 3 === 1) { i.style.setProperty('--w', '0.45cqw'); i.style.setProperty('--h', '1.2cqw'); }
+      box.appendChild(i);
+    }
   });
 })();
 </script>
