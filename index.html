@@ -2904,7 +2904,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   /* Cursor: a dot field echo. The loader's grid of dots lights up softly around the pointer,
      breathing gently, and every movement sends ripples out through the dots. */
   const GAP = 13;               // same grid as the loading screen
-  const SPOT = 130;             // radius of the lit patch around the pointer
+  const SPOT = 78;             // radius of the lit patch around the pointer
   let soonText = '';
   const tag = document.createElement('div');
   tag.className = 'cursor-tag';
@@ -2935,9 +2935,9 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     if (!glow) glow = { ...food };
     wantShow = e.target.closest && e.target.closest('#stage') && !e.target.closest('.modes') ? 1 : 0;
     const now = performance.now();
-    if (wantShow && !reduceMotion && (Math.hypot(food.x - lastRx, food.y - lastRy) > 40 || now - lastRt > 180)) {
+    if (wantShow && !reduceMotion && (Math.hypot(food.x - lastRx, food.y - lastRy) > 90 || now - lastRt > 420)) {
       ripples.push({ x: food.x, y: food.y, t0: now });
-      if (ripples.length > 8) ripples.shift();
+      if (ripples.length > 4) ripples.shift();
       lastRx = food.x; lastRy = food.y; lastRt = now;
     }
     const soonCard = wantShow && e.target.closest('.card[data-soon]');
@@ -2971,8 +2971,8 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     glow.x += (food.x - glow.x) * (reduceMotion ? 1 : 0.22);
     glow.y += (food.y - glow.y) * (reduceMotion ? 1 : 0.22);
 
-    while (ripples.length && now - ripples[0].t0 > 1150) ripples.shift();
-    const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 220, k: Math.exp(-a * 2.6) }; });
+    while (ripples.length && now - ripples[0].t0 > 800) ripples.shift();
+    const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 160, k: Math.exp(-a * 3.4) }; });
     // area to draw: the lit patch, plus any ripple still spreading
     let reach = SPOT + 20;
     for (const q of live) reach = Math.max(reach, Math.hypot(q.x - glow.x, q.y - glow.y) + q.R + 30);
@@ -2982,7 +2982,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     const i0 = Math.max(0, Math.floor((glow.x - reach - ox) / GAP)), i1 = Math.ceil((glow.x + reach - ox) / GAP);
     const j0 = Math.max(0, Math.floor((glow.y - reach - oy) / GAP)), j1 = Math.ceil((glow.y + reach - oy) / GAP);
     const t = (now - tStart) / 1000;
-    const breath = 1 + 0.1 * Math.sin(t * 2.2);      // the patch breathes, slowly
+    const breath = 1 + 0.05 * Math.sin(t * 1.6);      // the patch breathes, slowly
     const spot = SPOT * breath;
     let gapL = 0, gapR = 0, gapT = 0, gapB = 0;
     if (soonText) { gapL = tagX - tagW / 2 - 8; gapR = tagX + tagW / 2 + 8; gapT = tagY - tagH / 2 - 8; gapB = tagY + tagH / 2 + 8; }
@@ -2999,24 +2999,24 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
           const dx = x - q.x, dy = y - q.y, dist = Math.hypot(dx, dy);
           const off = dist - q.R;
           if (off > 30 || off < -30) continue;
-          const h = 0.8 * pulse(off / 12, 1) * q.k;
-          near += h; tx += (dx / (dist || 1)) * h * 4; ty += (dy / (dist || 1)) * h * 4;
+          const h = 0.35 * pulse(off / 10, 1) * q.k;
+          near += h; tx += (dx / (dist || 1)) * h * 2; ty += (dy / (dist || 1)) * h * 2;
         }
         near = Math.min(1.2, near);
-        const v = lit * 0.75 + near * 0.6;
-        if (v < 0.07) continue;
+        const v = lit * 0.38 + near * 0.3;
+        if (v < 0.05) continue;
         const w = 0.55 + 0.45 * hash(i, j);
         // dots near the pointer lean gently away from it
-        const push = d < spot ? (1 - d / spot) * 3 : 0;
+        const push = d < spot ? (1 - d / spot) * 1.2 : 0;
         const px = x + tx + (d ? (x - glow.x) / d : 0) * push;
         const py = y + ty + (d ? (y - glow.y) / d : 0) * push;
         ctx.globalAlpha = Math.min(1, v * w) * showing;
-        ctx.beginPath(); ctx.arc(px, py, 0.6 + 0.9 * Math.min(1, v), 0, 6.2832); ctx.fill();
+        ctx.beginPath(); ctx.arc(px, py, 0.55 + 0.5 * Math.min(1, v), 0, 6.2832); ctx.fill();
       }
     }
     // a fine point marks the pointer
-    ctx.globalAlpha = showing;
-    ctx.beginPath(); ctx.arc(food.x, food.y, 2, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = showing * 0.85;
+    ctx.beginPath(); ctx.arc(food.x, food.y, 1.6, 0, 6.2832); ctx.fill();
     ctx.globalAlpha = 1;
   };
 

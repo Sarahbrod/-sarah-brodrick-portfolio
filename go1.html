@@ -873,6 +873,19 @@ main > section > .figure > .laptop-shot { max-width: none !important; width: 100
   body:has(.crumb) > header.nav { padding-bottom: 72px !important; }
   .hero__panel { max-height: max(360px, calc(100svh - 400px)) !important; }
 }
+
+/* Journey maps: scroll sideways on smaller screens, with a visible bar, a hint and drag-to-scroll */
+.js-hscroll { overflow-x: auto !important; overflow-y: hidden !important; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; scrollbar-width: thin; scrollbar-color: rgba(22, 23, 26, 0.35) transparent; padding-bottom: 10px; }
+.js-hscroll::-webkit-scrollbar { height: 6px; }
+.js-hscroll::-webkit-scrollbar-thumb { background: rgba(22, 23, 26, 0.3); border-radius: 99px; }
+.js-hscroll::-webkit-scrollbar-track { background: transparent; }
+.js-hscroll.is-scrollable { cursor: grab; }
+.js-hscroll.is-dragging { cursor: grabbing; user-select: none; }
+.hs-hint { display: none; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 13px; color: var(--muted, #606874); }
+.hs-hint.is-on { display: flex; }
+.hs-hint svg { width: 16px; height: 16px; animation: hs-nudge 1.6s ease-in-out infinite; }
+@keyframes hs-nudge { 0%, 100% { transform: none; } 50% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) { .hs-hint svg { animation: none; } }
 </style>
 </head>
 <body class="project">
@@ -1218,6 +1231,29 @@ main > section > .figure > .laptop-shot { max-width: none !important; width: 100
     const imgs = [...dk.querySelectorAll('img')];
     imgs.forEach((im) => im.removeAttribute('loading'));
     Promise.all(imgs.map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; })))).then(run);
+  });
+})();
+</script>
+
+<script>
+/* Journey maps: mark the scroller, show a hint when it overflows, and let a mouse drag it sideways */
+(() => {
+  document.querySelectorAll('.jm').forEach((el) => {
+    el.classList.add('js-hscroll');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', 'Journey map, scrolls sideways');
+    const hint = document.createElement('p');
+    hint.className = 'hs-hint';
+    hint.innerHTML = 'Scroll sideways to see the whole journey <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>';
+    const host = el.closest('.uj') ? el : el;
+    host.parentNode.insertBefore(hint, host);
+    const check = () => { const on = el.scrollWidth > el.clientWidth + 4; hint.classList.toggle('is-on', on); el.classList.toggle('is-scrollable', on); };
+    check(); addEventListener('resize', check); if (document.fonts) document.fonts.ready.then(check);
+    let down = false, sx = 0, sl = 0, moved = false;
+    el.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' || !el.classList.contains('is-scrollable')) return; down = true; moved = false; sx = e.clientX; sl = el.scrollLeft; });
+    addEventListener('pointermove', (e) => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 3) { moved = true; el.classList.add('is-dragging'); } el.scrollLeft = sl - dx; });
+    addEventListener('pointerup', () => { if (!down) return; down = false; el.classList.remove('is-dragging'); });
+    el.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
   });
 })();
 </script>
