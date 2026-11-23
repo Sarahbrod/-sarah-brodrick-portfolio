@@ -2487,6 +2487,37 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] { filter: none !im
 .sb-clock { right: auto !important; width: 70%; top: auto !important; bottom: 13%; box-sizing: border-box; }
 .sb-clock b { font-size: 2em !important; }
 .sb-clock { background: #2C2C2E !important; z-index: 2; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1em 2em -1em rgba(0, 0, 0, 0.8) !important; }
+
+/* Wrylo: a studio shot on soft grey, the wordmark and a line either side, a white shelf of books below */
+body .track .card.sxc.sxc--wr2 { background: #FFFFFF !important; color: #1E1F21; }
+body .track .card.sxc--wr2 .card__head .card__title { color: rgba(30, 31, 33, 0.85) !important; }
+body .track .card.sxc--wr2 .card__head .card__year { color: rgba(30, 31, 33, 0.5) !important; }
+body .track .card.sxc--wr2 .card__head .card__sep { color: rgba(30, 31, 33, 0.25) !important; }
+.wr2-top { position: absolute; left: 0; right: 0; top: 0; height: 70%; overflow: hidden; background: linear-gradient(180deg, #ECECEE, #DADBDE); }
+.wr2-photo { position: absolute; left: 50%; top: 13%; width: 92%; transform: translateX(-50%); }
+.wr2-mark { position: absolute; left: 6%; top: 46%; width: 19%; filter: grayscale(1) brightness(0.25); opacity: 0.85; }
+.wr2-side { position: absolute; right: 6%; top: 44%; width: 22%; margin: 0; font-size: 0.42em; line-height: 1.35; color: #3A3B3E; text-align: left; }
+.wr2-shelf { position: absolute; left: 0; right: 0; top: 70%; bottom: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4%; padding: 4% 6% 0; background: #FFFFFF; }
+.wr2-tile { display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
+.wr2-cap { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 0.82; border-radius: 99px; background: #F0F0F1; }
+.wr2-cap em { position: absolute; top: 9%; padding: 0.25em 0.6em; border-radius: 99px; background: #CFCFD2; color: #FFFFFF; font-style: normal; font-size: 0.36em; white-space: nowrap; }
+.wr2-cap img { width: 38%; margin-top: 18%; border-radius: 0.12em; box-shadow: 0 0.5em 0.8em -0.4em rgba(0, 0, 0, 0.45); }
+.wr2-tile b { margin-top: 0.45em; font-weight: 600; font-size: 0.38em; color: #1E1F21; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.wr2-tile small { font-size: 0.34em; color: rgba(30, 31, 33, 0.45); white-space: nowrap; }
+/* Go1: a lighter ground */
+body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(20, 20, 22, 0.32)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #8A8B87 !important; }
+
+.wr2-top { height: 68% !important; }
+.wr2-photo { width: 118% !important; top: -3% !important; }
+.wr2-mark { top: 38% !important; width: 17% !important; left: 5% !important; }
+.wr2-side { top: 36% !important; right: 4% !important; width: 21% !important; }
+.wr2-shelf { top: 68% !important; padding-top: 3.5% !important; }
+.wr2-cap { aspect-ratio: 1.02 !important; }
+.wr2-cap img { width: 34% !important; margin-top: 14% !important; }
+.wr2-cap em { background: #B4B5B9 !important; top: 8% !important; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__title { color: rgba(28, 29, 30, 0.85) !important; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__year { color: rgba(28, 29, 30, 0.5) !important; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba(28, 29, 30, 0.25) !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2596,9 +2627,11 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] { filter: none !im
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
-      <article class="card sxc sxc--photo" data-href="wrylo.html">
-        <img class="sx-photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
-        <div class="sx sx--clock" aria-hidden="true"><div class="sx-clock"><span class="sx-clock__dot"></span><b class="sx-num">12</b><span class="sx-clock__lab">DAY<br>STREAK</span></div></div>
+      <article class="card sxc sxc--wr2" data-href="wrylo.html">
+        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-light.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false">
+          <img class="wr2-mark" src="assets/img/wrylo-wordmark.png" alt="" draggable="false">
+          <p class="wr2-side">Reading by mood.<br>Find your next book.</p></div>
+        <div class="wr2-shelf"><div class="wr2-tile"><span class="wr2-cap"><em>Reading</em><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"></span><b>The Midnight Library</b><small>45% read</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Next</em><img src="assets/img/wr-cover-evelyn.jpg" alt="" draggable="false"></span><b>Evelyn Hugo</b><small>Mood: escape</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Finished</em><img src="assets/img/wr-cover-crawdads.jpg" alt="" draggable="false"></span><b>Crawdads</b><small>5 stars</small></div></div>
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
       </article>
     </div>
