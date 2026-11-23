@@ -3101,6 +3101,76 @@ body .track .card.sxc[data-href="wrylo.html"]::after { filter: blur(6px) saturat
 body .track .card.sxc[data-href="wrylo.html"] { background: #5A443B !important; }
 
 body .track .card.sxc[data-href="fupay.html"] { background: linear-gradient(180deg, rgba(24, 25, 28, 0.32), rgba(24, 25, 28, 0.58)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #2E3034 !important; }
+
+/* ================= Colour system: warm graded photos, white glass, off-white type, near-black buttons, one apricot accent per card ================= */
+.track .card.sxc { --ac: #FF9A52; --ink: #F6F5F1; --ink2: rgba(246, 245, 241, 0.62); --btn: #141414; }
+/* Titles: off-white on every card */
+body .track .card.sxc .card__head .card__title { color: var(--ink) !important; }
+body .track .card.sxc .card__head .card__year { color: rgba(246, 245, 241, 0.62) !important; }
+body .track .card.sxc .card__head .card__sep { color: rgba(246, 245, 241, 0.35) !important; }
+/* Photo grade: pull every ground into the same warm mid-dark range */
+body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: linear-gradient(180deg, rgba(58, 50, 43, 0.5), rgba(46, 38, 32, 0.68)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #3A322B !important; }
+body .track .card.sxc[data-href="sunday.html"] { background: linear-gradient(180deg, rgba(52, 42, 34, 0.5), rgba(40, 32, 26, 0.62)), url("assets/img/sunday-card-bg.jpg") 50% 30% / cover no-repeat, #3A322B !important; }
+body .track .card.sxc[data-href="fupay.html"] { background: linear-gradient(180deg, rgba(62, 50, 40, 0.45), rgba(44, 36, 30, 0.7)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #3A322B !important; filter: none; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] { background: linear-gradient(180deg, rgba(40, 32, 26, 0.45), rgba(40, 32, 26, 0.3) 40%, rgba(40, 32, 26, 0.5)), url("assets/img/sm-insights-bg3-blur.jpg") 50% 50% / cover no-repeat, #3A322B !important; }
+.g1-bg i { filter: saturate(0.7) brightness(0.62) sepia(0.32) !important; }
+body .track .card.sxc[data-href="go1.html"]::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: rgba(58, 46, 36, 0.22); }
+/* Glass: one recipe everywhere */
+.sp4-card, .su4-card, .su4-chip, .g3-up, .g3-course, .fy-pay:not(.is-paid), body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: linear-gradient(150deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.1)), rgba(40, 32, 26, 0.18) !important; -webkit-backdrop-filter: blur(22px) saturate(140%) !important; backdrop-filter: blur(22px) saturate(140%) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.55) !important; color: var(--ink) !important; }
+/* Pricing on the darker photo */
+.sp4-k, .sp4-price small, .sp4-src small { color: var(--ink2) !important; }
+.sp4-price { color: var(--ink); }
+.sp4-stack i { background: rgba(255, 255, 255, 0.92) !important; }
+.sp4-btn { background: var(--btn) !important; color: #FFFFFF !important; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important; }
+.sp4-rec { background: var(--ac) !important; color: #2A1608 !important; box-shadow: 0 0.8em 1.4em -0.7em rgba(120, 60, 20, 0.6) !important; }
+/* Sunday: neutral card, apricot dot at the latest point */
+body .track .card.sxc[data-href="sunday.html"] .su4-k, body .track .card.sxc[data-href="sunday.html"] .su4-axis { color: var(--ink2) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-k span { color: rgba(246, 245, 241, 0.4) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-delta { background: rgba(255, 255, 255, 0.14) !important; color: var(--ink) !important; }
+body .track .card.sxc[data-href="sunday.html"] #su4g stop { stop-color: #FFFFFF; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chart path:last-of-type { stroke: rgba(246, 245, 241, 0.9); }
+body .track .card.sxc[data-href="sunday.html"] .su4-dot { background: var(--ac) !important; box-shadow: 0 0 0 0.3em rgba(255, 154, 82, 0.25) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chip em { background: rgba(246, 245, 241, 0.92) !important; color: #141414 !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chip b { background: rgba(255, 255, 255, 0.14) !important; color: var(--ink) !important; }
+/* Go1: neutral pieces, apricot published tick */
+.g3-txt small { color: var(--ink2) !important; }
+.g3-bar { background: rgba(255, 255, 255, 0.16) !important; }
+.g3-bar i { background: rgba(246, 245, 241, 0.9) !important; }
+.g3-doc b { background: #141414 !important; }
+.g3-cover { background: radial-gradient(60% 80% at 80% 20%, rgba(255, 255, 255, 0.16) 0%, transparent 60%), linear-gradient(135deg, rgba(92, 80, 70, 0.9), rgba(44, 36, 30, 0.92)) !important; }
+.g3-play { background: var(--btn) !important; }
+.g3-pub { color: var(--ink) !important; }
+.g3-pub em { background: var(--ac) !important; color: #2A1608 !important; }
+/* Fupay: today's payment carries the accent */
+.fy-pay.is-paid { background: var(--ac) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 1em 1.6em -0.9em rgba(120, 60, 20, 0.6) !important; }
+.fy-pay.is-paid span, .fy-pay.is-paid b { color: #2A1608 !important; }
+.fy-pay.is-paid em { background: #2A1608 !important; color: var(--ac) !important; }
+.fy-cash { background: rgba(246, 245, 241, 0.94) !important; color: #141414 !important; }
+.fy-prod img { box-shadow: 0 0 0 0.3em rgba(255, 255, 255, 0.14), 0 1.4em 2em -1em rgba(0, 0, 0, 0.7) !important; }
+.fy-pay span, .fy-pay b { color: var(--ink2); }
+/* Insights: the trend is the accent, everything else neutral */
+body .track .card.sxc[data-href="supermetrics-insights.html"] { --y: #F6F5F1; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:first-child { stroke: var(--ac); }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:last-child { fill: rgba(255, 154, 82, 0.18); }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend b { color: var(--ac) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { background: rgba(246, 245, 241, 0.92) !important; color: #141414 !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-tick { background: rgba(246, 245, 241, 0.92) !important; color: #141414 !important; }
+/* Wrylo: the streak is the accent, the rest neutral */
+body .track .card.sxc[data-href="wrylo.html"] .wq-st small { color: var(--ac) !important; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-streak { background: rgba(255, 154, 82, 0.14) !important; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-curh span { background: rgba(255, 255, 255, 0.1) !important; color: var(--ink2) !important; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-cta { background: var(--btn) !important; }
+body .track .card.sxc[data-href="wrylo.html"] .wq-bar i { background: var(--ink) !important; }
+
+/* Colour system: titles win over older per-card colours; Sunday chip stays solid */
+body .track .card.sxc[data-href][data-href] .card__head .card__title { color: #F6F5F1 !important; }
+body .track .card.sxc[data-href][data-href] .card__head .card__year { color: rgba(246, 245, 241, 0.62) !important; }
+body .track .card.sxc[data-href][data-href] .card__head .card__sep { color: rgba(246, 245, 241, 0.35) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chip { background: rgba(246, 245, 241, 0.94) !important; color: #141414 !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chip em { background: #141414 !important; color: #FFFFFF !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-chip b { background: rgba(20, 20, 20, 0.08) !important; color: #141414 !important; }
+
+body .track .card.sxc[data-href="fupay.html"][data-href] { background: linear-gradient(180deg, rgba(52, 42, 34, 0.3), rgba(40, 32, 26, 0.6)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #6E5A4A !important; background-blend-mode: normal, luminosity, normal !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
