@@ -2996,7 +2996,10 @@ body .track .card.sxc[data-href="wrylo.html"]::after { filter: blur(6px) saturat
 body .track .card.sxc[data-href="wrylo.html"] { background: #4A3730 !important; }
 
 /* Fupay: abstract photo ground */
-body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupay-card-bg.jpg") 38% 50% / cover no-repeat, #0B0C0D !important; }
+body .track .card.sxc[data-href="fupay.html"] { background: radial-gradient(46% 30% at 50% 60%, rgba(5, 7, 43, 0.88), rgba(5, 7, 43, 0.5) 60%, transparent 85%), url("assets/img/fupay-card-bg.jpg?v=2") 50% 50% / cover no-repeat, #05072B !important; }
+
+.fy-pay:not(.is-paid) { background: linear-gradient(150deg, rgba(40, 44, 90, 0.55), rgba(8, 10, 45, 0.6)) !important; }
+.fy-total, .fy-k { text-shadow: 0 0.1em 0.6em rgba(5, 7, 43, 0.8); }
 </style>
 <script>document.body.classList.add("home")</script>
 
