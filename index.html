@@ -2315,6 +2315,36 @@ body .track .card.sxc .sx-row.is-live .sx-ring { animation-delay: -1.9s !importa
 .g1-ok svg { width: 0.85em; height: 0.85em; }
 .g1-row:not(.g1-row--focus) .g1-ok { background: transparent; color: rgba(233, 220, 122, 0.55); box-shadow: inset 0 0 0 1px rgba(233, 220, 122, 0.3); }
 .g1-pill .g1-ok { width: 1.15em; height: 1.15em; }
+
+/* Fupay: a phone over a blurred, light-streaked ground, showing a pay-in-four checkout */
+body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupay-bg.jpg") 50% 50% / cover no-repeat, #15120F !important; }
+.sx--fp { justify-content: flex-start; padding: 0; }
+.fp-phone { position: absolute; left: 50%; top: 23%; width: 64%; aspect-ratio: 9 / 19.2; transform: translateX(-50%); padding: 0.32em; border-radius: 2.6em; box-sizing: border-box;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.08) 35%, rgba(255, 255, 255, 0.28) 70%, rgba(255, 255, 255, 0.06));
+  box-shadow: 0 2em 3em -1.4em rgba(0, 0, 0, 0.75), inset 0 0 0 1px rgba(255, 255, 255, 0.18); }
+.fp-screen { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden; border-radius: 2.3em; padding: 2.4em 1em 0; box-sizing: border-box;
+  background: radial-gradient(70% 40% at 50% 34%, #2A241E, #0B0A09 70%); color: #F3EFE8; }
+.fp-island { position: absolute; top: 0.6em; left: 50%; width: 32%; height: 1.05em; transform: translateX(-50%); border-radius: 99px; background: #000; }
+.fp-logo { margin: 0; font-size: 1.05em; letter-spacing: 0.06em; color: #F3EFE8; }
+.fp-tabs { display: flex; gap: 0.35em; margin: 0.8em 0 0; }
+.fp-tabs span { padding: 0.35em 0.75em; border-radius: 99px; background: rgba(255, 255, 255, 0.1); font-family: "Space Mono", ui-monospace, monospace; font-size: 0.46em; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(243, 239, 232, 0.7); }
+.fp-tabs span.is-on { background: rgba(243, 239, 232, 0.9); color: #15120F; }
+.fp-orb { width: 5.4em; height: 5.4em; margin: 1.4em 0 1em; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFFFFF 0%, #F1E9DD 18%, #C9B9A4 48%, #6F5F50 82%, #3B3129 100%);
+  box-shadow: inset -0.5em -0.7em 1.2em rgba(40, 28, 18, 0.55), 0 1.2em 1.8em -0.8em rgba(0, 0, 0, 0.9); }
+.fp-item { margin: 0; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(243, 239, 232, 0.6); }
+.fp-amt { display: flex; align-items: flex-start; margin: 0.25em 0 0; font-size: 2.3em; line-height: 1; letter-spacing: -0.03em; }
+.fp-amt span { font-size: 0.45em; margin: 0.18em 0.08em 0 0; opacity: 0.75; }
+.fp-amt small { font-size: 0.45em; margin-top: 0.18em; opacity: 0.55; }
+.fp-split { display: flex; gap: 0.4em; margin: 1em 0 0.45em; }
+.fp-split i { width: 1.25em; height: 1.25em; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(243, 239, 232, 0.35); }
+.fp-split i.is-on { background: radial-gradient(circle at 35% 30%, #FFF7C9, var(--y) 60%); box-shadow: none; }
+.fp-note { margin: 0; font-size: 0.56em; color: rgba(243, 239, 232, 0.6); }
+.fp-btn { display: flex; align-items: center; gap: 0.6em; margin-top: 1.1em; padding: 0.3em 0.3em 0.3em 1em; border-radius: 99px; background: rgba(255, 255, 255, 0.1); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+.fp-btn span { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.48em; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(243, 239, 232, 0.85); }
+.fp-btn b { padding: 0.45em 0.8em; border-radius: 99px; background: var(--y); color: #1B1A12; font-weight: 400; font-size: 0.62em; }
+
+@media (max-width: 760px) { body .track .card.sxc[data-href="fupay.html"] .sx--fp { font-size: calc(var(--card-w) * 0.036 / (var(--card-w) * 0.042) * 1em); } body .track .card.sxc[data-href="fupay.html"] .fp-phone { top: 21%; } }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2372,12 +2402,18 @@ body .track .card.sxc .sx-row.is-live .sx-ring { animation-delay: -1.9s !importa
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
       </article>
       <article class="card sxc" data-href="fupay.html">
-        <div class="sx sx--id" aria-hidden="true">
-  <div class="sx-idrow">
-    <span class="sx-idsq"><i></i><i></i><i></i><i></i>ID</span>
-    <span class="sx-idpill"><span class="sx-idpct"><b class="sx-count"></b></span><span class="sx-idbar"><i></i></span></span>
-  </div>
-  <p class="sx-caption">Verifying identity<br>No forms to fill</p>
+        <div class="sx sx--fp" aria-hidden="true">
+  <div class="fp-phone"><div class="fp-screen">
+    <i class="fp-island"></i>
+    <p class="fp-logo">fupay</p>
+    <div class="fp-tabs"><span class="is-on">Pay</span><span>Spend</span><span>Save</span></div>
+    <div class="fp-orb"></div>
+    <p class="fp-item">Lounge chair</p>
+    <p class="fp-amt"><span>€</span>240<small>.00</small></p>
+    <div class="fp-split"><i class="is-on"></i><i></i><i></i><i></i></div>
+    <p class="fp-note">4 × €60 · 0% interest</p>
+    <div class="fp-btn"><span>Pay today</span><b>€60.00</b></div>
+  </div></div>
 </div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
