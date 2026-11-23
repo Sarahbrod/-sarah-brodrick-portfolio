@@ -2696,6 +2696,53 @@ body .track .card.sxc[data-href="sunday.html"] { background:
 .su4-chip em { display: grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: #FFFFFF; color: #1E1F21; }
 .su4-chip em svg { width: 0.9em; height: 0.9em; }
 .su4-chip b { margin-left: 0.3em; padding: 0.3em 0.6em; border-radius: 99px; background: rgba(255, 255, 255, 0.14); font-weight: 400; }
+
+/* Go1: upload on the top photo flows into a published course on the bottom one */
+.g3-link { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.g3-up, .g3-course { position: absolute; z-index: 2; color: #17201C; background: rgba(255, 255, 255, 0.82); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 1.4em 2.6em -1.4em rgba(10, 10, 8, 0.65); }
+.g3-up { left: 9%; top: 24%; width: 60%; display: flex; align-items: center; gap: 0.8em; padding: 0.75em 0.9em 0.75em 0.75em; border-radius: 1em; }
+.g3-files { position: relative; flex: none; width: 2.6em; height: 3em; }
+.g3-files i { position: absolute; inset: 0; border-radius: 0.4em; background: #DCE9E2; }
+.g3-files i:nth-child(1) { transform: rotate(-12deg) translate(-0.2em, 0.1em); background: #C8DCD2; }
+.g3-files i:nth-child(2) { transform: rotate(-5deg); background: #D6E6DD; }
+.g3-doc { display: grid; place-items: end center; padding-bottom: 0.45em; background: #FFFFFF !important; box-shadow: 0 0.3em 0.6em -0.2em rgba(0, 0, 0, 0.2); }
+.g3-doc::before { content: ""; position: absolute; left: 0.45em; right: 0.45em; top: 0.5em; height: 0.9em; background: repeating-linear-gradient(180deg, #D4DAD6 0 0.12em, transparent 0.12em 0.3em); }
+.g3-doc b { padding: 0.15em 0.35em; border-radius: 0.2em; background: #1F6B52; color: #FFFFFF; font-size: 0.42em; font-weight: 600; letter-spacing: 0.05em; }
+.g3-txt { flex: 1; min-width: 0; display: grid; gap: 0.4em; }
+.g3-txt b { font-size: 0.7em; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g3-bar { height: 0.3em; border-radius: 99px; background: rgba(23, 32, 28, 0.1); overflow: hidden; }
+.g3-bar i { display: block; width: 72%; height: 100%; border-radius: inherit; background: #1F6B52; }
+.g3-txt small { font-size: 0.52em; color: rgba(23, 32, 28, 0.55); }
+.g3-course { right: 9%; top: 57%; width: 54%; padding: 0.45em; border-radius: 1.1em; }
+.g3-cover { position: relative; height: 5.2em; border-radius: 0.75em; overflow: hidden; background: radial-gradient(60% 80% at 80% 20%, #7FC4A4 0%, transparent 60%), radial-gradient(70% 90% at 10% 100%, #0F4A3A 0%, transparent 70%), linear-gradient(135deg, #2E8A68, #16523F); }
+.g3-cover::after { content: ""; position: absolute; right: -1.2em; bottom: -1.6em; width: 5em; height: 5em; border-radius: 50%; border: 0.9em solid rgba(255, 255, 255, 0.12); }
+.g3-play { position: absolute; left: 0.6em; bottom: 0.6em; display: grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: #FFFFFF; color: #1F6B52; }
+.g3-play svg { width: 0.85em; height: 0.85em; margin-left: 0.1em; }
+.g3-tag { position: absolute; right: 0.6em; top: 0.6em; padding: 0.3em 0.6em; border-radius: 99px; background: rgba(0, 0, 0, 0.28); color: #FFFFFF; font-size: 0.48em; }
+.g3-meta { display: flex; align-items: center; justify-content: space-between; gap: 0.5em; padding: 0.7em 0.35em 0.3em; }
+.g3-meta b { font-size: 0.68em; font-weight: 500; white-space: nowrap; }
+.g3-pub { display: inline-flex; align-items: center; gap: 0.3em; font-size: 0.52em; color: #1F6B52; white-space: nowrap; }
+.g3-pub em { display: grid; place-items: center; width: 1.4em; height: 1.4em; border-radius: 50%; background: #1F6B52; color: #FFFFFF; }
+.g3-pub em svg { width: 0.9em; height: 0.9em; }
+/* Pricing card a touch larger */
+.sp4-card { width: 72% !important; font-size: 1.12em; }
+/* Wrylo closer */
+body .track .card.sxc--wr2 .wr2-photo { width: 150% !important; top: 3% !important; }
+/* Sunday: ink card, larger text */
+.su4-card { background: #23263A !important; color: #F4F4F7 !important; box-shadow: 0 1.8em 3em -1.6em rgba(35, 38, 58, 0.55) !important; }
+.su4-k { font-size: 0.56em !important; color: rgba(244, 244, 247, 0.72) !important; }
+.su4-k span { color: rgba(244, 244, 247, 0.5) !important; }
+.su4-delta { font-size: 0.62em !important; background: rgba(255, 255, 255, 0.12) !important; color: #F4F4F7 !important; }
+.su4-axis { font-size: 0.48em !important; color: rgba(244, 244, 247, 0.6) !important; }
+.su4-chart path:first-of-type { fill: url(#su4g); }
+#su4g stop { stop-color: #FFFFFF; }
+.su4-chart path:last-of-type { stroke: #FFFFFF; }
+.su4-dot { background: #FFFFFF !important; box-shadow: 0 0 0 0.3em rgba(255, 255, 255, 0.18) !important; }
+.su4-chip { background: #FFFFFF !important; color: #23263A !important; font-size: 0.72em !important; }
+.su4-chip em { background: #23263A !important; color: #FFFFFF !important; }
+.su4-chip b { background: #EEEEF3 !important; }
+/* Insights: photo ground under a dark veil */
+body .track .card.sxc[data-href="supermetrics-insights.html"] { background: linear-gradient(180deg, rgba(24, 25, 28, 0.55), rgba(24, 25, 28, 0.8)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #1E2023 !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2741,15 +2788,14 @@ body .track .card.sxc[data-href="sunday.html"] { background:
       <article class="card sxc" data-href="go1.html">
         <div class="g1-bg" aria-hidden="true"><i></i><i></i></div>
         <div class="sx sx--g1" aria-hidden="true">
-  <div class="g2-a">
-    <i class="g2-thumb"></i>
-    <span class="g2-txt"><b>Leadership essentials</b><small>12 lessons</small></span>
-    <em class="g2-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>
+  <svg class="g3-link" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M30 40 C30 52 62 46 62 57" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"/></svg>
+  <div class="g3-up">
+    <span class="g3-files"><i></i><i></i><i class="g3-doc"><b>PDF</b></i></span>
+    <span class="g3-txt"><b>Onboarding 2025.pdf</b><span class="g3-bar"><i></i></span><small>Uploading · 72%</small></span>
   </div>
-  <div class="g2-b">
-    <p class="g2-k">Upload content</p>
-    <div class="g2-bar"><i></i></div>
-    <p class="g2-n"><b>24</b> courses published</p>
+  <div class="g3-course">
+    <div class="g3-cover"><span class="g3-play"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.8v8.4L12.4 8z" fill="currentColor"/></svg></span><span class="g3-tag">12 lessons</span></div>
+    <div class="g3-meta"><b>Onboarding 2025</b><span class="g3-pub"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Published</span></div>
   </div>
 </div>
         <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
