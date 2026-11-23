@@ -2345,6 +2345,18 @@ body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupa
 .fp-btn b { padding: 0.45em 0.8em; border-radius: 99px; background: var(--y); color: #1B1A12; font-weight: 400; font-size: 0.62em; }
 
 @media (max-width: 760px) { body .track .card.sxc[data-href="fupay.html"] .sx--fp { font-size: calc(var(--card-w) * 0.036 / (var(--card-w) * 0.042) * 1em); } body .track .card.sxc[data-href="fupay.html"] .fp-phone { top: 21%; } }
+
+/* Fupay screen, built from the app's own pieces: search, Discover tabs, a cashback deal, pay in four */
+.fp-search { display: flex; align-items: center; gap: 0.45em; width: 100%; box-sizing: border-box; margin: 0.75em 0 0; padding: 0.5em 0.7em; border-radius: 99px; background: rgba(255, 255, 255, 0.08); color: rgba(243, 239, 232, 0.5); }
+.fp-search svg { width: 0.9em; height: 0.9em; flex: none; }
+.fp-search span { font-size: 0.58em; }
+.fp-tabs { margin-top: 0.6em !important; }
+.fp-orb { display: none; }
+.fp-prod { position: relative; width: 4.9em; height: 4.9em; margin: 1.05em 0 0.85em; }
+.fp-prod img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 1em 1.6em -0.8em rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.fp-cash { position: absolute; right: -2.2em; bottom: 0.15em; padding: 0.35em 0.65em; border-radius: 99px; background: var(--y); color: #1B1A12; font-size: 0.5em; white-space: nowrap; box-shadow: 0 0.5em 1em -0.5em rgba(0, 0, 0, 0.6); }
+.fp-split { margin-top: 0.8em !important; }
+.fp-btn { margin-top: 0.9em !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2406,13 +2418,14 @@ body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupa
   <div class="fp-phone"><div class="fp-screen">
     <i class="fp-island"></i>
     <p class="fp-logo">fupay</p>
-    <div class="fp-tabs"><span class="is-on">Pay</span><span>Spend</span><span>Save</span></div>
-    <div class="fp-orb"></div>
-    <p class="fp-item">Lounge chair</p>
-    <p class="fp-amt"><span>€</span>240<small>.00</small></p>
+    <div class="fp-search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.3 10.3l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Search everything</span></div>
+    <div class="fp-tabs"><span class="is-on">Discover</span><span>Stores</span><span>Deals</span></div>
+    <div class="fp-prod"><img src="assets/img/fp-polo.jpg" alt="" draggable="false"><span class="fp-cash">$5 cashback</span></div>
+    <p class="fp-item">Polo Tshirt</p>
+    <p class="fp-amt"><span>$</span>79<small>.60</small></p>
     <div class="fp-split"><i class="is-on"></i><i></i><i></i><i></i></div>
-    <p class="fp-note">4 × €60 · 0% interest</p>
-    <div class="fp-btn"><span>Pay today</span><b>€60.00</b></div>
+    <p class="fp-note">4 × $19.90 · 0% interest</p>
+    <div class="fp-btn"><span>Buy now</span><b>$19.90</b></div>
   </div></div>
 </div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
