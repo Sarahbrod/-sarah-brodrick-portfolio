@@ -326,10 +326,6 @@
 
 /* The normal arrow pointer everywhere on the carousel, including while dragging */
 .stage, .stage.is-dragging, .stage .card { cursor: default !important; }
-
-/* Card text sits just under the title at the top */
-.card .card__desc { top: calc(7% + 1.9em) !important; bottom: auto !important; padding: 0 12% !important; font-size: calc(var(--card-w) * 0.03) !important;
-@media (max-width: 760px) { .card .card__desc { top: calc(7% + 22px) !important; font-size: 12px !important; } }
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
   <link rel="icon" href="favicon.ico?v=3" sizes="any">
@@ -2183,11 +2179,6 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 
 /* Insights card: the orchid fills the card, with only a light wash at the very top and bottom */
 .card.card--mood[data-href="supermetrics-insights.html"][data-href][data-href][data-href][data-href] { background: linear-gradient(180deg, rgba(217, 230, 242, 0.32) 0%, rgba(217, 230, 242, 0) 18%, rgba(217, 230, 242, 0) 82%, rgba(217, 230, 242, 0.32) 100%), url("assets/img/si-orchid-blur.jpg") 52% 46% / 175% auto no-repeat, #2C4F80 !important; }
-
-/* Card text under the title: same colour family as the title */
-body .track .card[data-href] .card__desc { color: rgba(22, 23, 26, 0.62) !important; text-shadow: none !important; }
-body .track .card[data-href="sunday.html"] .card__desc { color: rgba(247, 247, 245, 0.72) !important; }
-body .track .card.card--mood[data-href="supermetrics-insights.html"][data-href][data-href][data-href][data-href] .card__desc { color: rgba(22, 23, 26, 0.62) !important; text-shadow: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2223,41 +2214,34 @@ body .track .card.card--mood[data-href="supermetrics-insights.html"][data-href][
         <div class="card__tex tex--dark" aria-hidden="true"></div>
         <div class="card__art up-stage" aria-hidden="true"><div class="up"><div class="up__head"><b>Upload content</b><span class="up__pill"><span class="up__prog"><span class="up__count"></span> of 24</span><span class="up__done"><i class="up__tick"></i>24 published</span></span></div><div class="up__slot"><div class="up__zone"><span class="up__zin"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 10.5V3M4.8 6.2L8 3l3.2 3.2M3 10.5v2h10v-2" stroke="currentColor" stroke-width="1.3"/></svg><span>Drop your catalogue</span></span></div><div class="up__list"><div class="up__row up__row--1"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div><div class="up__row up__row--2"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div><div class="up__row up__row--3"><i class="up__thumb"></i><span class="up__lines"><i></i><i></i></span><span class="up__state"><i class="up__spin"></i><i class="up__ok"></i></span></div></div><div class="up__file"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 1.5h5l3 3v10H4z" fill="#FFFFFF" stroke="currentColor" stroke-width="1.1"/><path d="M9 1.5v3h3" stroke="currentColor" stroke-width="1.1"/></svg>catalogue.csv<svg class="up__cursor" viewBox="0 0 12 16" aria-hidden="true"><path d="M1 1l9.5 9.2H6.2L3.8 14.6 1 1z" fill="#111111" stroke="#FFFFFF" stroke-width="1"/></svg></div></div><div class="up__bar"><i></i></div></div></div>
         <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
-        <p class="card__desc">Bulk uploads that cut time-to-value by 29%</p>
       </article>
       <article class="card card--mood" data-href="supermetrics-purchase.html" style="--m1: #26282B; --m2: #5E6267; --m3: #B4B8BC">
         <div class="card__tex tex--dark" aria-hidden="true"></div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2024</span></div>
-        <p class="card__desc">Self-serve purchase flow, 22% ARR growth</p>
       </article>
       <article class="card card--mood" data-href="fupay.html" style="--m1: #141A1C; --m2: #3E5A5B; --m3: #9DB4A8">
         <div class="card__tex tex--grey" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><img class="card__tile" src="assets/img/fupay-tile.png" alt="" draggable="false"></div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2021</span></div>
-        <p class="card__desc">A simpler sign-up for buy now, pay later</p>
       </article>
       <article class="card card--mood" data-href="foba.html" data-soon="Contract" style="--m1: #F6ECE6; --m2: #F3D6D3; --m3: #FFFFFF">
         <div class="card__tex tex--blue" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><img class="foba-logo" src="assets/img/foba-logo-sharp.png" alt="" draggable="false" decoding="async"></div>
         <div class="card__head"><h2 class="card__title">FoBA Media</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year card__swap"><span class="swap__a">Contract 2025</span><span class="swap__b" aria-hidden="true">Coming soon</span></span></div>
-        <p class="card__desc">Brand and product for audience intelligence</p>
       </article>
       <article class="card card--mood" data-href="sunday.html" data-soon="Coming soon" style="--m1: #E9D3DC; --m2: #F2A9C6; --m3: #F7E6EE">
         <div class="card__tex tex--grey" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><div class="ui su2"><div class="ui__head"><b>Guests served</b><span class="ui__pill">This week</span></div><div class="su2__chart"><div class="su2__plot"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M7.14,65.00 L21.43,60.00 L35.71,62.50 L50.00,46.67 L64.29,24.17 L78.57,10.83 L92.86,33.33 L92.86,100 L7.14,100 Z" fill="#E8F5FF"/><path d="M7.14,65.00 L21.43,60.00 L35.71,62.50 L50.00,46.67 L64.29,24.17 L78.57,10.83 L92.86,33.33" fill="none" stroke="#0F1114" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg><div class="su2__scrub"><i class="su2__line"></i><span class="su2__tip"><span class="su2__strip"><span><b>Mon</b> 84</span><span><b>Tue</b> 96</span><span><b>Wed</b> 90</span><span><b>Thu</b> 128</span><span><b>Fri</b> 182</span><span><b>Sat</b> 214</span><span><b>Sun</b> 160</span></span></span><i class="su2__dot"><svg class="ui__cur" viewBox="0 0 12 16" aria-hidden="true"><path d="M1 1l9.5 9.2H6.2L3.8 14.6 1 1z" fill="#0F1114" stroke="#FFFFFF" stroke-width="1"/></svg></i></div></div></div><div class="su2__days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div></div>
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2026</span></div>
-        <p class="card__desc">Reporting and analytics for restaurants</p>
       </article>
       <article class="card card--mood" data-href="supermetrics-insights.html" style="--m1: #0E1A33; --m2: #2F5BC4; --m3: #9DB8F2">
         <div class="card__tex tex--grey" aria-hidden="true"></div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2023</span></div>
-        <p class="card__desc">AI summaries of your marketing data</p>
       </article>
       <article class="card card--photo" data-href="wrylo.html" style="--grad: #FFFFFF">
         <div class="card__tex tex--blue" aria-hidden="true"></div>
         <img class="card__photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" width="1000" height="1316" decoding="async" draggable="false">
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Personal app </span>2025</span></div>
-        <p class="card__desc">A calmer way to track your reading</p>
       </article>
     </div>
     <div class="modes fade" style="--d:.7" role="group" aria-label="Carousel shape">
