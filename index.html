@@ -3042,7 +3042,7 @@ body .track .card.sxc[data-href="sunday.html"] .su4-card { margin-top: 62% !impo
 body .track .card.sxc[data-href="sunday.html"] .su4-chip { bottom: auto !important; top: -3.6em !important; right: 0 !important; }
 
 /* Arrival: each card's UI settles a beat after the card itself */
-body .track .card.sxc > .sx, body .track .card.sxc > .wr2-top { opacity: var(--in, 1); transform: translateY(calc((1 - var(--in, 1)) * 0.9em)) scale(calc(0.97 + var(--in, 1) * 0.03)); }
+body .track .card.sxc > .sx, body .track .card.sxc > .wr2-top { opacity: calc(0.45 + var(--in, 1) * 0.55); transform: translateY(calc((1 - var(--in, 1)) * 0.25em)); }
 @media (prefers-reduced-motion: reduce) { body .track .card.sxc > .sx { opacity: 1; transform: none; } }
 /* Sunday card centred again, chip below */
 body .track .card.sxc[data-href="sunday.html"] .su4-card { margin-top: 0 !important; width: 74% !important; }
@@ -4018,7 +4018,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
         // Gentle arrival: each card rises a short way into its place and fades up, centre first
         const delay = 40 + Math.min(Math.abs(k), 5) * 55;
         const q = clamp((now - start - delay) / 950, 0, 1);
-        const qi = clamp((now - start - delay - 160) / 750, 0, 1);
+        const qi = clamp((now - start - delay - 60) / 800, 0, 1);
         const ei = 1 - Math.pow(1 - qi, 4);
         cards[i].style.setProperty('--in', ei.toFixed(3));
         if (q < 1) {
