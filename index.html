@@ -2811,8 +2811,10 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         // Phones: the centre card sits wholly between the header and the icons
         if (bandTopY === null) measureBand();
         const topLimit = Math.max(bandTopY, -stageH / 2) + 16;
-        s = Math.min(1, (bandBotY - 16 - topLimit) / cardH);
-        off = bandBotY - 16 - cardH * s / 2;
+        // Phones: clear space above and below the centre card, which sits in the middle of the band
+        const bot = bandBotY - 36, top = Math.max(bandTopY, -stageH / 2) + 44;
+        s = Math.min(0.9, (bot - top) / cardH);
+        off = (top + bot) / 2;
       }
       const op = stageW > 760 ? (ringFit() ? clamp((2.55 - Math.abs(k)) / 0.35, 0, 1) : clamp((3.1 - Math.abs(k)) / 0.5, 0, 1)) : 1;
       // Cards share a 3D space, so depth (not z-index) decides overlap: nudge each one back a
