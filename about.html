@@ -732,8 +732,8 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
 @supports (corner-shape: squircle) { .row--hero > .frame { corner-shape: superellipse(2); } }
 .row--hero > .frame img { border-radius: inherit !important; }
 
-/* Smaller hero image on larger screens, starting on the text column's left edge */
-@media (min-width: 761px) { .row--hero > .frame { grid-column: 1 / -1 !important; grid-row: 2; width: 100%; max-width: none; justify-self: stretch; aspect-ratio: 3 / 1 !important; height: auto !important; margin-top: 8px !important; } }
+/* Hero image sits in the text column, starting on the same left edge as the body copy */
+@media (min-width: 761px) { .row--hero > .frame { align-self: start; } }
 </style>
 </head>
 <body>
