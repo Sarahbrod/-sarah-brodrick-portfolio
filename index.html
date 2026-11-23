@@ -2518,6 +2518,14 @@ body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg
 body .track .card.sxc[data-href="go1.html"] .card__head .card__title { color: rgba(28, 29, 30, 0.85) !important; }
 body .track .card.sxc[data-href="go1.html"] .card__head .card__year { color: rgba(28, 29, 30, 0.5) !important; }
 body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba(28, 29, 30, 0.25) !important; }
+
+/* Sunday: three equal insight cards, one grey, centred */
+.sx--su3 { justify-content: center !important; padding: 12% 7% 0 !important; -webkit-mask-image: none !important; mask-image: none !important; }
+.su3-card, .su3-card:first-child, .su3-card:nth-child(2), .su3-card:nth-child(3) { width: 100% !important; opacity: 1 !important; padding: 0.95em 0.75em 0.95em 1em !important; background: rgba(110, 114, 110, 0.66) !important; box-shadow: none !important; }
+.su3-card:first-child .su3-txt p { font-size: 0.74em !important; }
+.su3-card:first-child .su3-orb { width: 3.9em !important; height: 3.9em !important; }
+/* Go1: the upload window as a whole card, rounded all round, sitting in the lower card */
+.g1-win { top: auto !important; bottom: 8% !important; padding-bottom: 1em !important; border-radius: 1.4em !important; -webkit-mask-image: none !important; mask-image: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2572,7 +2580,6 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
       </article>
       <article class="card sxc" data-href="go1.html">
         <div class="sx sx--g1" aria-hidden="true">
-  <span class="g1-file"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.8h5.2L12.5 5v9.2H4z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 1.8V5.2h3.4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>catalogue.csv</span>
   <div class="g1-win">
     <div class="g1-head"><b>Upload content</b><span class="g1-pill"><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>24 published</span></div>
     <div class="g1-bar"><i></i></div>
@@ -2607,7 +2614,6 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
   <div class="su3-card"><div class="su3-txt"><p>Guests up 18% this week. Friday dinner was your busiest…</p><div class="su3-foot"><span class="sx-tag">Guests</span><span class="sx-tag">Revenue</span><small>This week</small></div></div><span class="su3-orb su3-orb--bars"><i style="--h:0.42"></i><i style="--h:0.55"></i><i style="--h:0.48"></i><i style="--h:0.7"></i><i style="--h:0.62"></i><i style="--h:1"></i><i style="--h:0.78"></i></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Tips reached €2,140, shared across 14 staff.</p><div class="su3-foot"><span class="sx-tag">Staff</span><span class="sx-tag">Tips</span><small>Today</small></div></div><span class="su3-orb su3-orb--ring"><b>€2.1k</b></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Pay at the table saved 38 hours of service…</p><div class="su3-foot"><span class="sx-tag">Insights</span><small>May</small></div></div><span class="su3-orb su3-orb--qr"><span><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i></span></span></div>
-  <div class="su3-card su3-card--fill"><div class="su3-txt"><i class="su3-bar" style="width:78%"></i><i class="su3-bar" style="width:52%"></i><div class="su3-foot"><span class="su3-ghost"></span><span class="su3-ghost"></span></div></div><span class="su3-orb su3-orb--blank"></span></div>
 </div>
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2026</span></div>
       </article>
@@ -2628,9 +2634,7 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
       <article class="card sxc sxc--wr2" data-href="wrylo.html">
-        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-light.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false">
-          <img class="wr2-mark" src="assets/img/wrylo-wordmark.png" alt="" draggable="false">
-          <p class="wr2-side">Reading by mood.<br>Find your next book.</p></div>
+        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-light.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false"></div>
         <div class="wr2-shelf"><div class="wr2-tile"><span class="wr2-cap"><em>Reading</em><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"></span><b>The Midnight Library</b><small>45% read</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Next</em><img src="assets/img/wr-cover-evelyn.jpg" alt="" draggable="false"></span><b>Evelyn Hugo</b><small>Mood: escape</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Finished</em><img src="assets/img/wr-cover-crawdads.jpg" alt="" draggable="false"></span><b>Crawdads</b><small>5 stars</small></div></div>
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
       </article>
