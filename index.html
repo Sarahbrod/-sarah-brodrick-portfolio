@@ -320,6 +320,9 @@
 
 /* Cards: square corners */
 .card, .track .card, .card.card--mood { border-radius: 0 !important; corner-shape: round !important; }
+
+/* No custom cursor: the normal pointer is used */
+.cursor { display: none !important; }
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
   <link rel="icon" href="favicon.ico?v=3" sizes="any">
@@ -550,7 +553,7 @@ a:hover .roll__ch > span, a:focus-visible .roll__ch > span { transform: translat
 .stage.is-dragging { cursor: grabbing; }
 .stage:focus-visible { outline: 1px solid var(--line); outline-offset: -1px; }
 @media (hover: hover) and (pointer: fine) {
-  .stage, .stage.is-dragging { cursor: none; }
+  .stage { cursor: grab; } .stage.is-dragging { cursor: grabbing; }
 }
 @media (hover: hover) and (pointer: fine) {
 }
@@ -2958,57 +2961,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       tagY += (food.y + 34 - tagY) * k;
     }
     tag.style.transform = `translate3d(${tagX.toFixed(1)}px, ${tagY.toFixed(1)}px, 0) scale(${tagS.toFixed(3)})`;
-    if (showing < 0.01 || !food) return;
-    glow.x += (food.x - glow.x) * (reduceMotion ? 1 : 0.22);
-    glow.y += (food.y - glow.y) * (reduceMotion ? 1 : 0.22);
-
-    while (ripples.length && now - ripples[0].t0 > 800) ripples.shift();
-    const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 160, k: Math.exp(-a * 3.4) }; });
-    // area to draw: the lit patch, plus any ripple still spreading
-    let reach = SPOT + 20;
-    for (const q of live) reach = Math.max(reach, Math.hypot(q.x - glow.x, q.y - glow.y) + q.R + 30);
-    reach = Math.min(reach, 380);
-    const W = window.innerWidth, H = window.innerHeight;
-    const ox = (W % GAP) / 2 + GAP / 2, oy = (H % GAP) / 2 + GAP / 2;
-    const i0 = Math.max(0, Math.floor((glow.x - reach - ox) / GAP)), i1 = Math.ceil((glow.x + reach - ox) / GAP);
-    const j0 = Math.max(0, Math.floor((glow.y - reach - oy) / GAP)), j1 = Math.ceil((glow.y + reach - oy) / GAP);
-    const t = (now - tStart) / 1000;
-    const breath = 1 + 0.05 * Math.sin(t * 1.6);      // the patch breathes, slowly
-    const spot = SPOT * breath;
-    let gapL = 0, gapR = 0, gapT = 0, gapB = 0;
-    if (soonText) { gapL = tagX - tagW / 2 - 8; gapR = tagX + tagW / 2 + 8; gapT = tagY - tagH / 2 - 8; gapB = tagY + tagH / 2 + 8; }
-    ctx.fillStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
-    for (let j = j0; j <= j1; j++) {
-      const y = oy + j * GAP;
-      for (let i = i0; i <= i1; i++) {
-        const x = ox + i * GAP;
-        if (soonText && x > gapL && x < gapR && y > gapT && y < gapB) continue;
-        const d = Math.hypot(x - glow.x, y - glow.y);
-        const lit = d < spot ? Math.pow(1 - d / spot, 1.6) : 0;
-        let near = 0, tx = 0, ty = 0;
-        for (const q of live) {
-          const dx = x - q.x, dy = y - q.y, dist = Math.hypot(dx, dy);
-          const off = dist - q.R;
-          if (off > 30 || off < -30) continue;
-          const h = 0.35 * pulse(off / 10, 1) * q.k;
-          near += h; tx += (dx / (dist || 1)) * h * 2; ty += (dy / (dist || 1)) * h * 2;
-        }
-        near = Math.min(1.2, near);
-        const v = lit * 0.38 + near * 0.3;
-        if (v < 0.05) continue;
-        const w = 0.55 + 0.45 * hash(i, j);
-        // dots near the pointer lean gently away from it
-        const push = d < spot ? (1 - d / spot) * 1.2 : 0;
-        const px = x + tx + (d ? (x - glow.x) / d : 0) * push;
-        const py = y + ty + (d ? (y - glow.y) / d : 0) * push;
-        ctx.globalAlpha = Math.min(1, v * w) * showing;
-        ctx.beginPath(); ctx.arc(px, py, 0.55 + 0.5 * Math.min(1, v), 0, 6.2832); ctx.fill();
-      }
-    }
-    // a fine point marks the pointer
-    ctx.globalAlpha = showing * 0.85;
-    ctx.beginPath(); ctx.arc(food.x, food.y, 1.6, 0, 6.2832); ctx.fill();
-    ctx.globalAlpha = 1;
+    // The dot field hover effect is switched off; only the label follows the pointer
   };
 
   window.addEventListener('resize', () => { measure(); measureBand(); sizeCursor(); });
