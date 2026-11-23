@@ -2344,7 +2344,7 @@ body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupa
 .fp-btn span { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.48em; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(243, 239, 232, 0.85); }
 .fp-btn b { padding: 0.45em 0.8em; border-radius: 99px; background: var(--y); color: #1B1A12; font-weight: 400; font-size: 0.62em; }
 
-@media (max-width: 760px) { body .track .card.sxc[data-href="fupay.html"] .sx--fp { font-size: calc(var(--card-w) * 0.036 / (var(--card-w) * 0.042) * 1em); } body .track .card.sxc[data-href="fupay.html"] .fp-phone { top: 21%; } }
+@media (max-width: 760px) { body .track .card.sxc[data-href="wrylo.html"] .sx--fp { font-size: calc(var(--card-w) * 0.036 / (var(--card-w) * 0.042) * 1em); } body .track .card.sxc[data-href="wrylo.html"] .fp-phone { top: 21%; } }
 
 /* Fupay screen, built from the app's own pieces: search, Discover tabs, a cashback deal, pay in four */
 .fp-search { display: flex; align-items: center; gap: 0.45em; width: 100%; box-sizing: border-box; margin: 0.75em 0 0; padding: 0.5em 0.7em; border-radius: 99px; background: rgba(255, 255, 255, 0.08); color: rgba(243, 239, 232, 0.5); }
@@ -2359,15 +2359,15 @@ body .track .card.sxc[data-href="fupay.html"] { background: url("assets/img/fupa
 .fp-btn { margin-top: 0.9em !important; }
 
 /* Fupay: the marbled photo as backing, softened and faded into the dark at the edges and foot */
-body .track .card.sxc[data-href="fupay.html"] { background: #CDBFB2 !important; }
-body .track .card.sxc[data-href="fupay.html"]::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(14, 12, 11, 0.3), rgba(14, 12, 11, 0) 24%); }
-body .track .card.sxc[data-href="fupay.html"]::after { content: ""; position: absolute; inset: -4%; z-index: 0; pointer-events: none;
+body .track .card.sxc[data-href="wrylo.html"] { background: #CDBFB2 !important; }
+body .track .card.sxc[data-href="wrylo.html"]::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(14, 12, 11, 0.3), rgba(14, 12, 11, 0) 24%); }
+body .track .card.sxc[data-href="wrylo.html"]::after { content: ""; position: absolute; inset: -4%; z-index: 0; pointer-events: none;
   background: url("assets/img/fupay-bg-photo.jpg") 50% 40% / cover no-repeat; filter: blur(6px) saturate(0.95) brightness(1.02);
   -webkit-mask-image: radial-gradient(85% 70% at 55% 38%, #000 35%, transparent 92%), linear-gradient(180deg, #000 45%, transparent 92%);
   -webkit-mask-composite: source-in; mask-image: radial-gradient(85% 70% at 55% 38%, #000 35%, transparent 92%), linear-gradient(180deg, #000 45%, transparent 92%); mask-composite: intersect; }
-body .track .card.sxc[data-href="fupay.html"] > * { position: relative; z-index: 1; }
-body .track .card.sxc[data-href="fupay.html"] > .sx { position: absolute; z-index: 2; }
-body .track .card.sxc[data-href="fupay.html"] > .card__head { position: absolute !important; z-index: 4; }
+body .track .card.sxc[data-href="wrylo.html"] > * { position: relative; z-index: 1; }
+body .track .card.sxc[data-href="wrylo.html"] > .sx { position: absolute; z-index: 2; }
+body .track .card.sxc[data-href="wrylo.html"] > .card__head { position: absolute !important; z-index: 4; }
 
 /* Supermetrics pricing: two photographs stacked, each carrying one piece of the purchase UI */
 body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: #141311 !important; }
@@ -2743,6 +2743,11 @@ body .track .card.sxc--wr2 .wr2-photo { width: 150% !important; top: 3% !importa
 .su4-chip b { background: #EEEEF3 !important; }
 /* Insights: photo ground under a dark veil */
 body .track .card.sxc[data-href="supermetrics-insights.html"] { background: linear-gradient(180deg, rgba(24, 25, 28, 0.55), rgba(24, 25, 28, 0.8)), url("assets/img/si-orchid-blur.jpg") 52% 46% / cover no-repeat, #1E2023 !important; }
+
+/* Fupay now wears the hands shot, Wrylo the phone */
+body .track .card.sxc.sxc--wr2[data-href="fupay.html"], body .track .card.sxc--wr2[data-href="fupay.html"] .wr2-top { background: #5D6E73 !important; }
+.fp-prod.wr-book { width: 3.5em; height: 5.1em; }
+.fp-prod.wr-book img { border-radius: 0.25em; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2800,21 +2805,8 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] { background: line
 </div>
         <div class="card__head"><h2 class="card__title">Go1</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
-      <article class="card sxc" data-href="fupay.html">
-        <div class="sx sx--fp" aria-hidden="true">
-  <div class="fp-phone"><div class="fp-screen">
-    <i class="fp-island"></i>
-    <p class="fp-logo">fupay</p>
-    <div class="fp-search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.3 10.3l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Search everything</span></div>
-    <div class="fp-tabs"><span class="is-on">Discover</span><span>Stores</span><span>Deals</span></div>
-    <div class="fp-prod"><img src="assets/img/fp-polo.jpg" alt="" draggable="false"><span class="fp-cash">$5 cashback</span></div>
-    <p class="fp-item">Polo Tshirt</p>
-    <p class="fp-amt"><span>$</span>79<small>.60</small></p>
-    <div class="fp-split"><i class="is-on"></i><i></i><i></i><i></i></div>
-    <p class="fp-note">4 × $19.90 · 0% interest</p>
-    <div class="fp-btn"><span>Buy now</span><b>$19.90</b></div>
-  </div></div>
-</div>
+      <article class="card sxc sxc--wr2" data-href="fupay.html">
+        <div class="wr2-top"><img class="wr2-photo" src="assets/img/fupay-card-hands.jpg" alt="Hands holding a phone showing a Fupay product page" decoding="async" draggable="false"></div>
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
       <article class="card sxc" data-href="sunday.html">
@@ -2843,9 +2835,21 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] { background: line
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
-      <article class="card sxc sxc--wr2" data-href="wrylo.html">
-        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-deep.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false"></div>
-        <div class="wr2-shelf"><div class="wr2-tile"><span class="wr2-cap"><em>Reading</em><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"></span><b>The Midnight Library</b><small>45% read</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Next</em><img src="assets/img/wr-cover-evelyn.jpg" alt="" draggable="false"></span><b>Evelyn Hugo</b><small>Mood: escape</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Finished</em><img src="assets/img/wr-cover-crawdads.jpg" alt="" draggable="false"></span><b>Crawdads</b><small>5 stars</small></div></div>
+      <article class="card sxc" data-href="wrylo.html">
+        <div class="sx sx--fp" aria-hidden="true">
+  <div class="fp-phone"><div class="fp-screen">
+    <i class="fp-island"></i>
+    <p class="fp-logo">wrylo</p>
+    <div class="fp-search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.3 10.3l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Search books</span></div>
+    <div class="fp-tabs"><span class="is-on">Reading</span><span>Library</span><span>Discover</span></div>
+    <div class="fp-prod wr-book"><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"><span class="fp-cash">8 day streak</span></div>
+    <p class="fp-item">The Midnight Library</p>
+    <p class="fp-amt">45<small>%</small></p>
+    <div class="fp-split"><i class="is-on"></i><i class="is-on"></i><i></i><i></i></div>
+    <p class="fp-note">Chapter 12 · 18 min left</p>
+    <div class="fp-btn"><span>Keep reading</span><b>Ch. 12</b></div>
+  </div></div>
+</div>
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
       </article>
     </div>
