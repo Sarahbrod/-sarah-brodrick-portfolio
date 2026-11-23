@@ -2676,6 +2676,26 @@ body .track .card.sxc[data-href="sunday.html"] .su3-orb--bars i:nth-child(6) { b
 body .track .card.sxc[data-href="sunday.html"] .su3-orb--ring { background: radial-gradient(circle, #FFFFFF 56%, transparent 57%), conic-gradient(#3E3E42 0 72%, #D8D8DB 0); }
 body .track .card.sxc[data-href="sunday.html"] .su3-orb--ring b { color: #2A2A2D; }
 body .track .card.sxc[data-href="sunday.html"] .su3-orb--qr { background: radial-gradient(circle at 40% 35%, #4A4A4F, #2A2A2E); }
+
+/* Sunday: white ground, one revenue card and a payment chip */
+body .track .card.sxc[data-href="sunday.html"] { background:
+  radial-gradient(50% 38% at 92% 30%, rgba(214, 215, 218, 0.7), rgba(214, 215, 218, 0) 72%),
+  radial-gradient(55% 40% at 6% 92%, rgba(220, 221, 224, 0.8), rgba(220, 221, 224, 0) 72%),
+  #FFFFFF !important; }
+.sx--su4 { justify-content: center; align-items: center; padding: 0; }
+.su4-card { position: relative; width: 74%; box-sizing: border-box; padding: 1.2em 1.2em 1em; border-radius: 1.4em; background: rgba(255, 255, 255, 0.72); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(30, 31, 33, 0.05), 0 1.8em 3em -1.8em rgba(30, 31, 33, 0.35); color: #1E1F21; margin-top: 4%; }
+.su4-k { margin: 0; display: flex; justify-content: space-between; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.48em; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(30, 31, 33, 0.55); }
+.su4-k span { color: rgba(30, 31, 33, 0.35); }
+.su4-num { display: flex; align-items: flex-start; margin: 0.35em 0 0; font-size: 2.6em; line-height: 1; letter-spacing: -0.045em; }
+.su4-num span { font-size: 0.42em; margin: 0.14em 0.08em 0 0; opacity: 0.5; }
+.su4-delta { display: inline-block; margin-top: 0.7em; padding: 0.35em 0.7em; border-radius: 99px; background: #F0F0F1; font-size: 0.52em; color: rgba(30, 31, 33, 0.7); }
+.su4-chart { display: block; width: 100%; height: 4.6em; margin-top: 0.9em; }
+.su4-dot { position: absolute; right: 1.2em; top: calc(100% - 1em - 1.2em - 4.6em + 4.6em * 0.125); width: 0.55em; height: 0.55em; margin: -0.275em -0.275em 0 0; border-radius: 50%; background: #1E1F21; box-shadow: 0 0 0 0.3em rgba(30, 31, 33, 0.1); }
+.su4-axis { display: flex; justify-content: space-between; margin-top: 0.5em; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.4em; letter-spacing: 0.08em; color: rgba(30, 31, 33, 0.4); }
+.su4-chip { position: absolute; left: -1.6em; bottom: -1.3em; font-size: 0.66em; display: inline-flex; align-items: center; gap: 0.5em; padding: 0.4em 0.45em 0.4em 0.4em; border-radius: 99px; background: #1E1F21; color: #F6F6F7; font-size: 0.66em; box-shadow: 0 1em 1.6em -0.8em rgba(30, 31, 33, 0.55); white-space: nowrap; }
+.su4-chip em { display: grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: #FFFFFF; color: #1E1F21; }
+.su4-chip em svg { width: 0.9em; height: 0.9em; }
+.su4-chip b { margin-left: 0.3em; padding: 0.3em 0.6em; border-radius: 99px; background: rgba(255, 255, 255, 0.14); font-weight: 400; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2714,7 +2734,6 @@ body .track .card.sxc[data-href="sunday.html"] .su3-orb--qr { background: radial
     <p class="sp4-price"><span>€</span>159<small>/mo</small></p>
     <div class="sp4-src"><span class="sp4-stack"><i><img src="assets/img/smi-fb.png" alt="" draggable="false"></i><i><img src="assets/img/smi-ga.png" alt="" draggable="false"></i><i><img src="assets/img/smi-gads.png" alt="" draggable="false"></i><i><img src="assets/img/smi-tt.png" alt="" draggable="false"></i></span><small>6 data sources</small></div>
     <span class="sp4-btn">Package active</span>
-    <span class="sp4-paid"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Paid</span>
   </div>
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
@@ -2753,10 +2772,16 @@ body .track .card.sxc[data-href="sunday.html"] .su3-orb--qr { background: radial
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
       <article class="card sxc" data-href="sunday.html">
-        <div class="sx sx--su3" aria-hidden="true">
-  <div class="su3-card"><div class="su3-txt"><p>Guests up 18% this week. Friday dinner was your busiest…</p><div class="su3-foot"><span class="sx-tag">Guests</span><span class="sx-tag">Revenue</span><small>This week</small></div></div><span class="su3-orb su3-orb--bars"><i style="--h:0.42"></i><i style="--h:0.55"></i><i style="--h:0.48"></i><i style="--h:0.7"></i><i style="--h:0.62"></i><i style="--h:1"></i><i style="--h:0.78"></i></span></div>
-  <div class="su3-card"><div class="su3-txt"><p>Tips reached €2,140, shared across 14 staff.</p><div class="su3-foot"><span class="sx-tag">Staff</span><span class="sx-tag">Tips</span><small>Today</small></div></div><span class="su3-orb su3-orb--ring"><b>€2.1k</b></span></div>
-  <div class="su3-card"><div class="su3-txt"><p>Pay at the table saved 38 hours of service…</p><div class="su3-foot"><span class="sx-tag">Insights</span><small>May</small></div></div><span class="su3-orb su3-orb--qr"><span><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i></span></span></div>
+        <div class="sx sx--su4" aria-hidden="true">
+  <div class="su4-card">
+    <p class="su4-k">Revenue <span>Today</span></p>
+    <p class="su4-num"><span>€</span>12,480</p>
+    <span class="su4-delta">+18% vs last Friday</span>
+    <svg class="su4-chart" viewBox="0 0 200 80" preserveAspectRatio="none"><defs><linearGradient id="su4g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E1F21" stop-opacity="0.14"/><stop offset="1" stop-color="#1E1F21" stop-opacity="0"/></linearGradient></defs><path d="M0 66 C20 64 30 58 45 60 S70 44 88 46 S118 30 134 34 S165 14 200 10 L200 80 L0 80Z" fill="url(#su4g)"/><path d="M0 66 C20 64 30 58 45 60 S70 44 88 46 S118 30 134 34 S165 14 200 10" fill="none" stroke="#1E1F21" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>
+    <i class="su4-dot"></i>
+    <div class="su4-axis"><span>12pm</span><span>4pm</span><span>8pm</span></div>
+    <span class="su4-chip"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Table 12 paid<b>€86</b></span>
+  </div>
 </div>
         <div class="card__head"><h2 class="card__title">Sunday</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2026</span></div>
       </article>
