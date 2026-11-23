@@ -3088,6 +3088,11 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
 
 /* Go1: no rule between the two photos */
 .g1-bg i:first-child { border-bottom: 0 !important; }
+
+/* Loader leaves with a soft fade instead of a long wipe */
+.loader { clip-path: none !important; transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+.loader.is-out { opacity: 0 !important; clip-path: none !important; }
+.loader.is-leaving .ld2__mask > span { transition-duration: 0.4s !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -3385,7 +3390,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
 
     let seen = false;
     try { seen = sessionStorage.getItem('sb-loaded') === '1'; sessionStorage.setItem('sb-loaded', '1'); } catch (e) {}
-    const MIN = seen ? 900 : 2300;
+    const MIN = seen ? 450 : 1300;
     let ready = false;
     const markReady = () => { ready = true; };
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(markReady);
@@ -3404,8 +3409,8 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
         finished = true;
         leaving = 1; leaveT0 = performance.now();
         loader.classList.add('is-leaving');
-        setTimeout(() => { openPage(); loader.classList.add('is-out'); }, 380);
-        setTimeout(() => loader.remove(), 1600);
+        setTimeout(() => { openPage(); loader.classList.add('is-out'); }, 160);
+        setTimeout(() => loader.remove(), 1000);
         return;
       }
       requestAnimationFrame(tick);
@@ -3419,7 +3424,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
       e.preventDefault();
       body.classList.add('is-leaving');
       try { sessionStorage.setItem('sb-nav', '1'); } catch (err) {}
-      setTimeout(() => { window.location.href = a.href; }, reduceMotion ? 0 : 270);
+      setTimeout(() => { window.location.href = a.href; }, reduceMotion ? 0 : 200);
     });
   });
 
@@ -4009,17 +4014,17 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
       // centre cards first
       if (!reduceMotion) {
         // Gentle arrival: each card rises a short way into its place and fades up, centre first
-        const delay = 180 + Math.min(Math.abs(k), 5) * 110;
-        const q = clamp((now - start - delay) / 1500, 0, 1);
-        const qi = clamp((now - start - delay - 320) / 1100, 0, 1);
+        const delay = 40 + Math.min(Math.abs(k), 5) * 55;
+        const q = clamp((now - start - delay) / 950, 0, 1);
+        const qi = clamp((now - start - delay - 160) / 750, 0, 1);
         const ei = 1 - Math.pow(1 - qi, 4);
         cards[i].style.setProperty('--in', ei.toFixed(3));
         if (q < 1) {
           const e = 1 - Math.pow(1 - q, 5);
-          p[1] += 36 * (1 - e);
+          p[1] += 24 * (1 - e);
           p[6] *= 0.94 + 0.06 * e;
           p[7] *= Math.min(1, e * 1.25);
-          introBlur[i] = 10 * (1 - e);
+          introBlur[i] = 6 * (1 - e);
         } else introBlur[i] = 0;
       }
       const hs = 1;
