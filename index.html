@@ -707,7 +707,7 @@ a:hover .roll__ch > span, a:focus-visible .roll__ch > span { transform: translat
   align-items: baseline;
 }
 
-/* ---------- Cursor (Nokia Snake, drawn by main.js) ---------- */
+/* ---------- Cursor (a slim ink line, drawn by the page script) ---------- */
 .cursor {
   position: fixed;
   inset: 0;
@@ -715,7 +715,6 @@ a:hover .roll__ch > span, a:focus-visible .roll__ch > span { transform: translat
   width: 100%;
   height: 100%;
   pointer-events: none;
-  image-rendering: pixelated;
   /* Inverts what's beneath: dark pixels on the page, light pixels on the cards */
   mix-blend-mode: difference;
 }
@@ -2842,28 +2841,23 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     return [kb * cardW * 1.15, -30, 0, 0, 0, kb * 8, 1, hide * clamp(1 + kb * 1.2, 0, 1), 520];
   };
 
-  /* Cursor: Nokia Snake. A pixel snake steps along a grid, one cell at a time,
-     chasing a "food" pixel that marks where the mouse is. */
-  const CELL = 10;        // grid pitch in px
-  const BLOCK = 8;        // drawn square, leaving a 2px seam like the original
-  const LENGTH = 8;       // body segments
-  const LENGTH_SOON = 22; // longer over "Coming soon" cards, so the label sits between head and tail
-  let len = LENGTH;
+  /* Cursor: a slim editorial line. A fine ink stroke trails the pointer with a gentle lag,
+     tapering to a hairline and fading along its length; the pointer is a small open ring. */
+  const TRAIL = 34;       // points kept along the line
+  const TRAIL_SOON = 64;  // longer over "Coming soon" cards, so the label sits mid-line
+  let len = TRAIL;
   let soonText = '';
-  // The label is placed on the snake's middle segment; segments under it are skipped
   const tag = document.createElement('div');
   tag.className = 'cursor-tag';
   tag.setAttribute('aria-hidden', 'true');
   document.body.appendChild(tag);
   let tagX = -200, tagY = -200, tagS = 0.4, tagW = 0, tagH = 0;
-  const STEP_MS = 22;     // time per move
-  let snake = [];
-  let food = null;
+  let trail = [];
+  let food = null;          // the pointer
+  let head = null;          // the line's leading point, easing towards the pointer
   let showing = 0;
   let wantShow = 0;
-  let stepClock = 0;
   let lastTime = performance.now();
-  const toCell = (x, y) => ({ x: Math.round(x / CELL), y: Math.round(y / CELL) });
 
   const sizeCursor = () => {
     const dpr = window.devicePixelRatio || 1;
@@ -2875,85 +2869,80 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
 
   window.addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse') return;
-    food = toCell(e.clientX, e.clientY);
+    food = { x: e.clientX, y: e.clientY };
     wantShow = e.target.closest && e.target.closest('#stage') && !e.target.closest('.modes') ? 1 : 0;
     const soonCard = wantShow && e.target.closest('.card[data-soon]');
     const text = soonCard ? soonCard.dataset.soon : '';
     if (text !== soonText) {
       soonText = text;
-      len = text ? LENGTH_SOON : LENGTH;
+      len = text ? TRAIL_SOON : TRAIL;
       if (text) {
         tag.textContent = text;
         tagW = tag.offsetWidth; tagH = tag.offsetHeight;
-        const mid = snake[Math.min(snake.length - 1, Math.floor(len / 2))] || food;
-        if (tagS < 0.5) { tagX = mid.x * CELL; tagY = mid.y * CELL; }
+        if (tagS < 0.5) { tagX = food.x; tagY = food.y; }
       }
       tag.classList.toggle('is-on', !!text);
     }
-    // Re-hatch at the pointer when the snake has fully faded out
-    if (wantShow && showing < 0.02) snake = Array.from({ length: LENGTH }, () => ({ ...food }));
+    // Start afresh at the pointer once the line has fully faded out
+    if (wantShow && showing < 0.02) { head = { ...food }; trail = [{ ...food }]; }
   });
-  document.addEventListener('pointerleave', () => { wantShow = 0; soonText = ''; len = LENGTH; tag.classList.remove('is-on'); });
-
-  const stepSnake = () => {
-    if (!food || !snake.length) return;
-    const head = snake[0];
-    const dx = food.x - head.x;
-    const dy = food.y - head.y;
-    if (!dx && !dy) return; // reached the food: hold still
-    // Move along one axis at a time, like the game
-    const next = Math.abs(dx) >= Math.abs(dy)
-      ? { x: head.x + Math.sign(dx), y: head.y }
-      : { x: head.x, y: head.y + Math.sign(dy) };
-    snake.unshift(next);
-    while (snake.length < len) snake.push({ ...snake[snake.length - 1] });
-    snake.length = len;
-  };
+  document.addEventListener('pointerleave', () => { wantShow = 0; soonText = ''; len = TRAIL; tag.classList.remove('is-on'); });
 
   const drawCursor = (now) => {
-    stepClock += now - lastTime;
+    const dt = Math.min(48, now - lastTime) / 16.7;
     lastTime = now;
-    let steps = 0;
-    while (stepClock >= STEP_MS && steps < 6) { stepSnake(); stepClock -= STEP_MS; steps++; }
-    if (stepClock > STEP_MS) stepClock = 0;
+    if (food) {
+      if (!head) head = { ...food };
+      const k = reduceMotion ? 1 : 1 - Math.pow(1 - 0.32, dt);
+      head.x += (food.x - head.x) * k;
+      head.y += (food.y - head.y) * k;
+      const last = trail[0];
+      // add a point when the head has moved; let the tail catch up when it rests
+      if (!last || Math.hypot(head.x - last.x, head.y - last.y) > 1.2) trail.unshift({ x: head.x, y: head.y });
+      else if (trail.length > 1) trail.pop();
+      if (trail.length > len) trail.length = len;
+    }
 
-    showing += (wantShow - showing) * (reduceMotion ? 1 : 0.25);
+    showing += (wantShow - showing) * (reduceMotion ? 1 : 0.22);
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    // "Coming soon" follows the middle of the body; a gap is left around it
+    // "Coming soon" follows the middle of the line; the line breaks around it
     let gapL = 0, gapR = 0, gapT = 0, gapB = 0;
     const tagTarget = soonText ? 1 : 0.4;
     tagS += (tagTarget - tagS) * (reduceMotion ? 1 : 0.25);
-    if (snake.length) {
-      const mid = snake[Math.min(snake.length - 1, Math.floor(snake.length / 2))];
+    if (trail.length) {
+      const mid = trail[Math.min(trail.length - 1, Math.floor(trail.length / 2))];
       const k = reduceMotion ? 1 : 0.3;
-      tagX += (mid.x * CELL - tagX) * k;
-      tagY += (mid.y * CELL - tagY) * k;
+      tagX += (mid.x - tagX) * k;
+      tagY += (mid.y - tagY) * k;
     }
     tag.style.transform = `translate3d(${tagX.toFixed(1)}px, ${tagY.toFixed(1)}px, 0) scale(${tagS.toFixed(3)})`;
     if (soonText) {
-      gapL = tagX - tagW / 2 - 6; gapR = tagX + tagW / 2 + 6;
-      gapT = tagY - tagH / 2 - 6; gapB = tagY + tagH / 2 + 6;
+      gapL = tagX - tagW / 2 - 8; gapR = tagX + tagW / 2 + 8;
+      gapT = tagY - tagH / 2 - 8; gapB = tagY + tagH / 2 + 8;
     }
     if (showing < 0.01 || !food) return;
-    ctx.globalAlpha = showing;
-    ctx.fillStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
-    const off = (CELL - BLOCK) / 2;
-    // Food: a hollow pixel at the pointer
-    const fx = food.x * CELL - CELL / 2 + off;
-    const fy = food.y * CELL - CELL / 2 + off;
-    ctx.fillRect(fx, fy, BLOCK, 2);
-    ctx.fillRect(fx, fy + BLOCK - 2, BLOCK, 2);
-    ctx.fillRect(fx, fy, 2, BLOCK);
-    ctx.fillRect(fx + BLOCK - 2, fy, 2, BLOCK);
-    for (let i = snake.length - 1; i >= 0; i--) {
-      const c = snake[i];
-      if (i > 0 && c.x === food.x && c.y === food.y) continue;
-      if (soonText && i > 0) {
-        const px = c.x * CELL, py = c.y * CELL;
-        if (px > gapL && px < gapR && py > gapT && py < gapB) continue;
+    ctx.strokeStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
+    ctx.fillStyle = '#FFFFFF';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    // the line: tapering from 1.6px to a hairline, fading towards the tail
+    const n = trail.length;
+    for (let i = 0; i < n - 1; i++) {
+      const p0 = trail[i], p1 = trail[i + 1];
+      if (soonText) {
+        const mx = (p0.x + p1.x) / 2, my = (p0.y + p1.y) / 2;
+        if (mx > gapL && mx < gapR && my > gapT && my < gapB) continue;
       }
-      ctx.fillRect(c.x * CELL - CELL / 2 + off, c.y * CELL - CELL / 2 + off, BLOCK, BLOCK);
+      const t = i / Math.max(1, len - 1);
+      ctx.globalAlpha = showing * (1 - t) * 0.95;
+      ctx.lineWidth = 1.6 - 1.25 * t;
+      ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
     }
+    // the pointer: a small open ring with a fine centre point
+    ctx.globalAlpha = showing;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(food.x, food.y, 6, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(food.x, food.y, 1.3, 0, Math.PI * 2); ctx.fill();
     ctx.globalAlpha = 1;
   };
 
