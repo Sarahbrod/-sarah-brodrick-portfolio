@@ -3096,6 +3096,9 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
 
 /* Arrival veil: fades the card in without touching its opacity, so glass blurs from the first frame */
 .track .card > .card-veil { position: absolute !important; inset: -1px; z-index: 20 !important; pointer-events: none; background: var(--bg); opacity: var(--veil, 0); }
+
+body .track .card.sxc[data-href="wrylo.html"]::after { filter: blur(6px) saturate(0.98) brightness(0.96) !important; }
+body .track .card.sxc[data-href="wrylo.html"] { background: #5A443B !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
