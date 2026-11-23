@@ -2648,6 +2648,34 @@ body .track .card.sxc--wr2 .wr2-photo { width: 112% !important; top: 6% !importa
 body .track .card.sxc--wr2 .card__head .card__title { color: rgba(255, 255, 255, 0.95) !important; }
 body .track .card.sxc--wr2 .card__head .card__year { color: rgba(255, 255, 255, 0.7) !important; }
 body .track .card.sxc--wr2 .card__head .card__sep { color: rgba(255, 255, 255, 0.45) !important; }
+
+/* Pricing: larger green Paid chip */
+.sp4-paid { font-size: 0.74em !important; right: -1.2em !important; top: -1.1em !important; background: #2F9E62 !important; color: #FFFFFF !important; padding: 0.45em 0.95em 0.45em 0.45em !important; box-shadow: 0 0.8em 1.4em -0.7em rgba(20, 70, 40, 0.6) !important; }
+.sp4-paid em { background: #FFFFFF !important; color: #2F9E62 !important; }
+/* Wrylo: deeper grey-blue, same gradient */
+body .track .card.sxc.sxc--wr2, body .track .card.sxc--wr2 .wr2-top { background: #5D6E73 !important; }
+/* Insights: plain darker grey, three widgets */
+body .track .card.sxc[data-href="supermetrics-insights.html"] { background: linear-gradient(180deg, #2B2D31, #1E2023) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list { top: 25% !important; width: 50% !important; background: rgba(62, 64, 68, 0.8) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend { top: 25% !important; width: 34% !important; background: rgba(62, 64, 68, 0.8) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { left: 24% !important; right: 7% !important; top: 55% !important; bottom: auto !important; width: auto !important; height: auto !important; gap: 1em; padding: 1em !important; background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass p { font-size: 0.8em !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { padding: 1.2em 1.1em !important; gap: 1.2em !important; z-index: 2; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { position: static !important; align-self: flex-start; }
+/* Sunday: pink ground, glass cards, greys only */
+body .track .card.sxc[data-href="sunday.html"] { background:
+  radial-gradient(55% 42% at 96% 38%, rgba(226, 150, 168, 0.7), rgba(226, 150, 168, 0) 72%),
+  radial-gradient(60% 40% at 6% 96%, rgba(214, 140, 160, 0.6), rgba(214, 140, 160, 0) 72%),
+  linear-gradient(180deg, #F6E3E6, #EFD2D8) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su3-card { background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.28)) !important; -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65), 0 1.2em 2.2em -1.6em rgba(120, 60, 75, 0.4) !important; color: #2A2628; }
+body .track .card.sxc[data-href="sunday.html"] .su3-foot small { color: rgba(42, 38, 40, 0.5); }
+body .track .card.sxc[data-href="sunday.html"] .su3-card .sx-tag { background: rgba(255, 255, 255, 0.75); color: #2A2628; }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--bars { background: radial-gradient(circle at 35% 30%, #FFFFFF, #E9E9EA); }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--bars i { background: #BDBDC1; }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--bars i:nth-child(6) { background: #3E3E42; }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--ring { background: radial-gradient(circle, #FFFFFF 56%, transparent 57%), conic-gradient(#3E3E42 0 72%, #D8D8DB 0); }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--ring b { color: #2A2A2D; }
+body .track .card.sxc[data-href="sunday.html"] .su3-orb--qr { background: radial-gradient(circle at 40% 35%, #4A4A4F, #2A2A2E); }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2740,16 +2768,12 @@ body .track .card.sxc--wr2 .card__head .card__sep { color: rgba(255, 255, 255, 0
     <div class="sb-row is-dim"><span><b>TikTok Ads</b><i>Clicks rising</i></span><em class="sb-ring"></em></div>
   </div>
   <div class="sb-trend"><small>Leads</small><svg viewBox="0 0 100 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 38 L16 34 L32 36 L48 26 L64 22 L80 13 L100 8" fill="none" stroke="#E9DC7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="M0 38 L16 34 L32 36 L48 26 L64 22 L80 13 L100 8 L100 46 L0 46Z" fill="rgba(233,220,122,0.14)"/></svg><b>+31%</b></div>
-  <p class="sb-cap">Last 7 days<br><span>vs previous week</span></p>
   <div class="sb-glass"><p>Meta spend rose 18% while cost per lead fell to €4.20.</p><span class="sb-chip">AI summary</span></div>
-  <span class="sb-app"><span class="sb-app__ic"><img src="assets/img/smi-fb.png" alt="" draggable="false"><img src="assets/img/smi-ga.png" alt="" draggable="false"><img src="assets/img/smi-gads.png" alt="" draggable="false"></span><small>3 sources</small></span>
-  <div class="sb-shot"></div>
-  <div class="sb-clock"><span class="sb-clock__side"><i></i><small>CPL</small></span><b>4.20</b><span class="sb-clock__unit">EUR<br><em>-12%</em></span></div>
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2023</span></div>
       </article>
       <article class="card sxc sxc--wr2" data-href="wrylo.html">
-        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-hd.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false"></div>
+        <div class="wr2-top"><img class="wr2-photo" src="assets/img/wrylo-card-deep.jpg" alt="Hands holding a phone showing the Wrylo reading home screen" decoding="async" draggable="false"></div>
         <div class="wr2-shelf"><div class="wr2-tile"><span class="wr2-cap"><em>Reading</em><img src="assets/img/wr-cover-midnight.jpg" alt="" draggable="false"></span><b>The Midnight Library</b><small>45% read</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Next</em><img src="assets/img/wr-cover-evelyn.jpg" alt="" draggable="false"></span><b>Evelyn Hugo</b><small>Mood: escape</small></div><div class="wr2-tile"><span class="wr2-cap"><em>Finished</em><img src="assets/img/wr-cover-crawdads.jpg" alt="" draggable="false"></span><b>Crawdads</b><small>5 stars</small></div></div>
         <div class="card__head"><h2 class="card__title">Wrylo</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2025</span></div>
       </article>
