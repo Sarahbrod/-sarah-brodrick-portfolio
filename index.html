@@ -3195,6 +3195,14 @@ body .track .card.sxc.is-settled > .sx, body .track .card.sxc.is-settled > .wr2-
 .sp4-card, .su4-card, .g3-up, .g3-course, .fy-pay:not(.is-paid), body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; }
 
 body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; text-shadow: none !important; }
+
+/* Pricing panel: a whiter, brighter glass */
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-card { background: rgba(255, 255, 255, 0.3) !important; -webkit-backdrop-filter: blur(24px) saturate(130%) brightness(0.95) !important; backdrop-filter: blur(24px) saturate(130%) brightness(0.95) !important; }
+
+/* Whiter panel needs dark type to stay readable */
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-card { background: rgba(255, 255, 255, 0.58) !important; color: #141414 !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-price { color: #141414 !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-k, body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-price small, body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-src small { color: rgba(20, 20, 20, 0.68) !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
