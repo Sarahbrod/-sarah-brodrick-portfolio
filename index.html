@@ -2212,7 +2212,7 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       <article class="card card--mood" data-href="foba.html" data-soon="Contract" style="--m1: #F6ECE6; --m2: #F3D6D3; --m3: #FFFFFF">
         <div class="card__tex tex--blue" aria-hidden="true"></div>
         <div class="card__art" aria-hidden="true"><img class="foba-logo" src="assets/img/foba-logo-sharp.png" alt="" draggable="false" decoding="async"></div>
-        <div class="card__head"><h2 class="card__title">FoBA Media</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year"><span class="card__ship">Shipped </span>2025 · Contract</span></div>
+        <div class="card__head"><h2 class="card__title">FoBA Media</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year card__swap"><span class="swap__a">Contract 2025</span><span class="swap__b" aria-hidden="true">Coming soon</span></span></div>
         <p class="card__desc">Brand and product for audience intelligence</p>
       </article>
       <article class="card card--mood" data-href="sunday.html" data-soon="Coming soon" style="--m1: #E9D3DC; --m2: #F2A9C6; --m3: #F7E6EE">
@@ -2743,6 +2743,26 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   const DEG = 180 / Math.PI;
   // Every mode uses the same card size (scale 1). Ring and coverflow use all 12 cards
   // (the six plus their clones); the other modes use the six, with clones hidden on top.
+  // Smaller desktop and tablet screens fit the whole semicircle on screen instead of letting it run off
+  const ringFit = () => false; // the ring runs off the sides and bottom on every screen size
+  let fitCache = null;
+  const fitRing = (R, da) => {
+    const key = stageW + 'x' + stageH + ':' + bandTopY + ':' + bandBotY + ':' + cardW + ':' + cardH;
+    if (fitCache && fitCache.key === key) return fitCache;
+    const a = 2 * da, ca = Math.cos(a), sa = Math.sin(a);
+    const pad = 20, side = 24;
+    const ok = (s) => {
+      const hx = s * (cardW / 2 * ca + cardH / 2 * sa), hy = s * (cardW / 2 * sa + cardH / 2 * ca);
+      const off = bandBotY - pad - (R * s * (1 - ca) + hy);
+      const right = R * s * sa + hx;
+      const top = off - cardH * s / 2;
+      return { fits: right <= stageW / 2 - side && top >= bandTopY + pad, off };
+    };
+    let lo = 0.2, hi = 1;
+    for (let it = 0; it < 22; it++) { const m = (lo + hi) / 2; if (ok(m).fits) lo = m; else hi = m; }
+    fitCache = { key, s: lo, off: ok(lo).off };
+    return fitCache;
+  };
   const poseFor = (m, i, k, kb) => {
     const clone = i >= B;
     if (m === 'ring') {
@@ -2764,15 +2784,24 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
         const sy = (stageH / 2 - cardH * 0.1 - top0) / (cardH / 2 + R * (1 - Math.cos(n3)));
         s = Math.min(1, sx, sy);
         // Sit the centre card low, just above the icons, and never above the band's top
-        s = Math.min(s, (bandBotY - bandTopY - 56) / cardH);
+        // Keep the centre card's top at least 16px inside the card area, so it is never cut off
+        const topLimit = Math.max(bandTopY, -stageH / 2) + 16;
+        s = Math.min(s, (bandBotY - 60 - topLimit) / cardH);
         off = bandBotY - 60 - cardH * s / 2;
+        if (ringFit()) {
+          // Smaller screens: shrink the wheel until the centre five sit wholly on screen,
+          // above the layout icons and below the header, so nothing is cut off
+          const f = fitRing(R, da);
+          s = f.s; off = f.off;
+        }
       } else {
         // Phones: the centre card sits wholly between the header and the icons
         if (bandTopY === null) measureBand();
-        s = Math.min(1, (bandBotY - bandTopY - 40) / cardH);
+        const topLimit = Math.max(bandTopY, -stageH / 2) + 16;
+        s = Math.min(1, (bandBotY - 16 - topLimit) / cardH);
         off = bandBotY - 16 - cardH * s / 2;
       }
-      const op = stageW > 760 ? clamp((3.1 - Math.abs(k)) / 0.5, 0, 1) : 1;
+      const op = stageW > 760 ? (ringFit() ? clamp((2.55 - Math.abs(k)) / 0.35, 0, 1) : clamp((3.1 - Math.abs(k)) / 0.5, 0, 1)) : 1;
       // Cards share a 3D space, so depth (not z-index) decides overlap: nudge each one back a
       // touch the further it is from the middle, keeping the centre card on top
       return [R * s * Math.sin(a), R * s * (1 - Math.cos(a)) + off, -Math.abs(k) * 6, 0, 0, a * DEG, s, op, 1000 - Math.round(Math.abs(k) * 10)];
@@ -3192,4 +3221,6 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   window.addEventListener('load', place);
 })();
 </script>
+</body></html>
+
 </body></html>

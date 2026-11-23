@@ -472,6 +472,9 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
   body:has(.crumb) > header.nav { padding-bottom: 72px !important; }
   .hero__panel { max-height: max(360px, calc(100svh - 400px)) !important; }
 }
+
+/* Hero: the whole screenshot sits inside the panel, with room around it */
+.hero__panel--qi img { position: absolute !important; inset: 0 !important; margin: auto !important; width: auto !important; height: auto !important; max-width: 84% !important; max-height: 78% !important; }
 </style>
 </head>
 <body class="project">

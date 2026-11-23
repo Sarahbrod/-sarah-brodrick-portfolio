@@ -720,6 +720,11 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
   body:has(.crumb) > header.nav { padding-bottom: 72px !important; }
   .hero__panel { max-height: max(360px, calc(100svh - 400px)) !important; }
 }
+
+/* Hero: the three screens sit inside the panel, with room above, below and at the sides */
+.hero__trio img { height: 74% !important; max-width: 27% !important; }
+.hero__trio img:nth-child(2) { height: 80% !important; }
+@media (max-width: 760px) { .hero__trio { gap: 3.5% !important; } .hero__trio img { max-width: 27% !important; } }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap">
 </head>
