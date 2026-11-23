@@ -2573,6 +2573,24 @@ body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg
 .sb-app__ic { display: flex; }
 .sb-app__ic img { width: 1.15em; height: 1.15em; margin-right: -0.25em; padding: 0.18em; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 0.1em #DAD6CC; object-fit: contain; }
 .sb-app small { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.4em; color: #3A3A3C; }
+
+/* Backgrounds swapped: pricing takes the bright walking photo, Go1 takes the two stacked photos */
+body .track .card.sxc[data-href="supermetrics-purchase.html"] { background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.06)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #B5B6B2 !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp2-half::before { display: none; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp2-half + .sp2-half { border-top: 0; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .card__head .card__title { color: rgba(28, 29, 30, 0.85) !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .card__head .card__year { color: rgba(28, 29, 30, 0.5) !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .card__head .card__sep { color: rgba(28, 29, 30, 0.25) !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp2-orbit__ring, body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp2-orbit__ring::after { box-shadow: inset 0 0 0 1px rgba(28, 29, 30, 0.18); }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp2-disc { background: rgba(40, 38, 35, 0.62); }
+body .track .card.sxc[data-href="go1.html"] { background: #141311 !important; }
+.g1-bg { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; }
+.g1-bg i { flex: 1; background-size: cover; background-repeat: no-repeat; filter: saturate(0.65) brightness(0.62) sepia(0.18); }
+.g1-bg i:first-child { background-image: url("assets/img/sm-bg-phone.jpg"); background-position: 62% 50%; border-bottom: 1px solid rgba(0, 0, 0, 0.5); }
+.g1-bg i:last-child { background-image: url("assets/img/sm-bg-laptop.jpg"); background-position: 50% 26%; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__title { color: rgba(242, 241, 236, 0.92) !important; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__year { color: rgba(242, 241, 236, 0.5) !important; }
+body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba(242, 241, 236, 0.25) !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2624,6 +2642,7 @@ body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
       </article>
       <article class="card sxc" data-href="go1.html">
+        <div class="g1-bg" aria-hidden="true"><i></i><i></i></div>
         <div class="sx sx--g1" aria-hidden="true">
   <div class="g1-win">
     <div class="g1-head"><b>Upload content</b><span class="g1-pill"><em class="g1-ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>24 published</span></div>
