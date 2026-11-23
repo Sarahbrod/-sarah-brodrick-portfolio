@@ -318,9 +318,8 @@
 .modes .mode svg { width: 30px !important; height: 30px !important; }
 @media (max-width: 760px) { .modes .mode svg { width: 34px !important; height: 34px !important; } }
 
-/* Cards: soft, Apple-style continuous corners */
-.card, .track .card, .card.card--mood { border-radius: calc(var(--card-w, 320px) * 0.075) !important; overflow: hidden; }
-@supports (corner-shape: squircle) { .card, .track .card, .card.card--mood { border-radius: calc(var(--card-w, 320px) * 0.12) !important; corner-shape: squircle !important; } }
+/* Cards: square corners */
+.card, .track .card, .card.card--mood { border-radius: 0 !important; corner-shape: round !important; }
 
 /* No custom cursor: the normal pointer is used */
 .cursor { display: none !important; }
@@ -3073,6 +3072,19 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .tr
 .fy-pay.is-paid em { background: #FFFFFF !important; color: #3D6BFF !important; }
 .fy-cash { background: #3D6BFF !important; color: #FFFFFF !important; }
 .fy-prod img { box-shadow: 0 0 0 0.3em rgba(61, 107, 255, 0.35), 0 1.4em 2em -1em rgba(0, 0, 0, 0.7) !important; }
+
+/* Wrylo mood card: sharp photo filling the card */
+body .track .card.sxc[data-href="wrylo.html"] .wq-mood { background: linear-gradient(180deg, rgba(40, 32, 27, 0) 28%, rgba(40, 32, 27, 0.7) 55%, rgba(40, 32, 27, 0.94) 78%), url("assets/img/wr-mood-hd.jpg") 58% 20% / cover no-repeat, #3E3129 !important; }
+/* Fupay: quieter blue */
+.fy-pay.is-paid { background: #5C72B8 !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1em 1.6em -0.9em rgba(20, 30, 70, 0.6) !important; }
+.fy-pay.is-paid em { color: #5C72B8 !important; }
+.fy-cash { background: #5C72B8 !important; }
+.fy-prod img { box-shadow: 0 0 0 0.3em rgba(92, 114, 184, 0.3), 0 1.4em 2em -1em rgba(0, 0, 0, 0.7) !important; }
+/* Insights: a touch of orange */
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:first-child { stroke: #FF9A52; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend svg path:last-child { fill: rgba(255, 154, 82, 0.18); }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend b { color: #FFB27A !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { background: #FF9A52 !important; color: #2A1608 !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
