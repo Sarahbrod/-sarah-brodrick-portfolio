@@ -314,57 +314,6 @@
 .card:hover .card__swap .swap__a, .card:focus-visible .card__swap .swap__a { transform: translateY(-100%); opacity: 0; }
 .card:hover .card__swap .swap__b, .card:focus-visible .card__swap .swap__b { transform: none; opacity: 1; }
 
-/* ---------- Loader v4: an editorial cover. Running header, a serif masthead, a contents list that
-   fills in as the page loads, then the type slides away and the paper lifts off ---------- */
-.loader.loader--ed { display: block !important; background: var(--bg) !important; opacity: 1 !important; clip-path: inset(0 0 0 0) !important; transition: clip-path 1.05s cubic-bezier(0.76, 0, 0.24, 1) !important; color: #16171A; cursor: default; }
-.loader.loader--ed.is-out { clip-path: inset(0 0 100% 0) !important; opacity: 1 !important; pointer-events: none; }
-.ed { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto; padding: var(--s-4) var(--margin) var(--s-4); }
-.ed__run { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; padding-bottom: 12px; font-family: "Space Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5E6168; }
-.ed__run > span { opacity: 0; transform: translateY(6px); transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-.ed__run > span:nth-child(2) { text-align: center; transition-delay: 0.08s; } .ed__run > span:nth-child(3) { text-align: right; transition-delay: 0.16s; }
-.ed__hair { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #16171A; transform: scaleX(0); transform-origin: left; transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.1s; }
-.loader.is-in .ed__run > span { opacity: 1; transform: none; }
-.loader.is-in .ed__hair { transform: none; }
-/* masthead */
-.ed__mast { align-self: center; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: end; }
-.ed__name { grid-column: 1 / -1; margin: 0; font-family: "Instrument Serif", "Times New Roman", serif; font-weight: 400; font-size: clamp(76px, 15.5vw, 280px); line-height: 0.86; letter-spacing: -0.025em; }
-.ed__name em { font-style: italic; }
-.ed__line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
-.ed__line > span { display: block; transform: translateY(108%); transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
-.ed__name .ed__line--2 { padding-left: 1.05em; }
-.ed__name .ed__line:nth-child(2) > span { transition-delay: 0.12s; }
-.ed__dek { grid-column: 8 / -1; margin: 1.2em 0 0; font-family: "Instrument Serif", "Times New Roman", serif; font-size: clamp(20px, 2vw, 30px); line-height: 1.15; color: #3A3C42; }
-.ed__dek .ed__line > span { transition-delay: 0.32s; } .ed__dek .ed__line:nth-child(2) > span { transition-delay: 0.42s; }
-.loader.is-in .ed__line > span { transform: none; }
-/* foot: progress rule, contents and the issue number */
-.ed__foot { display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: var(--gap); row-gap: 14px; }
-.ed__rule { grid-column: 1 / -1; height: 1px; background: rgba(22, 23, 26, 0.14); overflow: hidden; }
-.ed__rule i { display: block; height: 100%; background: #16171A; transform: scaleX(var(--p, 0)); transform-origin: left; }
-.ed__toc { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px var(--gap); margin: 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.3; }
-.ed__toc li { display: grid; gap: 2px; color: rgba(22, 23, 26, 0.28); opacity: 0; transform: translateY(6px); transition: color 0.5s ease, opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-.ed__toc li i { font-style: normal; font-family: "Space Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; }
-.loader.is-in .ed__toc li { opacity: 1; transform: none; }
-.ed__toc li:nth-child(2) { transition-delay: 0s, 0.04s, 0.04s; } .ed__toc li:nth-child(3) { transition-delay: 0s, 0.08s, 0.08s; } .ed__toc li:nth-child(4) { transition-delay: 0s, 0.12s, 0.12s; }
-.ed__toc li:nth-child(5) { transition-delay: 0s, 0.16s, 0.16s; } .ed__toc li:nth-child(6) { transition-delay: 0s, 0.2s, 0.2s; } .ed__toc li:nth-child(7) { transition-delay: 0s, 0.24s, 0.24s; }
-.ed__toc li.is-on { color: #16171A; }
-.ed__no { display: flex; align-items: baseline; gap: 6px; margin: 0; font-family: "Instrument Serif", "Times New Roman", serif; opacity: 0; transition: opacity 0.6s ease 0.3s; }
-.ed__no span { font-style: italic; font-size: 20px; color: #5E6168; }
-.ed__no b { font-weight: 400; font-size: clamp(40px, 4.4vw, 64px); line-height: 0.9; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.loader.is-in .ed__no { opacity: 1; }
-/* leaving: the type slides up out of its lines, the rest fades, then the paper lifts */
-.loader.is-leaving .ed__line > span { transform: translateY(-108%); transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
-.loader.is-leaving .ed__name .ed__line:nth-child(2) > span { transition-delay: 0.05s; }
-.loader.is-leaving .ed__hair, .loader.is-leaving .ed__run > span, .loader.is-leaving .ed__toc li, .loader.is-leaving .ed__no, .loader.is-leaving .ed__rule { opacity: 0; transition: opacity 0.35s ease; transition-delay: 0s; }
-@media (max-width: 760px) {
-  .ed { padding: var(--s-3) var(--margin); }
-  .ed__run { grid-template-columns: 1fr 1fr; } .ed__run > span:nth-child(2) { display: none; }
-  .ed__name { font-size: clamp(64px, 21vw, 120px); }
-  .ed__name .ed__line--2 { padding-left: 0.5em; }
-  .ed__dek { grid-column: 1 / -1; font-size: 20px; }
-  .ed__toc { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: 12px; }
-  .ed__toc li:nth-child(n+5) { display: none; }
-}
-
 /* Layout switcher: slightly larger glyphs */
 .modes .mode svg { width: 30px !important; height: 30px !important; }
 @media (max-width: 760px) { .modes .mode svg { width: 34px !important; height: 34px !important; } }
@@ -381,7 +330,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
   <style>
 /*
   Layout: one 12-column grid shared by every page (4 columns on phones).
@@ -2231,27 +2179,9 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
   <div class="curtain" aria-hidden="true"></div>
   <div class="pagebar" aria-hidden="true"></div>
 
-  <div class="loader loader--ed" id="loader" aria-hidden="true">
-    <div class="ed">
-      <div class="ed__run"><span>Sarah Brodrick</span><span>Selected work</span><span>Issue 2026</span><i class="ed__hair"></i></div>
-      <div class="ed__mast">
-        <p class="ed__name"><span class="ed__line"><span>Sarah</span></span><span class="ed__line ed__line--2"><span><em>Brodrick</em></span></span></p>
-        <p class="ed__dek"><span class="ed__line"><span>Product design for adoption,</span></span><span class="ed__line"><span><em>retention &amp; growth.</em></span></span></p>
-      </div>
-      <div class="ed__foot">
-        <div class="ed__rule"><i id="edBar"></i></div>
-        <ol class="ed__toc">
-          <li><i>01</i>Supermetrics, pricing</li>
-          <li><i>02</i>FoBA</li>
-          <li><i>03</i>Supermetrics, insights</li>
-          <li><i>04</i>Sunday</li>
-          <li><i>05</i>Go1</li>
-          <li><i>06</i>Fupay</li>
-          <li><i>07</i>Wrylo</li>
-        </ol>
-        <p class="ed__no"><span>No.</span><b id="edCount">000</b></p>
-      </div>
-    </div>
+  <div class="loader" id="loader" aria-hidden="true">
+    <canvas class="ld3" id="ld3"></canvas>
+    <p class="ld3__count" id="ld3Count">0%</p>
   </div>
 
   <header class="nav grid">
@@ -2425,20 +2355,88 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
     if (loader) loader.remove();
     requestAnimationFrame(() => requestAnimationFrame(openPage));
   } else {
-    // Editorial cover: the contents list fills in and the rule draws across as the page loads
-    const countEl = document.getElementById('edCount');
-    const barEl = document.getElementById('edBar');
-    const tocItems = [...loader.querySelectorAll('.ed__toc li')];
-    let serifReady = false;
-    const serif = document.fonts && document.fonts.load ? document.fonts.load('400 1em "Instrument Serif"') : Promise.resolve();
-    Promise.race([serif, new Promise((r) => setTimeout(r, 1200))]).then(() => { serifReady = true; requestAnimationFrame(() => loader.classList.add('is-in')); });
+    // A field of dots that beats like a heart: each beat ripples out from the centre.
+    // Moving the pointer sends ripples through the dots. At 100% one last beat swells out and the
+    // field dissolves into the homepage, which rises in underneath.
+    const cv = document.getElementById('ld3');
+    const g = cv.getContext('2d');
+    const countEl = document.getElementById('ld3Count');
+    const GAP = innerWidth > 760 ? 13 : 11;
+    const SHADES = ['#3A3C40', '#55585C', '#73767A', '#93959A', '#B5B7BA', '#CFD0D2'];
+    const pickShade = () => SHADES[Math.floor(Math.random() * SHADES.length)];
+    let W = 0, H = 0, dots = [];
+    const size = () => {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = innerWidth; H = innerHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dots = [];
+      const ox = (W % GAP) / 2 + GAP / 2, oy = (H % GAP) / 2 + GAP / 2;
+      for (let y = oy; y < H; y += GAP) for (let x = ox; x < W; x += GAP) dots.push({ x, y, d: Math.hypot(x - W / 2, y - H / 2), px: 0, py: 0, c: pickShade(), w: 0.5 + Math.random() * 0.5 });
+    };
+    size();
+    window.addEventListener('resize', size);
+    // the pointer drops ripples as it moves: rings that spread out through the dots and fade
+    const ripples = [];
+    let lastRx = -9999, lastRy = -9999, lastRt = 0;
+    loader.addEventListener('pointermove', (e) => {
+      const now = performance.now();
+      if (Math.hypot(e.clientX - lastRx, e.clientY - lastRy) > 36 || now - lastRt > 160) {
+        ripples.push({ x: e.clientX, y: e.clientY, t0: now });
+        if (ripples.length > 18) ripples.shift();
+        lastRx = e.clientX; lastRy = e.clientY; lastRt = now;
+      }
+    });
+    // one slow, soft breath every 2.8s, drifting gently outwards
+    const PERIOD = 2.8, SPEED = 300;
+    const pulse = (x, w) => Math.exp(-(x * x) / (2 * w * w));
+    const beat = (t) => { const k = ((t % PERIOD) + PERIOD) % PERIOD; return pulse(k - 0.6, 0.38); };
+    let leaving = 0, leaveT0 = 0;
+    const tStart = performance.now();
+    const draw = (now) => {
+      if (!loader.isConnected) return;
+      const t = (now - tStart) / 1000;
+      g.clearRect(0, 0, W, H);
+      const lt = leaving ? (now - leaveT0) / 1000 : 0;
+      while (ripples.length && now - ripples[0].t0 > 1700) ripples.shift();
+      const live = ripples.map((q) => { const a = (now - q.t0) / 1000; return { x: q.x, y: q.y, R: a * 240, k: Math.exp(-a * 1.8) }; });
+      for (const p of dots) {
+        let v = beat(t - p.d / SPEED);
+        // the farewell: one big wave that runs out to the edges, then the dots fade
+        let fade = 1;
+        if (leaving) {
+          const front = lt * 1400;
+          v += 1.6 * pulse((p.d - front) / 120, 1);
+          fade = Math.max(0, 1 - Math.max(0, front - p.d) / 260);
+        }
+        // ripples from the pointer: each ring lifts the dots it passes and nudges them outwards
+        let near = 0, tx = 0, ty = 0;
+        for (const q of live) {
+          const dx = p.x - q.x, dy = p.y - q.y, dist = Math.hypot(dx, dy);
+          const off = dist - q.R;
+          if (off > 60 || off < -60) continue;
+          const h = 0.7 * pulse(off / 24, 1) * q.k;
+          near += h; tx += (dx / (dist || 1)) * h * 5; ty += (dy / (dist || 1)) * h * 5;
+        }
+        near = Math.min(1.4, near);
+        const r = 0.5 + 0.3 * v + 0.45 * near;
+        g.globalAlpha = Math.min(1, p.w * (0.26 + 0.28 * v + 0.4 * near)) * fade;
+        g.fillStyle = p.c;
+        g.beginPath(); g.arc(p.x + tx, p.y + ty, r, 0, 6.2832); g.fill();
+      }
+      g.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    };
+    requestAnimationFrame(draw);
+
     let seen = false;
     try { seen = sessionStorage.getItem('sb-loaded') === '1'; sessionStorage.setItem('sb-loaded', '1'); } catch (e) {}
-    const MIN = seen ? 1000 : 2600;
+    const MIN = seen ? 900 : 2300;
     let ready = false;
     const markReady = () => { ready = true; };
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(markReady);
     setTimeout(markReady, 4000);
+    requestAnimationFrame(() => requestAnimationFrame(() => loader.classList.add('is-in')));
     const t0 = performance.now();
     let shownP = 0, lastV = -1, finished = false, prevT = t0;
     const tick = (now) => {
@@ -2447,18 +2445,13 @@ body > header, body > main, body > footer { transition: transform 0.26s var(--ea
       shownP += (goal - shownP) * (1 - Math.pow(0.86, dt / 16.7));
       if (goal === 1 && 1 - shownP < 0.003) shownP = 1;
       const v = Math.round(shownP * 100);
-      if (v !== lastV) {
-        countEl.textContent = String(v).padStart(3, '0'); lastV = v;
-        barEl.style.setProperty('--p', shownP.toFixed(4));
-        tocItems.forEach((li, k) => li.classList.toggle('is-on', v >= ((k + 1) / tocItems.length) * 100 - 2));
-      }
+      if (v !== lastV) { countEl.textContent = v + '%'; lastV = v; }
       if (shownP === 1 && !finished) {
         finished = true;
-        setTimeout(() => {
-          loader.classList.add('is-leaving');
-          setTimeout(() => { openPage(); loader.classList.add('is-out'); }, 620);
-          setTimeout(() => loader.remove(), 1800);
-        }, 260);
+        leaving = 1; leaveT0 = performance.now();
+        loader.classList.add('is-leaving');
+        setTimeout(() => { openPage(); loader.classList.add('is-out'); }, 380);
+        setTimeout(() => loader.remove(), 1600);
         return;
       }
       requestAnimationFrame(tick);
