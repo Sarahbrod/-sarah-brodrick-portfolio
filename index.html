@@ -326,6 +326,7 @@
 
 /* The normal arrow pointer everywhere on the carousel, including while dragging */
 .stage, .stage.is-dragging, .stage .card { cursor: default !important; }
+
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
   <link rel="icon" href="favicon.ico?v=3" sizes="any">
@@ -3586,4 +3587,25 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
 </script>
 </body></html>
 
+<style>
+/* Square corners on every image, screenshot and card across the site.
+   Circles (avatars, orbs, round photos) and pill buttons keep their shape. */
+:is(img, video, picture, figure, canvas, iframe, .card, [class*="card"], [class*="shot"], [class*="frame"], [class*="panel"], [class*="tile"], [class*="figure"], [class*="hero__"], [class*="window"], [class*="screen"], [class*="phone"], .sx-list, .sx-row, .sx-note, .sx-tile, .sx-clock, .g1-win, .g1-row, .g1-thumb, .su3-card, .sb-list, .sb-row, .sb-photo, .sb-glass, .sb-app, .sb-clock, .sb-clock__side, .sb-shot, .sp2-sq, .wr2-cap img, .sbd__img, .jvid__screen, .dk__page, .lightbox img):not(#_sq1):not(#_sq2) { border-radius: 0 !important; }
+:is(.fp-prod img, .su3-orb, .sx-orb, .sp2-disc, .sp2-orbit__ring, .sp2-ring, .sp2-icons span, .sp2-tt, .fp-split i, .fp-island, img[class*="avatar"], [class*="avatar"] img, [class*="avatar"]):not(#_sq1):not(#_sq2):not(#_sq3) { border-radius: 50% !important; }
+.fp-phone:not(#_sq1):not(#_sq2):not(#_sq3) { border-radius: 2.6em !important; } .fp-screen:not(#_sq1):not(#_sq2):not(#_sq3) { border-radius: 2.3em !important; }
+</style>
+<script>
+/* Square corners on any card, panel or image larger than a chip; pills and circles keep their shape */
+(() => {
+  const run = () => document.querySelectorAll('body *').forEach((el) => {
+    if (el.closest('button, a.btn, .mode, .fp-phone')) return;
+    const cs = getComputedStyle(el); const r = parseFloat(cs.borderTopLeftRadius) || 0; if (!r || cs.borderTopLeftRadius.includes('%')) return;
+    const b = el.getBoundingClientRect(); if (b.width < 110 || b.height < 56) return;
+    if (r >= Math.min(b.width, b.height) / 2 - 1) return;
+    el.style.setProperty('border-radius', '0', 'important');
+  });
+  if (document.readyState !== 'loading') run(); else document.addEventListener('DOMContentLoaded', run);
+  addEventListener('load', run); setTimeout(run, 1500);
+})();
+</script>
 </body></html>
