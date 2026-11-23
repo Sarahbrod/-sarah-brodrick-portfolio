@@ -3372,10 +3372,10 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-chip { backgro
         }
         near = Math.min(1.4, near);
         const r = 0.5 + 0.3 * v + 0.45 * near;
-        g.globalAlpha = Math.min(1, p.w * (0.26 + 0.28 * v + 0.4 * near)) * fade;
+        g.globalAlpha = Math.min(1, p.w * (0.34 + 0.34 * v + 0.45 * near)) * fade;
         g.fillStyle = p.c;
         // small crisp squares, snapped to the pixel grid
-        const q = Math.round((1.1 + r * 1.8) * 2) / 2;
+        const q = Math.max(1, Math.round((0.6 + r * 0.9) * 2) / 2);
         g.fillRect(Math.round(p.x + tx - q / 2), Math.round(p.y + ty - q / 2), q, q);
       }
       g.globalAlpha = 1;
