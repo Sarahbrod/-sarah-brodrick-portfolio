@@ -2529,6 +2529,50 @@ body .track .card.sxc[data-href="go1.html"] .card__head .card__sep { color: rgba
 
 /* Go1: a smaller upload card, centred in the card */
 body .track .card.sxc[data-href="go1.html"] .g1-win { left: 15% !important; right: 15% !important; top: 50% !important; bottom: auto !important; transform: translateY(-42%); font-size: 0.82em; }
+
+/* Go1: brighter ground */
+body .track .card.sxc[data-href="go1.html"] { background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.06)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #B5B6B2 !important; }
+
+/* Supermetrics pricing: package builder on top, a celebrated checkout below */
+.sp3-pkg { width: 74%; display: grid; gap: 0.75em; padding: 0.9em 0.9em 0.85em; border-radius: 1.2em; background: rgba(30, 29, 27, 0.5); -webkit-backdrop-filter: blur(18px) saturate(130%); backdrop-filter: blur(18px) saturate(130%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 1.4em 2.4em -1.4em rgba(0, 0, 0, 0.8); color: #F4F1EA; }
+.sp3-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.2em; padding: 0.2em; border-radius: 99px; background: rgba(255, 255, 255, 0.08); }
+.sp3-seg span { padding: 0.45em 0; border-radius: 99px; text-align: center; font-size: 0.56em; color: rgba(244, 241, 234, 0.6); }
+.sp3-seg span.is-on { background: var(--y); color: #1B1A12; }
+.sp3-price { display: flex; align-items: flex-end; gap: 0.55em; }
+.sp3-price b { display: flex; align-items: flex-start; font-family: "Space Mono", ui-monospace, monospace; font-weight: 400; font-size: 2.4em; line-height: 0.85; letter-spacing: -0.04em; }
+.sp3-price b span { font-size: 0.45em; margin: 0.05em 0.05em 0 0; opacity: 0.7; }
+.sp3-price small { font-size: 0.5em; line-height: 1.35; color: rgba(244, 241, 234, 0.6); }
+.sp3-price em { margin-left: auto; align-self: flex-start; padding: 0.3em 0.55em; border-radius: 99px; background: rgba(233, 220, 122, 0.16); color: var(--y); font-style: normal; font-size: 0.52em; }
+.sp3-src { display: flex; align-items: center; justify-content: space-between; padding-top: 0.65em; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.sp3-stack { display: flex; }
+.sp3-stack i { display: grid; place-items: center; width: 1.55em; height: 1.55em; margin-right: -0.35em; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 0.15em #2A2825; }
+.sp3-stack i img { width: 60%; height: 60%; object-fit: contain; }
+.sp3-stack i.is-new { box-shadow: 0 0 0 0.15em var(--y); }
+.sp3-src small { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.46em; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244, 241, 234, 0.6); }
+.sp2-half--a { padding-top: 14% !important; }
+.sp2-disc { gap: 0.25em !important; }
+.sp3-paid { display: inline-flex; align-items: center; gap: 0.3em; padding: 0.25em 0.6em 0.25em 0.3em; border-radius: 99px; background: #FFFFFF; color: #232325; font-family: "Space Mono", ui-monospace, monospace; font-size: 0.5em; }
+.sp3-paid em { display: grid; place-items: center; width: 1.2em; height: 1.2em; border-radius: 50%; background: var(--y); }
+.sp3-paid svg { width: 0.85em; height: 0.85em; }
+.sp3-total { font-family: "Space Mono", ui-monospace, monospace; font-weight: 400; font-size: 1.3em; color: #FFFFFF; letter-spacing: -0.03em; }
+.sp2-disc small { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.42em; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); }
+.sp3-cf { position: absolute; left: 50%; top: 50%; width: 0.5em; height: 0.22em; margin: -0.11em -0.25em; border-radius: 1px; background: var(--c); transform: translate(var(--x), var(--y)) rotate(var(--r, 0deg)); opacity: 0.9; }
+.sp3-cf--dot { width: 0.32em; height: 0.32em; border-radius: 50%; }
+.sp3-stat { position: absolute; left: 6%; bottom: 8%; padding: 0.4em 0.8em; border-radius: 99px; background: var(--y); color: #1B1A12; font-size: 0.6em; }
+.sp3-stat b { font-family: "Space Mono", ui-monospace, monospace; font-weight: 700; }
+
+/* Supermetrics insights: each widget says something */
+.sb-trend { right: 7%; top: 13%; width: 33%; aspect-ratio: 1; box-sizing: border-box; display: flex; flex-direction: column; padding: 0.7em 0.7em 0.6em; border-radius: 1.1em; background: rgba(48, 48, 50, 0.72); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.sb-trend small { font-size: 0.5em; color: rgba(241, 240, 235, 0.6); }
+.sb-trend svg { flex: 1; width: 100%; margin: 0.4em 0; }
+.sb-trend b { font-family: "Space Mono", ui-monospace, monospace; font-weight: 400; font-size: 0.85em; color: var(--y); }
+.sb-glass { display: flex; flex-direction: column; justify-content: space-between; padding: 0.75em; box-sizing: border-box; }
+.sb-glass p { margin: 0; font-size: 0.58em; line-height: 1.35; color: rgba(241, 240, 235, 0.9); }
+.sb-chip { position: static !important; align-self: flex-start; }
+.sb-app { flex-direction: column; gap: 0.35em; }
+.sb-app__ic { display: flex; }
+.sb-app__ic img { width: 1.15em; height: 1.15em; margin-right: -0.25em; padding: 0.18em; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 0.1em #DAD6CC; object-fit: contain; }
+.sb-app small { font-family: "Space Mono", ui-monospace, monospace; font-size: 0.4em; color: #3A3A3C; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -2563,20 +2607,18 @@ body .track .card.sxc[data-href="go1.html"] .g1-win { left: 15% !important; righ
       <article class="card sxc" data-href="supermetrics-purchase.html">
         <div class="sx sx--sp2" aria-hidden="true">
   <div class="sp2-half sp2-half--a">
-    <div class="sp2-row">
-      <span class="sp2-sq">EUR</span>
-      <span class="sp2-pill"><span class="sp2-ring"><b>6/8</b></span><span class="sp2-pill__t"><b>Growth</b><small>€159 / month</small></span></span>
+    <div class="sp3-pkg">
+      <div class="sp3-seg"><span>Starter</span><span class="is-on">Growth</span><span>Pro</span></div>
+      <div class="sp3-price"><b><span>€</span>159</b><small>per month<br>billed annually</small><em>−20%</em></div>
+      <div class="sp3-src"><span class="sp3-stack"><i><img src="assets/img/smi-fb.png" alt="" draggable="false"></i><i><img src="assets/img/smi-ga.png" alt="" draggable="false"></i><i><img src="assets/img/smi-gads.png" alt="" draggable="false"></i><i><img src="assets/img/smi-li.png" alt="" draggable="false"></i><i class="is-new"><img src="assets/img/smi-tt.png" alt="" draggable="false"></i></span><small>6 of 8 sources</small></div>
     </div>
-    <p class="sp2-cap">Self-serve package<br>Built in the hub</p>
   </div>
   <div class="sp2-half sp2-half--b">
     <div class="sp2-orbit"><i class="sp2-orbit__ring"></i>
-      <div class="sp2-disc"><span class="sp2-badge">Paid</span><small>Checkout</small>
-        <span class="sp2-icons"><span><img src="assets/img/smi-looker.png" alt="" draggable="false"></span><span><img src="assets/img/smi-fb.png" alt="" draggable="false"></span><span><img src="assets/img/smi-sheets.png" alt="" draggable="false"></span></span>
-        <span class="sp2-tt"><img src="assets/img/smi-tt.png" alt="" draggable="false"></span>
-      </div>
+      <i class="sp3-cf" style="--x:-4.6em;--y:-3.2em;--c:#E9DC7A;--r:20deg"></i><i class="sp3-cf" style="--x:4.9em;--y:-2.4em;--c:#FFFFFF;--r:-30deg"></i><i class="sp3-cf" style="--x:-5.4em;--y:1.6em;--c:#FFFFFF;--r:60deg"></i><i class="sp3-cf" style="--x:5.3em;--y:2.8em;--c:#E9DC7A;--r:-10deg"></i><i class="sp3-cf sp3-cf--dot" style="--x:3.2em;--y:-4.6em;--c:#E9DC7A"></i><i class="sp3-cf sp3-cf--dot" style="--x:-2.6em;--y:4.5em;--c:#FFFFFF"></i>
+      <div class="sp2-disc"><span class="sp3-paid"><em><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 8.3l2.4 2.4 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></em>Paid</span><b class="sp3-total">€1,908</b><small>Growth · annual</small></div>
     </div>
-    <p class="sp2-cap">22% ARR growth<br>No sales call</p>
+    <span class="sp3-stat"><b>+22%</b> ARR</span>
   </div>
 </div>
         <div class="card__head"><h2 class="card__title">Supermetrics</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2024</span></div>
@@ -2612,8 +2654,7 @@ body .track .card.sxc[data-href="go1.html"] .g1-win { left: 15% !important; righ
         <div class="card__head"><h2 class="card__title">Fupay</h2><span class="card__sep" aria-hidden="true">/</span><span class="card__year">2021</span></div>
       </article>
       <article class="card sxc" data-href="sunday.html">
-        <span class="su3-soon" aria-hidden="true"><i></i>Case study coming soon</span>
-  <div class="sx sx--su3" aria-hidden="true">
+        <div class="sx sx--su3" aria-hidden="true">
   <div class="su3-card"><div class="su3-txt"><p>Guests up 18% this week. Friday dinner was your busiest…</p><div class="su3-foot"><span class="sx-tag">Guests</span><span class="sx-tag">Revenue</span><small>This week</small></div></div><span class="su3-orb su3-orb--bars"><i style="--h:0.42"></i><i style="--h:0.55"></i><i style="--h:0.48"></i><i style="--h:0.7"></i><i style="--h:0.62"></i><i style="--h:1"></i><i style="--h:0.78"></i></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Tips reached €2,140, shared across 14 staff.</p><div class="su3-foot"><span class="sx-tag">Staff</span><span class="sx-tag">Tips</span><small>Today</small></div></div><span class="su3-orb su3-orb--ring"><b>€2.1k</b></span></div>
   <div class="su3-card"><div class="su3-txt"><p>Pay at the table saved 38 hours of service…</p><div class="su3-foot"><span class="sx-tag">Insights</span><small>May</small></div></div><span class="su3-orb su3-orb--qr"><span><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i></span></span></div>
@@ -2627,10 +2668,10 @@ body .track .card.sxc[data-href="go1.html"] .g1-win { left: 15% !important; righ
     <div class="sb-row"><span><b>Google Ads</b><i>Best channel this week</i></span><em class="sb-ring"></em></div>
     <div class="sb-row is-dim"><span><b>TikTok Ads</b><i>Clicks rising</i></span><em class="sb-ring"></em></div>
   </div>
-  <div class="sb-photo"></div>
-  <p class="sb-cap">Ask about<br>your data<br><span>AI summary</span></p>
-  <div class="sb-glass"><span class="sb-chip">Query insights</span></div>
-  <span class="sb-app"><img src="assets/img/smi-ga.png" alt="" draggable="false"></span>
+  <div class="sb-trend"><small>Leads</small><svg viewBox="0 0 100 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 38 L16 34 L32 36 L48 26 L64 22 L80 13 L100 8" fill="none" stroke="#E9DC7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="M0 38 L16 34 L32 36 L48 26 L64 22 L80 13 L100 8 L100 46 L0 46Z" fill="rgba(233,220,122,0.14)"/></svg><b>+31%</b></div>
+  <p class="sb-cap">Last 7 days<br><span>vs previous week</span></p>
+  <div class="sb-glass"><p>Meta spend rose 18% while cost per lead fell to €4.20.</p><span class="sb-chip">AI summary</span></div>
+  <span class="sb-app"><span class="sb-app__ic"><img src="assets/img/smi-fb.png" alt="" draggable="false"><img src="assets/img/smi-ga.png" alt="" draggable="false"><img src="assets/img/smi-gads.png" alt="" draggable="false"></span><small>3 sources</small></span>
   <div class="sb-shot"></div>
   <div class="sb-clock"><span class="sb-clock__side"><i></i><small>CPL</small></span><b>4.20</b><span class="sb-clock__unit">EUR<br><em>-12%</em></span></div>
 </div>
