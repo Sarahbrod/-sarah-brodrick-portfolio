@@ -3198,6 +3198,29 @@ body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card { background
 
 /* Each card leads with its outcome, just under the title */
 body .track .card.sxc .card__out { position: absolute; left: 0; right: 0; top: calc(24px + 2.5em); z-index: 3; margin: 0; text-align: center; font-size: 0.78em; letter-spacing: -0.005em; color: #FFFFFF; pointer-events: none; }
+
+/* Contrast: a soft shade behind every title and outcome, smoky glass on the brightest photos */
+.track .card > .card-scrim { position: absolute; left: 0; right: 0; top: 0; height: 34%; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(18, 14, 11, 0.5), rgba(18, 14, 11, 0.28) 45%, rgba(18, 14, 11, 0)); }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-card, body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), rgba(24, 20, 17, 0.34) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row { background: rgba(255, 255, 255, 0.08) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row.is-on { background: rgba(255, 255, 255, 0.18) !important; }
+body .track .card.sxc .card__head .card__year { color: rgba(255, 255, 255, 0.78) !important; }
+
+.track .card > .card-scrim { z-index: 2; height: 30%; background: linear-gradient(180deg, rgba(18, 14, 11, 0.62), rgba(18, 14, 11, 0.36) 50%, rgba(18, 14, 11, 0)) !important; }
+body .track .card.sxc .card__head .card__year { color: rgba(255, 255, 255, 0.88) !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-card { background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), rgba(24, 20, 17, 0.44) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list { background: linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), rgba(24, 20, 17, 0.44) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row.is-on { background: rgba(255, 255, 255, 0.12) !important; }
+body .track .card.sxc[data-href="sunday.html"] .su4-delta { background: rgba(0, 0, 0, 0.22) !important; }
+
+body .track .card.sxc > i.card-scrim { position: absolute !important; inset: 0 0 auto 0 !important; width: auto !important; height: 30% !important; margin: 0 !important; transform: none !important; filter: none !important; border-radius: 0 !important; box-shadow: none !important; z-index: 2 !important; }
+body .track .card.sxc .card__head { z-index: 3 !important; }
+body .track .card.sxc .card__out { z-index: 4 !important; }
+
+body .track .card.sxc .card__head .card__year { color: rgba(255, 255, 255, 0.95) !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-k, body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-src small { color: #FFFFFF !important; }
+body .track .card.sxc[data-href="supermetrics-purchase.html"] > i.card-scrim { background: linear-gradient(180deg, rgba(18, 14, 11, 0.72), rgba(18, 14, 11, 0.42) 50%, rgba(18, 14, 11, 0)) !important; }
+body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i { color: rgba(255, 255, 255, 0.96) !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -3589,6 +3612,7 @@ body .track .card.sxc .card__out { position: absolute; left: 0; right: 0; top: c
   });
   const cards = [...track.querySelectorAll('.card')];
   cards.forEach((c) => { const v = document.createElement('i'); v.className = 'card-veil'; v.setAttribute('aria-hidden', 'true'); c.appendChild(v); });
+  cards.forEach((c) => { const sc = document.createElement('i'); sc.className = 'card-scrim'; sc.setAttribute('aria-hidden', 'true'); c.appendChild(sc); });
   const media = cards.map((c) => c.querySelector('.card__tex'));
   const shots = cards.map((c) => c.querySelector('.card__shot'));
   const cursor = document.getElementById('cursor');
