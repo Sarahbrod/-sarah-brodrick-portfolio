@@ -3195,17 +3195,6 @@ body .track .card.sxc.is-settled > .sx, body .track .card.sxc.is-settled > .wr2-
 .sp4-card, .su4-card, .g3-up, .g3-course, .fy-pay:not(.is-paid), body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-list, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-trend, body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-glass { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; }
 
 body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card { background: rgba(255, 255, 255, 0.17) !important; box-shadow: 0 1.4em 2.6em -1.4em rgba(0, 0, 0, 0.45) !important; text-shadow: none !important; }
-
-/* Fupay card: a clean neutral blue instead of the blurred photo, so nothing reads as a blurry person
-   and the row gets one cool colour among the warm cards */
-html body .track .card.sxc[data-href="fupay.html"][data-href] {
-  background:
-    radial-gradient(60% 45% at 50% 32%, rgba(214, 226, 240, 0.28), rgba(214, 226, 240, 0) 70%),
-    radial-gradient(80% 60% at 85% 100%, rgba(30, 42, 60, 0.45), rgba(30, 42, 60, 0) 70%),
-    linear-gradient(180deg, #7E93AE 0%, #5D718C 52%, #435369 100%) !important;
-}
-html body .track .card.sxc[data-href="fupay.html"][data-href]::before,
-html body .track .card.sxc[data-href="fupay.html"][data-href]::after { background: none !important; filter: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -3265,7 +3254,7 @@ html body .track .card.sxc[data-href="fupay.html"][data-href]::after { backgroun
       </article>
       <article class="card sxc" data-href="fupay.html">
         <div class="sx sx--fy" aria-hidden="true">
-  <div class="fy-prod"><img src="assets/img/fp-polo.jpg" alt="" draggable="false"><span class="fy-cash">$5 cashback</span></div>
+  <div class="fy-prod"><img src="assets/img/fp-polo.svg" alt="" draggable="false"><span class="fy-cash">$5 cashback</span></div>
   <p class="fy-total"><span>$</span>79<small>.60</small></p>
   <p class="fy-k">Pay in 4 · 0% interest</p>
   <div class="fy-plan">

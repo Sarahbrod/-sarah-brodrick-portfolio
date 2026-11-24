@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#F7F8FA"/><stop offset="1" stop-color="#E3E6EC"/></radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26314A"/><stop offset="0.55" stop-color="#1B2438"/><stop offset="1" stop-color="#121829"/></linearGradient>
+    <linearGradient id="sleeveL" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#202A40"/><stop offset="1" stop-color="#141B2C"/></linearGradient>
+    <linearGradient id="sleeveR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232E46"/><stop offset="1" stop-color="#151C2E"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <ellipse cx="200" cy="356" rx="118" ry="14" fill="#0E1322" opacity="0.18" filter="url(#sh)"/>
+  <!-- sleeves -->
+  <path d="M132 96 L70 132 Q56 140 60 156 L80 214 Q84 224 95 221 L136 208 Z" fill="url(#sleeveL)"/>
+  <path d="M268 96 L330 132 Q344 140 340 156 L320 214 Q316 224 305 221 L264 208 Z" fill="url(#sleeveR)"/>
+  <path d="M80 214 L95 221 L136 208 L133 198 L92 210 Z" fill="#0F1524" opacity="0.6"/>
+  <path d="M320 214 L305 221 L264 208 L267 198 L308 210 Z" fill="#0F1524" opacity="0.6"/>
+  <!-- body -->
+  <path d="M132 96 Q166 84 200 84 Q234 84 268 96 L274 200 Q278 280 276 340 Q238 350 200 350 Q162 350 124 340 Q122 280 126 200 Z" fill="url(#body)"/>
+  <path d="M124 330 Q162 342 200 342 Q238 342 276 330 L276 340 Q238 350 200 350 Q162 350 124 340 Z" fill="#0E1322" opacity="0.55"/>
+  <!-- collar -->
+  <path d="M168 88 Q200 104 232 88 L224 82 Q200 92 176 82 Z" fill="#0F1524"/>
+  <path d="M168 88 L184 128 L200 106 Z" fill="#2B3754"/>
+  <path d="M232 88 L216 128 L200 106 Z" fill="#26314C"/>
+  <path d="M168 88 L184 128 L200 106" fill="none" stroke="#0E1322" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M232 88 L216 128 L200 106" fill="none" stroke="#0E1322" stroke-width="2" stroke-linejoin="round"/>
+  <!-- placket and buttons -->
+  <rect x="192" y="106" width="16" height="72" rx="3" fill="#1E2840" stroke="#10172A" stroke-width="1.5"/>
+  <circle cx="200" cy="128" r="3.4" fill="#C9CFDB"/>
+  <circle cx="200" cy="154" r="3.4" fill="#C9CFDB"/>
+  <!-- small chest logo -->
+  <rect x="236" y="146" width="12" height="13" rx="2" fill="none" stroke="#C9CFDB" stroke-width="2"/>
+  <!-- folds -->
+  <path d="M150 230 Q160 280 152 330" fill="none" stroke="#0F1524" stroke-width="3" opacity="0.35" stroke-linecap="round"/>
+  <path d="M250 240 Q242 286 250 328" fill="none" stroke="#0F1524" stroke-width="3" opacity="0.3" stroke-linecap="round"/>
+  <path d="M140 110 Q150 160 146 200" fill="none" stroke="#3A4766" stroke-width="3" opacity="0.35" stroke-linecap="round"/>
+</svg>
