@@ -734,6 +734,11 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
 
 /* Hero image sits in the text column, starting on the same left edge as the body copy */
 @media (min-width: 761px) { .row--hero > .frame { align-self: start; } }
+
+/* About: square image */
+.row--hero .frame, .row--hero .frame img { border-radius: 0 !important; }
+.row > .body + .body { grid-column: 6 / 12; margin-top: 1.1em; }
+@media (max-width: 760px) { .row > .body + .body { grid-column: 1 / -1; } }
 </style>
 </head>
 <body>
@@ -756,6 +761,7 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
     <section class="row grid" data-reveal aria-labelledby="intro">
       <h2 class="label label--caps mask" id="intro"><span>Intro</span></h2>
       <p class="body mask"><span style="--d:.1">I’m a London based Product Designer who cares about creating thoughtful digital experiences that lie at the intersection of beauty, functionality and context. I have seven years of experience using research, concepting, experience design and visual design to create digital products.</span></p>
+      <p class="body mask"><span style="--d:.2">I love design, and I love building just as much. These days I use Claude Code to bring my designs to life, turning ideas into real, working products I can test, refine and share. This site is one of them.</span></p>
     </section>
 
     <section class="row grid" data-reveal aria-labelledby="approach">
@@ -763,10 +769,6 @@ body:has(.crumb) > header.nav { padding-bottom: 16px !important; }
       <p class="body mask"><span style="--d:.1">My approach is grounded in clarity, collaboration and strong systems. I lead with an approachable, steady style built on trust and open communication, and I focus on creating environments where teams can do their best work. I pair big-picture thinking with hands-on understanding, helping ideas move from strategy to execution with purpose. I see brand as a unifying force that connects teams, decisions and experiences, creating greater impact when it is embedded across the business.</span></p>
     </section>
 
-    <section class="row grid" data-reveal aria-labelledby="now">
-      <h2 class="label label--caps mask" id="now"><span>Currently</span></h2>
-      <p class="body mask"><span style="--d:.1">Senior Product Designer at sunday. Previously at Supermetrics and Go1.</span></p>
-    </section>
 
     <section class="row grid" data-reveal aria-labelledby="elsewhere">
       <h2 class="label label--caps mask" id="elsewhere"><span>Elsewhere</span></h2>
