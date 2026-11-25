@@ -4240,7 +4240,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i { color:
       }
       const g = grow > 0.5 ? `${(-grow).toFixed(1)}px` : '';
       if (cards[i].style.top !== g) { cards[i].style.top = g; cards[i].style.bottom = g; }
-      cards[i].style.clipPath = clip === 'none' && !SQUIRCLE ? 'inset(0 round 22px)' : clip;
+      cards[i].style.clipPath = clip; // cards are square: no rounded clip, whatever the browser supports
       cards[i].style.pointerEvents = p[7] < 0.1 ? 'none' : '';
 
       if (media[i]) {
