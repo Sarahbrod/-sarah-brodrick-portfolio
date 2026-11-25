@@ -4119,19 +4119,26 @@ body .track .card.sxc[data-href="sunday.html"][data-href] .su4-card { background
       // centre cards first
       if (!reduceMotion) {
         // Gentle arrival: each card rises a short way into its place and fades up, centre first
-        const delay = 40 + Math.min(Math.abs(k), 5) * 55;
-        const q = clamp((now - start - delay) / 950, 0, 1);
-        const qi = clamp((now - start - delay - 60) / 800, 0, 1);
+        // Starts once the loader has mostly cleared, centre card first, the rest following outwards
+        const delay = 180 + Math.min(Math.abs(k), 5) * 70;
+        const q = clamp((now - start - delay) / 1250, 0, 1);
+        const qi = clamp((now - start - delay - 140) / 900, 0, 1);
         const ei = 1 - Math.pow(1 - qi, 4);
         cards[i].style.setProperty('--in', ei.toFixed(3)); cards[i].classList.toggle('is-settled', ei >= 1);
         // fade through a veil of the page colour, not card opacity or blur: those would switch off
         // the glass panels' backdrop blur mid-arrival and make them pop when it ends
         let veil = 0;
         if (q < 1) {
-          const e = 1 - Math.pow(1 - q, 5);
-          p[1] += 24 * (1 - e);
-          p[6] *= 0.96 + 0.04 * e;
-          veil = 1 - Math.min(1, e * 1.25);
+          // Homing in: each card starts a little further out and lower, slightly smaller and
+          // turned a touch more, then glides into its place on one long, soft ease
+          const e = 1 - Math.pow(1 - q, 3.4);
+          const r = 1 - e;
+          p[0] *= 1 + 0.09 * r;
+          p[1] += 34 * r;
+          p[5] *= 1 + 0.14 * r;
+          p[6] *= 0.94 + 0.06 * e;
+          const v = clamp(q / 0.55, 0, 1);
+          veil = 1 - v * v * (3 - 2 * v);
           if (q <= 0) p[7] *= 0;
         }
         introBlur[i] = 0;
