@@ -3296,6 +3296,23 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
   html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-bar i { transform-origin: left; animation: hv-grow-part 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
   html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-cta { animation: hv-press 0.4s ease-in-out 0.7s both; }
 }
+
+/* ===== Phones: a compact header and a safe gap at the bottom, so the name, links, cards and the
+   layout switcher all fit on one screen even with the browser's toolbars showing ===== */
+@media (max-width: 760px) {
+  .home { height: 100svh; }
+  .nav { padding-top: calc(14px + env(safe-area-inset-top, 0px)) !important; padding-bottom: 6px !important; row-gap: 4px !important; }
+  .brand { font-size: 15px !important; line-height: 20px !important; }
+  .nav__tag, .nav__tag-1 { font-size: 18px !important; line-height: 1.22 !important; }
+  .links { flex-wrap: nowrap !important; column-gap: 14px !important; font-size: 14px !important; overflow: visible; }
+  .links .link, .links .email-copy { min-width: 0 !important; }
+  .modes { bottom: calc(26px + env(safe-area-inset-bottom, 0px)) !important; }
+  .mode { width: 48px !important; height: 48px !important; }
+  .mode svg { width: 28px !important; height: 28px !important; }
+  .modes .mode svg { width: 28px !important; height: 28px !important; }
+}
+@media (max-width: 360px) { .links { column-gap: 10px !important; font-size: 13.5px !important; } .nav__tag, .nav__tag-1 { font-size: 17px !important; } }
+@media (max-width: 760px) and (max-height: 620px) { .nav__tag, .nav__tag-1 { font-size: 16px !important; } .nav { padding-top: calc(10px + env(safe-area-inset-top, 0px)) !important; } }
 </style>
 <script>document.body.classList.add("home")</script>
 
