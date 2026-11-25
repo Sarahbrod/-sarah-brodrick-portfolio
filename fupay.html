@@ -493,6 +493,29 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
 @media (prefers-reduced-motion: reduce) { .mnav { transition: none; } }
 /* Project pages: square cards and panels (devices and windows keep their own shape) */
 .hero__panel, .shot:not(.shot--plain), .persona, .steps, .ph, .promo, .flowvid, .jvid, .wfilm, .figure__photo, .qi-screens, .jm, .jm-lane, .phones-free, .card__shot2, .sv, .wq-quiz, .wq-step, .wb, .wb > div, .wrp, .uf, .uf__wrap, .jm2, .jm2__stage, .hb, .hb > div, .uj, .uj__scroll, .sbd__img, .shot--modal img, .hero img, main figure img:not(.no-round):not(.wrp__screen img):not(.wphone img):not(.dk img):not(.sv img) { border-radius: 0 !important; corner-shape: round !important; }
+
+/* Points: a clean grid, bold title and a line each, no rules or numbers (as on the Supermetrics pricing page) */
+.pts { display: grid; gap: 28px clamp(20px, 3vw, 40px); margin: 28px 0 0; padding: 0; list-style: none; }
+.pts--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pts--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pts li { display: grid; align-content: start; gap: 6px; }
+.pts + p { margin-top: 28px !important; }
+.pts b { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink, #111111); }
+.pts p { margin: 0 !important; font-size: 16px !important; line-height: 1.55 !important; color: var(--muted, #5E5E62); }
+main > section.row > .body:has(.pts) { max-width: 920px; }
+main > section.row > .body:has(.pts) > p { max-width: 760px; }
+@media (max-width: 760px) { .pts--3, .pts--2 { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+/* Story steps: a short signpost and an intro sentence before each research artefact */
+main > section.row > .body.story-step { margin-top: 40px; }
+.story-step .sec-sub { margin: 0 0 8px !important; }
+.story-step .sec-sub + p { margin-top: 0 !important; }
+@media (max-width: 760px) { main > section.row > .body.story-step { margin-top: 24px; } }
+/* Proportion: images sit at one measure with the writing */
+@media (min-width: 761px) {
+  main > section.row > .figure { max-width: 920px; }
+  main > section.row > .body { max-width: 760px; }
+  main > section.row > .body p { font-size: 19px; line-height: 1.6; }
+}
 </style>
 </head>
 <body class="project">
@@ -520,7 +543,7 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
     
     
     <section class="row grid" data-reveal aria-labelledby="s1"><h2 class="label mask" id="s1"><span>The problem</span></h2><div class="body fade"><h3 class="sec-lead">A long, manual identity check was losing new users.</h3><p>Typing personal and financial details by hand felt slow and untrustworthy. About 34 in every 160 new users dropped off each month.</p></div>
-    <figure class="figure fade" style="--d:.15"><div class="shot" style="max-width:677px"><img src="assets/img/fp-manual-id.webp" alt="Manual identification options: choosing an ID type, uploading documents and confirming submission" width="1016" height="544" loading="lazy" decoding="async"></div></figure></section><section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>Research</span></h2><div class="body fade"><h3 class="sec-lead">The manual steps were the main reason people dropped off.</h3><p>Market trends and our own data both pointed to the manual steps.</p><ul class="list"><li>Automate personal details wherever possible</li><li>Create a standard, lightweight flow that builds trust</li></ul></div>
+    <figure class="figure fade" style="--d:.15"><div class="shot" style="max-width:677px"><img src="assets/img/fp-manual-id.webp" alt="Manual identification options: choosing an ID type, uploading documents and confirming submission" width="1016" height="544" loading="lazy" decoding="async"></div></figure></section><section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>Research</span></h2><div class="body fade"><h3 class="sec-lead">The manual steps were the main reason people dropped off.</h3><p>Market trends and our own data both pointed to the manual steps.</p><ol class="pts pts--2"><li><b>Automate the details</b><p>Fill in personal details automatically wherever possible.</p></li><li><b>Build trust</b><p>A standard, lightweight flow that feels safe to complete.</p></li></ol></div>
     <figure class="figure fade" style="--d:.15"><div class="personas">
       <div class="persona persona--a"><div class="persona__top"><span class="persona__avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span><span class="persona__id"><span class="persona__role">Primary persona</span><p class="persona__name">New Fupay customer</p></span></div><p class="persona__need">Wants to start using buy now, pay later quickly, and to trust the app with their details.</p><div class="persona__group"><span class="persona__k">Goals</span><ul class="persona__chips"><li>Sign up in minutes</li><li>Trust where their details go</li><li>Get to savings and rewards</li></ul></div><div class="persona__group"><span class="persona__k">Frustrations</span><ul class="persona__chips persona__chips--pain"><li>Typing details by hand</li><li>Long identity checks</li></ul></div></div>
       <div class="persona persona--b"><div class="persona__top"><span class="persona__avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="persona__id"><span class="persona__role">Secondary persona</span><p class="persona__name">Risk and compliance</p></span></div><p class="persona__need">Needs every new customer properly verified before they can spend.</p><div class="persona__group"><span class="persona__k">Goals</span><ul class="persona__chips"><li>Stronger identity checks</li><li>Smarter risk assessment</li></ul></div><div class="persona__group"><span class="persona__k">Frustrations</span><ul class="persona__chips persona__chips--pain"><li>Errors from manual entry</li><li>Drop-off before checks finish</li></ul></div></div>

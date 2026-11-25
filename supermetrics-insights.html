@@ -501,6 +501,29 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
 @media (prefers-reduced-motion: reduce) { .mnav { transition: none; } }
 /* Project pages: square cards and panels (devices and windows keep their own shape) */
 .hero__panel, .shot:not(.shot--plain), .persona, .steps, .ph, .promo, .flowvid, .jvid, .wfilm, .figure__photo, .qi-screens, .jm, .jm-lane, .phones-free, .card__shot2, .sv, .wq-quiz, .wq-step, .wb, .wb > div, .wrp, .uf, .uf__wrap, .jm2, .jm2__stage, .hb, .hb > div, .uj, .uj__scroll, .sbd__img, .shot--modal img, .hero img, main figure img:not(.no-round):not(.wrp__screen img):not(.wphone img):not(.dk img):not(.sv img) { border-radius: 0 !important; corner-shape: round !important; }
+
+/* Points: a clean grid, bold title and a line each, no rules or numbers (as on the Supermetrics pricing page) */
+.pts { display: grid; gap: 28px clamp(20px, 3vw, 40px); margin: 28px 0 0; padding: 0; list-style: none; }
+.pts--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pts--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pts li { display: grid; align-content: start; gap: 6px; }
+.pts + p { margin-top: 28px !important; }
+.pts b { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink, #111111); }
+.pts p { margin: 0 !important; font-size: 16px !important; line-height: 1.55 !important; color: var(--muted, #5E5E62); }
+main > section.row > .body:has(.pts) { max-width: 920px; }
+main > section.row > .body:has(.pts) > p { max-width: 760px; }
+@media (max-width: 760px) { .pts--3, .pts--2 { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+/* Story steps: a short signpost and an intro sentence before each research artefact */
+main > section.row > .body.story-step { margin-top: 40px; }
+.story-step .sec-sub { margin: 0 0 8px !important; }
+.story-step .sec-sub + p { margin-top: 0 !important; }
+@media (max-width: 760px) { main > section.row > .body.story-step { margin-top: 24px; } }
+/* Proportion: images sit at one measure with the writing */
+@media (min-width: 761px) {
+  main > section.row > .figure { max-width: 920px; }
+  main > section.row > .body { max-width: 760px; }
+  main > section.row > .body p { font-size: 19px; line-height: 1.6; }
+}
 </style>
 </head>
 <body class="project">
@@ -533,9 +556,9 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
     <section class="row grid" data-reveal aria-labelledby="s2"><h2 class="label mask" id="s2"><span>The solution</span></h2><div class="body fade"><h3 class="sec-lead">Insights appear right where the data already is.</h3><p>Insights appear next to the query, with no context switching, and a summary drops straight into a report.</p></div>
     <figure class="figure fade" style="--d:.15"><div class="qi-screens"><img src="assets/img/qi-home.jpg" alt="Sidebar home: a New query insights banner and a prompt to create a query" loading="lazy" decoding="async"><img src="assets/img/qi-selected.jpg" alt="Query insights: choose a prompt, such as the top 3 campaigns by cost per click in the last 7 days, then Generate insights" loading="lazy" decoding="async"><img src="assets/img/qi-templates.jpg" alt="Suggested queries for Facebook and Instagram to start from" loading="lazy" decoding="async"></div></figure>
     <figure class="figure fade" style="--d:.15"><div class="shot"><img src="assets/img/qi-results.jpg" alt="Query insights result in Google Sheets: a written summary of the top campaigns above a results table" loading="lazy" decoding="async"></div></figure></section>
-    <section class="row grid" data-reveal aria-labelledby="s3"><h2 class="label mask" id="s3"><span>Outcome</span></h2><div class="body fade"><h3 class="sec-lead">Customers stayed longer and got value sooner.</h3><ul class="list"><li>Better retention, up 14%</li><li>Higher user satisfaction</li><li>Quicker time to value</li></ul></div>
+    <section class="row grid" data-reveal aria-labelledby="s3"><h2 class="label mask" id="s3"><span>Outcome</span></h2><div class="body fade"><h3 class="sec-lead">Customers stayed longer and got value sooner.</h3><ol class="pts pts--3"><li><b>Better retention</b><p>Up 14%.</p></li><li><b>Happier users</b><p>Higher user satisfaction.</p></li><li><b>Faster value</b><p>Quicker time to value.</p></li></ol></div>
     <figure class="figure fade" style="--d:.15"><div class="qi-screens qi-screens--2"><img src="assets/img/qi-builder.jpg" alt="Query builder with the new Data visuals option: insert data as a table or chart" loading="lazy" decoding="async"><img src="assets/img/qi-errors.jpg" alt="Edge states: the monthly AI insights limit reached, and insights temporarily unavailable" loading="lazy" decoding="async"></div></figure></section>
-    <section class="row grid" data-reveal aria-labelledby="s4"><h2 class="label mask" id="s4"><span>Reflections</span></h2><div class="body fade"><h3 class="sec-lead">Where the insight lands matters more than the model.</h3><p>A summary only helps if it sits next to the data and travels into the report.</p><ul class="list"><li>Designing edge states early, like usage limits, kept trust when the AI could not answer</li><li>Prompt templates helped people who did not know what to ask</li><li>Next, I would track how often summaries reach reports, to see which prompts earn their place</li></ul></div></section>
+    <section class="row grid" data-reveal aria-labelledby="s4"><h2 class="label mask" id="s4"><span>Reflections</span></h2><div class="body fade"><h3 class="sec-lead">Where the insight lands matters more than the model.</h3><p>A summary only helps if it sits next to the data and travels into the report.</p><ol class="pts pts--3"><li><b>Plan for edge states</b><p>Designing edge states early, like usage limits, kept trust when the AI could not answer.</p></li><li><b>Help people ask</b><p>Prompt templates helped people who did not know what to ask.</p></li><li><b>Next time</b><p>I would track how often summaries reach reports, to see which prompts earn their place.</p></li></ol></div></section>
     
     
     
