@@ -849,6 +849,22 @@ main > section.row > .body.story-step { margin-top: 40px; }
   main > section.row > .body { max-width: 760px; }
   main > section.row > .body p { font-size: 19px; line-height: 1.6; }
 }
+
+/* ===== Wide screens: sections use the full page. The headline sits on the left, the story on the
+   right, and point grids and images run the full width ===== */
+@media (min-width: 1000px) {
+  main > section.row > .body { grid-column: 1 / -1 !important; max-width: none !important; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(32px, 4vw, 72px); align-items: start; }
+  main > section.row > .body > * { grid-column: 2; }
+  main > section.row > .body > .sec-lead, main > section.row > .body > .sec-sub { grid-column: 1; grid-row: 1 / span 6; margin-top: 0 !important; max-width: 14em !important; }
+  main > section.row > .body > p { max-width: 640px !important; }
+  main > section.row > .body > p:first-of-type, main > section.row > .body > .sec-lead + p { margin-top: 0 !important; }
+  main > section.row > .body > .pts { grid-column: 1 / -1 !important; margin-top: 36px !important; }
+  main > section.row > .body > .pts + p { grid-column: 2 !important; }
+  main > section.row > .body.body--lead { display: block; }
+  main > section.row > .body.body--lead > .sec-lead { max-width: 22em !important; }
+  main > section.row > .figure { max-width: none !important; }
+  main > section.row > .figure > * { margin-left: auto !important; margin-right: auto !important; }
+}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
 </head>
