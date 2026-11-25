@@ -321,8 +321,7 @@
 /* Cards: square corners */
 .card, .track .card, .card.card--mood { border-radius: 0 !important; corner-shape: round !important; }
 
-/* No custom cursor: the normal pointer is used */
-.cursor { display: none !important; }
+/* Custom cursor: a trail of squares on the carousel (see the page script) */
 
 /* The normal arrow pointer everywhere on the carousel, including while dragging */
 .stage, .stage.is-dragging, .stage .card { cursor: default !important; }
@@ -3249,53 +3248,6 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
 html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__year, html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__ship { color: rgba(27, 28, 31, 0.62) !important; }
 html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__sep { color: rgba(27, 28, 31, 0.35) !important; }
 
-/* ===== Hover: each card replays its key moment once, then rests on the finished state =====
-   Desktop pointers only, and never with reduced motion. The cards are still at rest. */
-@keyframes hv-pop { 0% { opacity: 0; transform: scale(0.4); } 70% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
-@keyframes hv-rise { from { opacity: 0; transform: translateY(0.9em); } to { opacity: 1; transform: none; } }
-@keyframes hv-grow { from { transform: scaleX(0); } to { transform: none; } }
-@keyframes hv-grow-part { from { transform: scaleX(0.6); } to { transform: none; } }
-@keyframes hv-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-@keyframes hv-press { 0%, 100% { transform: none; } 45% { transform: scale(0.95); } }
-@keyframes hv-bounce { 0%, 100% { transform: none; } 40% { transform: translateY(-0.35em) scale(1.15); } 70% { transform: translateY(0.05em) scale(0.98); } }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html body .track .card.sxc:hover .sx * { animation-play-state: running !important; }
-  /* Supermetrics pricing: the data sources drop in one by one, then the button is pressed */
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(2) { animation-delay: 0.08s; }
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(3) { animation-delay: 0.16s; }
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(4) { animation-delay: 0.24s; }
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-rec { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
-  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-btn { animation: hv-press 0.4s ease-in-out 0.75s both; }
-  /* Go1: the upload bar fills, then the course publishes */
-  html body .track .card.sxc[data-href="go1.html"]:hover .g3-bar i { transform-origin: left; animation: hv-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="go1.html"]:hover .g3-doc { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="go1.html"]:hover .g3-pub em { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
-  html body .track .card.sxc[data-href="go1.html"]:hover .g3-course { animation: hv-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
-  /* Fupay: the four payments line up and today's ticks off */
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(2) { animation-delay: 0.07s; }
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(3) { animation-delay: 0.14s; }
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(4) { animation-delay: 0.21s; }
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay.is-paid em { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both; }
-  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-cash { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both; }
-  /* Sunday: the revenue line draws through the evening and the latest table pays */
-  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-chart { animation: hv-draw 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-dot { animation: hv-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both; }
-  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-chip { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both; }
-  /* Supermetrics insights: the insights arrive, the trend climbs and the summary is written */
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row:nth-child(3) { animation-delay: 0.07s; }
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row:nth-child(4) { animation-delay: 0.14s; }
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-tick { animation: hv-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-trend svg { animation: hv-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
-  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-glass { animation: hv-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both; }
-  /* Wrylo: the streak flame flickers and the book moves on a few pages */
-  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-flame { display: inline-block; animation: hv-bounce 0.6s ease-in-out both; }
-  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-days { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
-  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-bar i { transform-origin: left; animation: hv-grow-part 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
-  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-cta { animation: hv-press 0.4s ease-in-out 0.7s both; }
-}
 
 /* ===== Phones: a compact header and a safe gap at the bottom, so the name, links, cards and the
    layout switcher all fit on one screen even with the browser's toolbars showing ===== */
@@ -3313,6 +3265,37 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
 }
 @media (max-width: 360px) { .links { column-gap: 10px !important; font-size: 13.5px !important; } .nav__tag, .nav__tag-1 { font-size: 17px !important; } }
 @media (max-width: 760px) and (max-height: 620px) { .nav__tag, .nav__tag-1 { font-size: 16px !important; } .nav { padding-top: calc(10px + env(safe-area-inset-top, 0px)) !important; } }
+
+/* ===== Hover: the card lifts a touch and its contents follow the pointer, with a soft light that tracks it ===== */
+.track .card > i.card-dim { position: absolute !important; inset: -1px; z-index: 19 !important; pointer-events: none; overflow: hidden;
+  opacity: 0; transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+/* the light: a soft, slowly morphing blob that glides after the pointer */
+.track .card > i.card-dim::before { content: ""; position: absolute; left: var(--gx, 50%); top: var(--gy, 35%); width: 58%; aspect-ratio: 1 / 0.9;
+  translate: -50% -50%; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.18) 55%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(16px); mix-blend-mode: overlay;
+  transition: left 0.9s cubic-bezier(0.22, 1, 0.36, 1), top 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: card-blob 7s ease-in-out infinite alternate; }
+.track .card > i.card-dim::after { content: ""; position: absolute; left: var(--gx, 50%); top: var(--gy, 35%); width: 34%; aspect-ratio: 1;
+  translate: -50% -50%; border-radius: 60% 40% 45% 55% / 50% 60% 40% 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 100%); filter: blur(10px); mix-blend-mode: screen;
+  transition: left 1.3s cubic-bezier(0.22, 1, 0.36, 1), top 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: card-blob2 5s ease-in-out infinite alternate; }
+@keyframes card-blob { 0% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; rotate: 0deg; scale: 1; }
+  50% { border-radius: 63% 37% 41% 59% / 55% 62% 38% 45%; rotate: 25deg; scale: 1.08; }
+  100% { border-radius: 38% 62% 55% 45% / 62% 38% 62% 38%; rotate: -15deg; scale: 0.95; } }
+@keyframes card-blob2 { 0% { border-radius: 60% 40% 45% 55% / 50% 60% 40% 50%; rotate: 0deg; } 100% { border-radius: 40% 60% 60% 40% / 60% 40% 55% 45%; rotate: -40deg; } }
+html body .track .card > i.card-dim::before, html body .track .card > i.card-dim::after { animation-play-state: running !important; }
+.track .card > .sx, .track .card > .card__head, .track .card > .card__out { translate: 0 0; transition: translate 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .track .card:hover > i.card-dim { opacity: 1; }
+  .track .card:hover > .sx { translate: calc(var(--mx, 0) * 7px) calc(var(--my, 0) * 6px); }
+  .track .card:hover > .card__head, .track .card:hover > .card__out { translate: calc(var(--mx, 0) * 3px) calc(var(--my, 0) * 2px); }
+}
+
+/* Hover: no light on the card, just the lift and the drift of its contents */
+html body .track .card > i.card-dim, html body .track .card:hover > i.card-dim { opacity: 0 !important; }
+html body .track .card > i.card-dim::before, html body .track .card > i.card-dim::after { display: none !important; animation: none !important; }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -4087,8 +4070,12 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
 
   /* Cursor: a dot field echo. The loader's grid of dots lights up softly around the pointer,
      breathing gently, and every movement sends ripples out through the dots. */
-  const GAP = 13;               // same grid as the loading screen
-  const SPOT = 78;             // radius of the lit patch around the pointer
+  const CELL = 9;               // grid pitch for the snake
+  const BLOCK = 7;              // head square; the body shrinks towards the tail
+  const LEN = 34;               // a long body that trails well behind the pointer
+  const STEP = 14;              // ms per step: quick enough that the body stays close behind the head
+  let snake = [], stepClock = 0, lastStep = performance.now();
+  const toCell = (x, y) => ({ x: Math.round(x / CELL), y: Math.round(y / CELL) });
   let soonText = '';
   const tag = document.createElement('div');
   tag.className = 'cursor-tag';
@@ -4135,7 +4122,7 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
       }
       tag.classList.toggle('is-on', !!text);
     }
-    if (wantShow && showing < 0.02) glow = { ...food };
+    if (wantShow && showing < 0.02) snake = Array.from({ length: LEN }, () => toCell(food.x, food.y));
   });
   document.addEventListener('pointerleave', () => { wantShow = 0; soonText = ''; tag.classList.remove('is-on'); });
 
@@ -4151,7 +4138,38 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
       tagY += (food.y + 34 - tagY) * k;
     }
     tag.style.transform = `translate3d(${tagX.toFixed(1)}px, ${tagY.toFixed(1)}px, 0) scale(${tagS.toFixed(3)})`;
-    // The dot field hover effect is switched off; only the label follows the pointer
+    if (!food) return;
+    // Snake: the head steps one cell at a time along the grid towards the pointer, one axis at a time;
+    // a long body of small squares follows, fading and shrinking towards the tail
+    stepClock += Math.min(64, now - lastStep); lastStep = now;
+    const goal = toCell(food.x, food.y);
+    let n = 0;
+    while (stepClock >= STEP && n < 5) {
+      stepClock -= STEP; n++;
+      const h = snake[0] || goal;
+      const dx = goal.x - h.x, dy = goal.y - h.y;
+      if (!dx && !dy) { snake.unshift({ ...h }); }
+      else snake.unshift(Math.abs(dx) >= Math.abs(dy) ? { x: h.x + Math.sign(dx), y: h.y } : { x: h.x, y: h.y + Math.sign(dy) });
+      snake.length = Math.min(snake.length, LEN);
+    }
+    if (stepClock > STEP) stepClock = 0;
+    if (showing < 0.01 || reduceMotion) return;
+    ctx.fillStyle = '#FFFFFF'; // inverted by mix-blend-mode in CSS
+    const seen = new Set();
+    for (let i = snake.length - 1; i >= 0; i--) {
+      const c = snake[i]; const key = c.x + ',' + c.y;
+      if (i > 0 && seen.has(key)) continue; seen.add(key);
+      const t = i / LEN;                          // 0 at the head, 1 at the tail
+      const sz = BLOCK * (1 - 0.55 * t);
+      const px = c.x * CELL, py = c.y * CELL;
+      if (soonText && tagW) { const gl = tagX - tagW / 2 - 6, gr = tagX + tagW / 2 + 6, gt = tagY - tagH / 2 - 6, gb = tagY + tagH / 2 + 6; if (px > gl && px < gr && py > gt && py < gb) continue; }
+      ctx.globalAlpha = showing * (1 - 0.85 * t);
+      ctx.fillRect(px - sz / 2, py - sz / 2, sz, sz);
+    }
+    // the head square sits exactly on the pointer tip; the stepping body trails behind it
+    ctx.globalAlpha = showing;
+    ctx.fillRect(food.x - BLOCK / 2, food.y - BLOCK / 2, BLOCK, BLOCK);
+    ctx.globalAlpha = 1;
   };
 
   window.addEventListener('resize', () => { measure(); measureBand(); sizeCursor(); });
@@ -4263,7 +4281,7 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
         introBlur[i] = 0;
         cards[i].style.setProperty('--veil', veil.toFixed(3));
       }
-      const hs = 1;
+      const hs = reduceMotion ? 1 : 1 + 0.022 * hover[i]; // the hovered card lifts very slightly
       // Flip with the scroll itself: a card turns once round as it travels between the centre
       // and the next slot, so it is flat whenever the row is still (and never during the deal)
       if (i === 0) {
@@ -4393,4 +4411,35 @@ html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href
 </script>
 </body></html>
 
+<script>
+/* Hover focus: give every card (clones included) a layer that dims it while another card is hovered */
+(() => {
+  const add = () => document.querySelectorAll('.track .card').forEach((c) => {
+    if (!c.querySelector(':scope > .card-dim')) { const d = document.createElement('i'); d.className = 'card-dim'; d.setAttribute('aria-hidden', 'true'); c.appendChild(d); }
+  });
+  add(); requestAnimationFrame(add); setTimeout(add, 600); setTimeout(add, 2500);
+})();
+</script>
+<script>
+/* Hover: the hovered card's contents drift a few pixels towards the pointer, and a soft light follows it */
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const track = document.querySelector('.track');
+  if (!track) return;
+  track.addEventListener('pointermove', (e) => {
+    const c = e.target.closest && e.target.closest('.card');
+    if (!c) return;
+    const r = c.getBoundingClientRect();
+    const x = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+    c.style.setProperty('--mx', ((x - 0.5) * 2).toFixed(3));
+    c.style.setProperty('--my', ((y - 0.5) * 2).toFixed(3));
+    c.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+    c.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+  });
+  track.addEventListener('pointerout', (e) => {
+    const c = e.target.closest && e.target.closest('.card');
+    if (c && !c.contains(e.relatedTarget)) { c.style.setProperty('--mx', '0'); c.style.setProperty('--my', '0'); }
+  });
+})();
+</script>
 </body></html>
