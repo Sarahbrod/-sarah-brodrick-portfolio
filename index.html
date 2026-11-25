@@ -3236,6 +3236,66 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i { color:
 
 /* Phones: slightly smaller cards, so more of the neighbours and the page show around them */
 @media (max-width: 760px) { .stage { --card-h: min(100vw, calc(100svh - 300px)) !important; } }
+
+/* Supermetrics pricing card: a lighter ground. A soft white wash over the photo, and only a short
+   shade at the top so the white title still reads */
+html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] { background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.22) 45%, rgba(255, 255, 255, 0.16)), url("assets/img/go1-walk.jpg") 50% 50% / cover no-repeat, #C9C8C3 !important; }
+html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] > i.card-scrim { background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 32%) !important; }
+html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] .card__head, html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] .card__head *, html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] .card__out { color: #1B1C1F !important; text-shadow: none !important; }
+html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] .card__head .card__sep { color: rgba(27, 28, 31, 0.35) !important; }
+html body .track .card.sxc[data-href="supermetrics-purchase.html"][data-href] .card__head .card__year { color: rgba(27, 28, 31, 0.62) !important; }
+
+html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__title { color: #1B1C1F !important; }
+html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__year, html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__ship { color: rgba(27, 28, 31, 0.62) !important; }
+html body .track .card.sxc.sxc[data-href="supermetrics-purchase.html"][data-href][data-href] .card__head .card__sep { color: rgba(27, 28, 31, 0.35) !important; }
+
+/* ===== Hover: each card replays its key moment once, then rests on the finished state =====
+   Desktop pointers only, and never with reduced motion. The cards are still at rest. */
+@keyframes hv-pop { 0% { opacity: 0; transform: scale(0.4); } 70% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
+@keyframes hv-rise { from { opacity: 0; transform: translateY(0.9em); } to { opacity: 1; transform: none; } }
+@keyframes hv-grow { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes hv-grow-part { from { transform: scaleX(0.6); } to { transform: none; } }
+@keyframes hv-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes hv-press { 0%, 100% { transform: none; } 45% { transform: scale(0.95); } }
+@keyframes hv-bounce { 0%, 100% { transform: none; } 40% { transform: translateY(-0.35em) scale(1.15); } 70% { transform: translateY(0.05em) scale(0.98); } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html body .track .card.sxc:hover .sx * { animation-play-state: running !important; }
+  /* Supermetrics pricing: the data sources drop in one by one, then the button is pressed */
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(2) { animation-delay: 0.08s; }
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(3) { animation-delay: 0.16s; }
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-stack i:nth-child(4) { animation-delay: 0.24s; }
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-rec { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+  html body .track .card.sxc[data-href="supermetrics-purchase.html"]:hover .sp4-btn { animation: hv-press 0.4s ease-in-out 0.75s both; }
+  /* Go1: the upload bar fills, then the course publishes */
+  html body .track .card.sxc[data-href="go1.html"]:hover .g3-bar i { transform-origin: left; animation: hv-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="go1.html"]:hover .g3-doc { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="go1.html"]:hover .g3-pub em { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
+  html body .track .card.sxc[data-href="go1.html"]:hover .g3-course { animation: hv-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+  /* Fupay: the four payments line up and today's ticks off */
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(2) { animation-delay: 0.07s; }
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(3) { animation-delay: 0.14s; }
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay:nth-child(4) { animation-delay: 0.21s; }
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-pay.is-paid em { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both; }
+  html body .track .card.sxc[data-href="fupay.html"]:hover .fy-cash { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both; }
+  /* Sunday: the revenue line draws through the evening and the latest table pays */
+  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-chart { animation: hv-draw 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-dot { animation: hv-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both; }
+  html body .track .card.sxc[data-href="sunday.html"]:hover .su4-chip { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both; }
+  /* Supermetrics insights: the insights arrive, the trend climbs and the summary is written */
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row { animation: hv-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row:nth-child(3) { animation-delay: 0.07s; }
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-row:nth-child(4) { animation-delay: 0.14s; }
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-tick { animation: hv-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-trend svg { animation: hv-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+  html body .track .card.sxc[data-href="supermetrics-insights.html"]:hover .sb-glass { animation: hv-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both; }
+  /* Wrylo: the streak flame flickers and the book moves on a few pages */
+  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-flame { display: inline-block; animation: hv-bounce 0.6s ease-in-out both; }
+  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-days { animation: hv-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
+  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-bar i { transform-origin: left; animation: hv-grow-part 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+  html body .track .card.sxc[data-href="wrylo.html"]:hover .wq-cta { animation: hv-press 0.4s ease-in-out 0.7s both; }
+}
 </style>
 <script>document.body.classList.add("home")</script>
 
