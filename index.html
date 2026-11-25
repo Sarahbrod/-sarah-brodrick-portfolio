@@ -3233,6 +3233,9 @@ body .track .card.sxc .card__head .card__year { color: rgba(255, 255, 255, 0.95)
 body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-k, body .track .card.sxc[data-href="supermetrics-purchase.html"] .sp4-src small { color: #FFFFFF !important; }
 body .track .card.sxc[data-href="supermetrics-purchase.html"] > i.card-scrim { background: linear-gradient(180deg, rgba(18, 14, 11, 0.72), rgba(18, 14, 11, 0.42) 50%, rgba(18, 14, 11, 0)) !important; }
 body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i { color: rgba(255, 255, 255, 0.96) !important; }
+
+/* Phones: slightly smaller cards, so more of the neighbours and the page show around them */
+@media (max-width: 760px) { .stage { --card-h: min(100vw, calc(100svh - 300px)) !important; } }
 </style>
 <script>document.body.classList.add("home")</script>
 
@@ -3917,7 +3920,7 @@ body .track .card.sxc[data-href="supermetrics-insights.html"] .sb-row i { color:
         const topLimit = Math.max(bandTopY, -stageH / 2) + 16;
         // Phones: clear space above and below the centre card, which sits in the middle of the band
         const bot = bandBotY - 36, top = Math.max(bandTopY, -stageH / 2) + 44;
-        s = Math.min(0.9, (bot - top) / cardH);
+        s = Math.min(0.9, (bot - top) / cardH) * 0.9; // a touch smaller than the space allows
         off = (top + bot) / 2;
       }
       const op = stageW > 760 ? (ringFit() ? clamp((2.55 - Math.abs(k)) / 0.35, 0, 1) : clamp((3.1 - Math.abs(k)) / 0.5, 0, 1)) : 1;
