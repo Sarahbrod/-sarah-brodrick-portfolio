@@ -475,6 +475,30 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
 
 /* Hero: the whole screenshot sits inside the panel, with room around it */
 .hero__panel--qi img { position: absolute !important; inset: 0 !important; margin: auto !important; width: auto !important; height: auto !important; max-width: 84% !important; max-height: 78% !important; }
+
+/* ---------- Mobile navigation: finger-sized targets, clean wrapping ---------- */
+@media (max-width: 760px) {
+  .links { flex-wrap: wrap; column-gap: 20px; row-gap: 0; }
+  .links li + li::before { display: none; }
+  .links .link, .links .email-copy { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .crumb { min-height: 44px; }
+  .crumb__back { display: inline-flex; align-items: center; min-height: 44px; padding-right: 8px; }
+  .brand { position: relative; }
+  .brand::after { content: ""; position: absolute; left: 0; right: 0; top: -12px; bottom: -12px; }
+  .mode { min-width: 44px; min-height: 44px; }
+}
+
+/* Mobile: a slim bar slides in when you scroll back up, so the way back to the work is always close */
+.mnav { display: none; }
+@media (max-width: 760px) {
+  .mnav { position: fixed; left: 0; right: 0; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(4px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) 4px max(12px, env(safe-area-inset-left, 0px)); background: rgba(242, 242, 240, 0.86); -webkit-backdrop-filter: blur(14px) saturate(160%); backdrop-filter: blur(14px) saturate(160%); box-shadow: 0 1px 0 rgba(17, 17, 17, 0.08); transform: translateY(-110%); transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1); }
+  .mnav.is-on { transform: none; }
+  .mnav a, .mnav button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 6px; border: 0; background: none; font: inherit; font-size: 15px; color: var(--ink, #111111); cursor: pointer; }
+  .mnav__here { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; color: var(--muted, #76767A); }
+  .mnav svg { flex: none; }
+  .mnav a:focus-visible, .mnav button:focus-visible { outline: 2px solid var(--ink, #111111); outline-offset: 2px; border-radius: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .mnav { transition: none; } }
 </style>
 </head>
 <body class="project">
@@ -712,6 +736,38 @@ body:has(.crumb) > header.nav { padding-bottom: 48px !important; }
   } else {
     els.forEach(show);
   }
+})();
+</script>
+<script>
+/* Mobile: show a back-to-work bar when the reader scrolls up past the top of the page */
+(() => {
+  const crumb = document.querySelector('.crumb__here');
+  const bar = document.createElement('nav');
+  bar.className = 'mnav';
+  bar.setAttribute('aria-label', 'Page');
+  bar.innerHTML = '<a href="index.html" data-transition><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4"/></svg><span>Work</span></a>'
+    + '<span class="mnav__here" aria-hidden="true"></span>'
+    + '<button type="button" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.4"/></svg><span>Top</span></button>';
+  if (crumb) bar.querySelector('.mnav__here').textContent = crumb.textContent;
+  document.body.appendChild(bar);
+  bar.querySelector('button').addEventListener('click', () => {
+    const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+    const back = document.querySelector('.crumb__back, .back');
+    if (back) setTimeout(() => back.focus({ preventScroll: true }), smooth ? 500 : 0);
+  });
+  let lastY = scrollY, shown = false;
+  const set = (on) => { if (on !== shown) { shown = on; bar.classList.toggle('is-on', on); bar.inert = !on; } };
+  bar.inert = true;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    if (y < 240) set(false);
+    else if (y < lastY - 6) set(true);
+    else if (y > lastY + 6) set(false);
+    lastY = y;
+  }, { passive: true });
+  // keyboard users: show the bar whenever focus lands inside it
+  bar.addEventListener('focusin', () => set(true));
 })();
 </script>
 </body>

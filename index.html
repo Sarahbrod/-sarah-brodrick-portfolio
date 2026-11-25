@@ -326,6 +326,18 @@
 
 /* The normal arrow pointer everywhere on the carousel, including while dragging */
 .stage, .stage.is-dragging, .stage .card { cursor: default !important; }
+
+/* ---------- Mobile navigation: finger-sized targets, clean wrapping ---------- */
+@media (max-width: 760px) {
+  .links { flex-wrap: wrap; column-gap: 20px; row-gap: 0; }
+  .links li + li::before { display: none; }
+  .links .link, .links .email-copy { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .crumb { min-height: 44px; }
+  .crumb__back { display: inline-flex; align-items: center; min-height: 44px; padding-right: 8px; }
+  .brand { position: relative; }
+  .brand::after { content: ""; position: absolute; left: 0; right: 0; top: -12px; bottom: -12px; }
+  .mode { min-width: 44px; min-height: 44px; }
+}
 </style><meta name="theme-color" content="#F2F2F0"><meta name="color-scheme" content="light"></head><body>
 <title>Sarah Brodrick Portfolio</title>
   <link rel="icon" href="favicon.ico?v=4" sizes="any">
