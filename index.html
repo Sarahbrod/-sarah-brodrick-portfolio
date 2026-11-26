@@ -3901,7 +3901,7 @@ html body .track .card.sxc.sxc[data-href="sunday.html"][data-href][data-href][da
       gBase = Math.round(target / spacing);
     }
     if (Math.abs(dd) >= 50) gNotches += 1; else gPix += Math.abs(dd);
-    const steps = Math.min(12, Math.max(1, gNotches + Math.floor(gPix / 320) + (gNotches ? 0 : 1)));
+    const steps = Math.min(8, Math.max(1, gNotches + Math.floor(gPix / 420) + (gNotches ? 0 : 1)));
     target = (gBase + dir * steps) * spacing;
     clearTimeout(wheelTimer);
     wheelTimer = setTimeout(() => { wheelGesture = false; }, 260);
@@ -4203,13 +4203,17 @@ html body .track .card.sxc.sxc[data-href="sunday.html"][data-href][data-href][da
     frame.t = nowS;
     const prev = pos;
     if (reduceMotion) { pos = target; glideV = 0; }
-    else if (dragging) { pos += (target - pos) * (1 - Math.pow(1 - 0.35, dt * 60)); glideV = (pos - prev) / dt; }
+    else if (dragging) { pos += (target - pos) * (1 - Math.pow(1 - 0.35, dt * 60)); glideV = (pos - prev) / dt; frame.tg = pos; }
     else {
-      const w = (mode === 'helix' || mode === 'sphere') ? 5.5 : 7.5;
-      const acc = w * w * (target - pos) - 2 * w * glideV;
+      // the target itself eases in first, so a scroll starts gently instead of with a jolt,
+      // then a softer spring carries the cards the rest of the way
+      if (frame.tg === undefined) frame.tg = target;
+      frame.tg += (target - frame.tg) * (1 - Math.exp(-dt / 0.11));
+      const w = (mode === 'helix' || mode === 'sphere') ? 5.2 : (mode === 'ring' ? 6.2 : 7);
+      const acc = w * w * (frame.tg - pos) - 2 * w * glideV;
       glideV += acc * dt;
       pos += glideV * dt;
-      if (Math.abs(target - pos) < 0.05 && Math.abs(glideV) < 0.5) { pos = target; glideV = 0; }
+      if (Math.abs(target - pos) < 0.05 && Math.abs(glideV) < 0.5 && Math.abs(target - frame.tg) < 0.05) { pos = target; frame.tg = target; glideV = 0; }
     }
     velocity += ((pos - prev) - velocity) * 0.15;
     press += ((dragging ? 1 : 0) - press) * (reduceMotion ? 1 : 0.2);
